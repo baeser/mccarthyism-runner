@@ -1,13 +1,18 @@
 // ─── PRE-WRITTEN GAME CONTENT ──────────────────────────────────────────────
 // All characters, scenarios, outcomes, and verdicts are self-contained.
 // No API calls needed — everything runs locally in the browser.
+//
+// Scenario text uses template variables: {name}, {shortName}, {occupation},
+// {workplace}, {location} — replaced at runtime with the player's character.
 
 export const CHARACTERS = {
   informer: [
     {
       name: "Robert Kessler",
+      shortName: "Robert",
       age: 38,
       occupation: "Screenwriter",
+      workplace: "the studio",
       location: "Hollywood, California",
       backstory:
         "Robert wrote three successful comedies for Paramount in the late 1940s. In college at NYU, he attended a handful of Communist Party meetings out of intellectual curiosity — something he barely remembers. Now a colleague has named him in testimony before HUAC, and the studio has quietly stopped returning his calls.",
@@ -19,8 +24,10 @@ export const CHARACTERS = {
     },
     {
       name: "Margaret Doyle",
+      shortName: "Peggy",
       age: 34,
       occupation: "High School English Teacher",
+      workplace: "the school",
       location: "Passaic, New Jersey",
       backstory:
         "Peggy joined the teachers' union in 1946 because they fought for better pay. The union is now listed as a Communist front organization. She has two young children and a husband who works at the shipyard. The school board is under pressure to identify 'disloyal' teachers.",
@@ -32,8 +39,10 @@ export const CHARACTERS = {
     },
     {
       name: "Arthur Brennan",
+      shortName: "Arthur",
       age: 45,
       occupation: "Radio Producer",
+      workplace: "the radio station",
       location: "New York, New York",
       backstory:
         "Arthur produced some of the most popular radio dramas of the 1940s. He hired talented actors and writers without asking about their politics. Now two of his former writers are on the blacklist, and FBI agents have started visiting his office, asking questions about his hiring decisions.",
@@ -41,14 +50,16 @@ export const CHARACTERS = {
       integrity: 65,
       archetype: "informer",
       archetypeHint:
-        "The FBI has made it clear: cooperate and name the 'subversives' you hired, or watch your network cancel every one of your shows.",
+        "The FBI has made it clear: cooperate and name the 'subversives' you hired, or watch your career disappear.",
     },
   ],
   resister: [
     {
       name: "Eleanor Marsh",
+      shortName: "Eleanor",
       age: 42,
       occupation: "Stage Actress",
+      workplace: "the theater",
       location: "New York, New York",
       backstory:
         "Eleanor was briefly a member of the Communist Party in the 1930s, drawn by its stance against fascism during the Spanish Civil War. She left the party in 1939. She has performed on Broadway for two decades and believes the First Amendment protects her right to her past beliefs.",
@@ -60,8 +71,10 @@ export const CHARACTERS = {
     },
     {
       name: "Samuel Washington",
+      shortName: "Sam",
       age: 36,
       occupation: "Newspaper Reporter",
+      workplace: "the newspaper",
       location: "Chicago, Illinois",
       backstory:
         "Sam is a Black journalist who has covered civil rights and labor organizing for the Chicago Defender. HUAC considers civil rights activism suspiciously close to Communist influence. His editor is under pressure from advertisers to distance the paper from 'controversial' reporters.",
@@ -73,8 +86,10 @@ export const CHARACTERS = {
     },
     {
       name: "Dr. Helen Novak",
+      shortName: "Helen",
       age: 50,
       occupation: "Physics Professor",
+      workplace: "the university",
       location: "Berkeley, California",
       backstory:
         "Helen signed a petition against nuclear weapons testing in 1950, alongside dozens of her colleagues. The University of California now requires a loyalty oath from all faculty. Several professors who refused have already been fired. Helen has spent 22 years building her research program.",
@@ -88,8 +103,10 @@ export const CHARACTERS = {
   bystander: [
     {
       name: "Frank Moretti",
+      shortName: "Frank",
       age: 29,
       occupation: "Postal Worker",
+      workplace: "the post office",
       location: "Pittsburgh, Pennsylvania",
       backstory:
         "Frank is a quiet man who served in the Army during the war and now sorts mail at the downtown post office. His brother-in-law, Tony, was just arrested for distributing Communist pamphlets. Frank has never been political, but as a federal employee, he is now under scrutiny by association.",
@@ -101,8 +118,10 @@ export const CHARACTERS = {
     },
     {
       name: "Dorothy Chen",
+      shortName: "Dorothy",
       age: 33,
       occupation: "Public Librarian",
+      workplace: "the library",
       location: "Los Angeles, California",
       backstory:
         "Dorothy runs the circulation desk at the Los Angeles Public Library. The city council has demanded the removal of books by authors suspected of Communist sympathies. Dorothy is not political, but she studied library science because she believes in free access to information.",
@@ -114,8 +133,10 @@ export const CHARACTERS = {
     },
     {
       name: "James Kowalski",
+      shortName: "Jimmy",
       age: 41,
       occupation: "Factory Foreman",
+      workplace: "the factory",
       location: "Detroit, Michigan",
       backstory:
         "Jimmy has worked at the Ford assembly plant for eighteen years and recently made foreman. His union, the UAW, is under investigation by HUAC. He has never attended a political meeting in his life, but some of his best workers are union activists now being called 'subversives.'",
@@ -123,7 +144,7 @@ export const CHARACTERS = {
       integrity: 75,
       archetype: "bystander",
       archetypeHint:
-        "Management wants you to identify union 'troublemakers.' You just want to build cars and go home to your family.",
+        "Management wants you to identify 'troublemakers.' You just want to build cars and go home to your family.",
     },
   ],
 };
@@ -131,15 +152,16 @@ export const CHARACTERS = {
 // ─── SCENARIOS ──────────────────────────────────────────────────────────────
 // 6 per archetype. Each playthrough randomly picks 4.
 // Outcomes are embedded in each choice so no API is needed.
+// Text uses {name}, {shortName}, {occupation}, {workplace}, {location} templates.
 
 export const SCENARIOS = {
   informer: [
     {
-      headline: "HUAC Subpoena Arrives at Your Door",
+      headline: "HUAC Subpoena Arrives at {shortName}'s Door",
       scene:
-        "A man in a gray suit hands you an envelope on your front porch. Your neighbors watch from behind their curtains. Inside is a subpoena to appear before the House Un-American Activities Committee in Washington.",
+        "A man in a gray suit hands {shortName} an envelope on the front porch. The neighbors watch from behind their curtains. Inside is a subpoena to appear before the House Un-American Activities Committee in Washington.",
       situation:
-        "The committee wants you to testify about people you knew at political meetings years ago. Your lawyer says cooperation is your safest path. But cooperation means giving names — names of people who could lose everything.",
+        "The committee wants {shortName} to testify about people from political meetings years ago. A lawyer says cooperation is the safest path — but cooperation means giving names. Names of people who could lose everything.",
       choices: [
         {
           id: "A",
@@ -148,11 +170,11 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "You sit before the committee under bright lights and read a prepared statement denouncing communism. Then you give them three names. The committee chairman thanks you for your patriotism. As you leave the hearing room, you feel the weight of what you have done settle over you like a fog.",
+              "{shortName} sits before the committee under bright lights and reads a prepared statement denouncing communism. Then comes the list — three names. The committee chairman thanks {shortName} for this patriotism. Walking out of the hearing room, the weight of what just happened settles like a fog.",
             consequences: [
-              "HUAC marks you as a 'friendly witness'",
+              "HUAC marks {shortName} as a 'friendly witness'",
               "Three former associates are now under investigation",
-              "Your immediate career prospects improve",
+              "Immediate career prospects improve",
             ],
             suspicionChange: -15,
             integrityChange: -20,
@@ -168,11 +190,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You sit rigidly in the witness chair and repeat the same phrase: 'I respectfully decline to answer on the grounds that it may incriminate me.' The committee members exchange knowing looks. The phrase 'Fifth Amendment Communist' will follow you home.",
+              "{shortName} sits rigidly in the witness chair and repeats the same phrase: 'I respectfully decline to answer on the grounds that it may incriminate me.' The committee members exchange knowing looks. The phrase 'Fifth Amendment Communist' will follow {shortName} home.",
             consequences: [
-              "The committee holds you in contempt",
-              "Your employer receives a call from Washington within hours",
-              "Your name appears in the next morning's newspapers",
+              "The committee holds {shortName} in contempt",
+              "{shortName}'s employer receives a call from Washington within hours",
+              "The name appears in the next morning's newspapers",
             ],
             suspicionChange: 20,
             integrityChange: 5,
@@ -188,11 +210,11 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You acknowledge your own brief involvement but draw a hard line when they ask about others. 'I am not going to name names,' you say. The committee is not satisfied, but your willingness to discuss yourself buys you some goodwill — for now.",
+              "{shortName} acknowledges a brief past involvement but draws a hard line when they ask about others. 'I am not going to name names.' The committee is unsatisfied, but the willingness to discuss personal history buys some goodwill — for now.",
             consequences: [
-              "The committee pressures your employer to fire you",
-              "Some colleagues quietly respect your stance",
-              "You remain under active investigation",
+              "The committee pressures {shortName}'s employer",
+              "Some colleagues quietly respect the stance",
+              "{shortName} remains under active investigation",
             ],
             suspicionChange: 10,
             integrityChange: -5,
@@ -204,24 +226,24 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "Boss Demands You Prove Your Loyalty",
+      headline: "The Boss at {workplace} Demands Loyalty",
       scene:
-        "Your supervisor calls you into a closed-door meeting. On the desk is a list of employees who belong to the union. He slides it toward you with a pen.",
+        "{shortName}'s supervisor calls a closed-door meeting at {workplace}. On the desk is a list of employees. The supervisor slides it across with a pen.",
       situation:
-        "The company is cooperating with an FBI investigation. Your boss wants you to circle the names of anyone you know who has 'radical sympathies.' He reminds you that your own position is not guaranteed.",
+        "The company is cooperating with an FBI investigation. The boss wants {shortName} to circle the names of anyone with 'radical sympathies.' The reminder is blunt: {shortName}'s own position is not guaranteed.",
       choices: [
         {
           id: "A",
-          text: "Circle several names — people you have heard express left-leaning opinions at lunch or union meetings.",
+          text: "Circle several names — people you have heard express left-leaning opinions at work.",
           alignment: "cooperative",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You circle five names with a trembling hand. Your boss nods approvingly and locks the list in his desk. Within two weeks, three of those people are called into HR and told their services are no longer needed. One of them, a single mother, stops you in the parking lot with tears in her eyes.",
+              "{shortName} circles five names with a trembling hand. The boss nods approvingly and locks the list in the desk. Within two weeks, three of those people are called into the office and told their services are no longer needed. One of them — a single parent — stops {shortName} in the parking lot with tears streaming down.",
             consequences: [
-              "Three coworkers lose their jobs based on your identifications",
-              "Your position at the company is secured",
-              "Word quietly spreads about what you did",
+              "Three coworkers lose their jobs based on {shortName}'s identifications",
+              "{shortName}'s position at {workplace} is secured",
+              "Word quietly spreads about what happened",
             ],
             suspicionChange: -10,
             integrityChange: -18,
@@ -232,16 +254,16 @@ export const SCENARIOS = {
         },
         {
           id: "B",
-          text: "Refuse to circle any names. Tell your boss this feels like a witch hunt.",
+          text: "Refuse to circle any names. Tell the boss this feels like a witch hunt.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "Your boss stares at you for a long moment, then takes back the list. 'I see,' he says coldly. The next week, your assignments dry up. You hear from a friend in accounting that your name has been added to a different kind of list.",
+              "The boss stares at {shortName} for a long moment, then takes back the list. 'I see,' he says coldly. The next week, {shortName}'s assignments dry up. A friend in the front office whispers that {shortName}'s name has been added to a different kind of list.",
             consequences: [
-              "Your boss reports your refusal to cooperate",
-              "You are moved to less desirable assignments",
-              "The FBI adds a note to your file",
+              "The boss reports {shortName}'s refusal to cooperate",
+              "{shortName} is moved to less desirable assignments",
+              "The FBI adds a note to {shortName}'s file",
             ],
             suspicionChange: 15,
             integrityChange: 8,
@@ -252,15 +274,15 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Tell your boss you honestly don't know anyone's political beliefs and cannot help.",
+          text: "Tell the boss you honestly don't know anyone's political beliefs and cannot help.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You play ignorant, claiming you never discuss politics at work. Your boss seems skeptical but accepts your answer — for now. You leave the meeting knowing you have only delayed the inevitable. The list is still in his desk.",
+              "{shortName} plays ignorant, claiming to never discuss politics at work. The boss seems skeptical but accepts the answer — for now. {shortName} leaves the meeting knowing this has only delayed the inevitable. The list is still in that desk.",
             consequences: [
-              "Your boss remains suspicious of your loyalty",
-              "You avoid directly harming anyone — this time",
+              "The boss remains suspicious of {shortName}'s loyalty",
+              "{shortName} avoids directly harming anyone — this time",
               "The pressure to cooperate will return",
             ],
             suspicionChange: 5,
@@ -273,11 +295,11 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "FBI Agents Ask About an Old Friend",
+      headline: "FBI Agents Ask {shortName} About an Old Friend",
       scene:
-        "Two FBI agents arrive at your home on a Saturday morning. They show their badges and ask to come inside. Your spouse watches nervously from the kitchen doorway.",
+        "Two FBI agents arrive at {shortName}'s home on a Saturday morning. They show their badges and ask to come inside. From the kitchen doorway, a family member watches nervously.",
       situation:
-        "The agents want to know about your college friend, David, who you have not spoken to in years. They say David is under investigation. They hint that your own 'situation' could improve if you help them build their case.",
+        "The agents want to know about an old friend, David, who {shortName} hasn't spoken to in years. They say David is under investigation. They hint that {shortName}'s own 'situation' could improve with some cooperation.",
       choices: [
         {
           id: "A",
@@ -286,11 +308,11 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "You spend an hour telling the agents about David's college activities. They write everything down in small notebooks, asking follow-up questions. When they leave, they shake your hand warmly. You close the door and realize you may have just helped send an old friend to prison.",
+              "{shortName} spends an hour telling the agents about David's activities. They write everything down in small notebooks, asking follow-up questions. When they leave, they shake {shortName}'s hand warmly. The door closes. The realization settles in: an old friend might be going to prison because of this conversation.",
             consequences: [
-              "The FBI uses your testimony to build a case against David",
-              "Agents note you as cooperative in their files",
-              "Your spouse asks if David will be alright — you cannot answer",
+              "The FBI uses {shortName}'s testimony to build a case against David",
+              "Agents note {shortName} as cooperative in their files",
+              "The friendship is almost certainly over",
             ],
             suspicionChange: -12,
             integrityChange: -15,
@@ -301,16 +323,16 @@ export const SCENARIOS = {
         },
         {
           id: "B",
-          text: "Tell the agents you will not discuss another person behind their back and ask them to leave your home.",
+          text: "Tell the agents you will not discuss another person behind their back and ask them to leave.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "The agents exchange a glance. One of them says, 'We were hoping you would be more helpful.' They leave without another word, but you notice a black car parked across the street for the rest of the week. Your mail starts arriving already opened.",
+              "The agents exchange a glance. One of them says, 'We were hoping you would be more helpful.' They leave without another word, but {shortName} notices a black car parked across the street for the rest of the week. The mail starts arriving already opened.",
             consequences: [
-              "The FBI begins surveillance of your household",
-              "Your mail is monitored",
-              "You are flagged as potentially uncooperative",
+              "The FBI begins surveillance of {shortName}'s household",
+              "{shortName}'s mail is monitored",
+              "{shortName} is flagged as potentially uncooperative",
             ],
             suspicionChange: 18,
             integrityChange: 8,
@@ -321,15 +343,15 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Share only vague, unhelpful information. Claim your memory of David is poor.",
+          text: "Share only vague, unhelpful information. Claim your memory is poor.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You offer the agents nothing useful — vague dates, uncertain recollections, hazy memories. They press you, but you maintain that you simply cannot remember. They leave frustrated. You know they may come back.",
+              "{shortName} offers the agents nothing useful — vague dates, uncertain recollections, hazy memories. They press harder, but {shortName} maintains the story. The agents leave frustrated. They will almost certainly come back.",
             consequences: [
               "The agents are dissatisfied but have nothing to act on",
-              "You avoid directly harming David",
+              "{shortName} avoids directly harming David",
               "The FBI may return with more pointed questions",
             ],
             suspicionChange: 5,
@@ -342,44 +364,44 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "The Studio Offers You a Way Back In",
+      headline: "An Offer to Come In From the Cold",
       scene:
-        "A studio executive invites you to lunch at a quiet restaurant in Beverly Hills. He orders for both of you without asking. Over steak, he gets to the point.",
+        "A former colleague reaches out to {shortName} through a mutual friend. They meet at a quiet diner outside of town. The colleague now has connections — and a proposal.",
       situation:
-        "The executive says the studio wants to hire you back — you are talented and they need you. But first, you must publish a public statement in the trade papers denouncing communism and naming anyone you knew who was involved. 'Think of it as a cleansing,' he says.",
+        "The deal is simple: {shortName} can get back to work at {workplace} — contracts, assignments, a return to normal life. But first, there must be a public statement in the papers. Denounce communism. Name four or five people from the old days. 'Think of it as a cleansing,' the colleague says.",
       choices: [
         {
           id: "A",
-          text: "Agree to write the public statement. Name four people you knew from political gatherings years ago.",
+          text: "Agree to the deal. Write the public statement and name people from political gatherings years ago.",
           alignment: "cooperative",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "Your statement runs in Variety and The Hollywood Reporter. You call yourself a 'dupe' who was 'misled by Communist propaganda.' The four people you named are immediately blacklisted. One of them — a set designer with three kids — calls you at home, sobbing. The studio gives you a two-picture deal.",
+              "{shortName}'s statement runs in the papers, calling the past associations a youthful mistake. Four people are named. Within days, all four are under investigation. One of them — a parent of three — calls {shortName} at home, sobbing. But the work starts flowing again.",
             consequences: [
-              "Four people are added to the Hollywood blacklist",
-              "You receive a lucrative new contract",
+              "Four people are placed under investigation",
+              "{shortName} receives new work opportunities at {workplace}",
               "The guilt manifests as insomnia and drinking",
             ],
             suspicionChange: -15,
             integrityChange: -20,
             tone: "negative",
             historicalNote:
-              "Screenwriter Budd Schulberg named fifteen former associates in his HUAC testimony. He continued working in Hollywood while those he named could not find employment for years.",
+              "Screenwriter Budd Schulberg named fifteen former associates in his HUAC testimony. He continued working while those he named could not find employment for years.",
           },
         },
         {
           id: "B",
-          text: "Refuse the deal. Tell the executive you will not build your comeback on other people's ruin.",
+          text: "Refuse the deal. You will not build a comeback on other people's ruin.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "The executive shakes his head slowly. 'You're making a mistake,' he says. You walk out of the restaurant into blinding sunlight. Within a month, every studio in town knows you are 'difficult.' Your agent drops you. You start looking for work outside the industry.",
+              "The colleague shakes his head slowly. 'You're making a mistake,' he says. {shortName} walks out of the diner into blinding sunlight. Within a month, word spreads that {shortName} is 'difficult.' The phone stops ringing. New work will have to be found outside the old circles.",
             consequences: [
-              "You are effectively blacklisted from Hollywood",
-              "Your income drops dramatically",
-              "A small circle of fellow resisters respects your decision",
+              "{shortName} is effectively shut out of {workplace}",
+              "Income drops dramatically",
+              "A small circle of fellow resisters respects the decision",
             ],
             suspicionChange: 15,
             integrityChange: 10,
@@ -390,16 +412,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Ask if you can write the statement denouncing communism but without naming specific people.",
+          text: "Ask if you can write a general statement against communism without naming specific people.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "The executive considers your proposal and makes some calls. He comes back with a compromise: you can write a general denunciation, but you must meet privately with a HUAC investigator and answer questions 'off the record.' You suspect nothing said to HUAC is truly off the record.",
+              "The colleague considers {shortName}'s proposal and makes some calls. He comes back with a compromise: a general denunciation is acceptable, but {shortName} must also meet privately with an investigator and answer questions 'off the record.' Nothing said to investigators is truly off the record.",
             consequences: [
-              "You publish a watered-down denunciation",
-              "A private HUAC meeting is scheduled",
-              "Your return to work is delayed and uncertain",
+              "{shortName} publishes a watered-down denunciation",
+              "A private meeting with investigators is scheduled",
+              "The return to work is delayed and uncertain",
             ],
             suspicionChange: 0,
             integrityChange: -8,
@@ -411,11 +433,11 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "Your Neighbor Asks a Dangerous Question",
+      headline: "{shortName}'s Neighbor Asks a Dangerous Question",
       scene:
-        "At a block party, your neighbor Bill pulls you aside near the garage. He keeps his voice low. He says his son's teacher is rumored to be 'one of them' and asks if you have heard anything.",
+        "At a block party, {shortName}'s neighbor Bill pulls them aside near the garage. He keeps his voice low. He says his son's teacher is rumored to be 'one of them' and asks if {shortName} has heard anything.",
       situation:
-        "You happen to know that the teacher, Mrs. Alvarez, attended a civil rights meeting last year. Bill is the type who would call the school board — or worse, the FBI. What you say next could determine her fate.",
+        "{shortName} happens to know that the teacher, Mrs. Alvarez, attended a civil rights meeting last year. Bill is the type who would call the school board — or worse, the FBI. What {shortName} says next could determine her fate.",
       choices: [
         {
           id: "A",
@@ -424,11 +446,11 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "Bill nods gravely and thanks you for 'looking out for the community.' Three days later, Mrs. Alvarez is suspended pending an investigation. Her students make cards asking her to come back. She never does.",
+              "Bill nods gravely and thanks {shortName} for 'looking out for the community.' Three days later, Mrs. Alvarez is suspended pending an investigation. Her students make cards asking her to come back. She never does.",
             consequences: [
               "Mrs. Alvarez loses her teaching position",
-              "You are seen as a reliable, patriotic neighbor",
-              "You avoid any suspicion falling on yourself",
+              "{shortName} is seen as a reliable, patriotic neighbor",
+              "Suspicion moves away from {shortName}",
             ],
             suspicionChange: -8,
             integrityChange: -15,
@@ -444,11 +466,11 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "Bill steps back, startled by your sharpness. 'I thought you were a patriot,' he mutters. After that, Bill stops waving at you from across the street. You notice him watching your house more carefully. You wonder what he is writing down.",
+              "Bill steps back, startled by {shortName}'s sharpness. 'I thought you were a patriot,' he mutters. After that, Bill stops waving from across the street. {shortName} notices him watching the house more carefully now.",
             consequences: [
-              "Bill becomes suspicious of you",
+              "Bill becomes suspicious of {shortName}",
               "Mrs. Alvarez keeps her job — for now",
-              "Your relationship with your neighbors grows tense",
+              "{shortName}'s relationship with the neighbors grows tense",
             ],
             suspicionChange: 10,
             integrityChange: 5,
@@ -459,16 +481,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Say you have not heard anything and change the subject back to the block party.",
+          text: "Say you haven't heard anything and change the subject back to the block party.",
           alignment: "neutral",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You shrug and steer the conversation toward the potato salad. Bill seems unsatisfied but lets it drop. You go home feeling uneasy. Mrs. Alvarez is safe for now, but you know Bill will keep asking around until he finds someone willing to talk.",
+              "{shortName} shrugs and steers the conversation toward the potato salad. Bill seems unsatisfied but lets it drop. Mrs. Alvarez is safe for now, but Bill will keep asking around until he finds someone willing to talk.",
             consequences: [
               "Mrs. Alvarez remains safe for the moment",
               "Bill continues his informal investigation",
-              "You avoid involvement but feel the moral tension",
+              "{shortName} avoids involvement but feels the moral tension",
             ],
             suspicionChange: 2,
             integrityChange: -2,
@@ -480,44 +502,44 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "Union Meeting Minutes Could Save You",
+      headline: "Old Records Could Be {shortName}'s Ticket Out",
       scene:
-        "You find a box of old union meeting minutes in your basement. The handwritten pages contain names, dates, and notes about political discussions from years ago.",
+        "{shortName} finds a box of old papers in the basement — sign-in sheets, handwritten notes, and letters from political gatherings attended years ago. The pages contain names, dates, and damning details.",
       situation:
-        "An FBI investigator has been pressing you for 'evidence' of Communist activity in your former union. These minutes could be exactly what he wants. Handing them over would prove your cooperation — but the names in those pages belong to real people with families.",
+        "An FBI investigator has been pressing {shortName} for 'evidence.' These papers could be exactly what he wants. Handing them over would prove cooperation — but the names in those pages belong to real people with families.",
       choices: [
         {
           id: "A",
-          text: "Turn the minutes over to the FBI investigator. This is your ticket to safety.",
+          text: "Turn the papers over to the FBI investigator. This is your ticket to safety.",
           alignment: "cooperative",
           riskLevel: "low",
           outcome: {
             narrative:
-              "The investigator leafs through the pages with barely contained excitement. 'This is very helpful,' he says. Over the following months, six people named in those minutes receive subpoenas. Two lose their jobs. You receive a letter from the FBI thanking you for your 'service to the nation.'",
+              "The investigator leafs through the pages with barely contained excitement. 'This is very helpful,' he says. Over the following months, six people named in those records receive subpoenas. Two lose their jobs. {shortName} receives a letter from the FBI thanking them for 'service to the nation.'",
             consequences: [
-              "Six former union members are subpoenaed",
-              "The FBI considers your case resolved",
-              "You carry the knowledge of what those pages caused",
+              "Six people are subpoenaed based on {shortName}'s records",
+              "The FBI considers {shortName}'s case resolved",
+              "{shortName} carries the knowledge of what those pages caused",
             ],
             suspicionChange: -18,
             integrityChange: -20,
             tone: "negative",
             historicalNote:
-              "Union membership lists and meeting records were prized by investigators. The Taft-Hartley Act of 1947 required union leaders to sign affidavits swearing they were not Communists.",
+              "Membership lists and meeting records were prized by investigators. The Taft-Hartley Act of 1947 required union leaders to sign affidavits swearing they were not Communists.",
           },
         },
         {
           id: "B",
-          text: "Burn the minutes in your backyard that night. Those names will never reach the FBI.",
+          text: "Burn the records in the backyard that night. Those names will never reach the FBI.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "You watch the pages curl and blacken in the firepit behind your house. The names dissolve into ash. You feel a weight lift, but a new fear settles in — what if someone saw? What if the investigator finds out you destroyed potential evidence?",
+              "{shortName} watches the pages curl and blacken in the firepit. The names dissolve into ash. A weight lifts — but a new fear settles in. What if someone saw? What if the investigator finds out evidence was destroyed?",
             consequences: [
               "The evidence is permanently destroyed",
-              "You risk obstruction charges if discovered",
-              "The people named in those minutes are protected",
+              "{shortName} risks obstruction charges if discovered",
+              "The people named in those records are protected",
             ],
             suspicionChange: 8,
             integrityChange: 10,
@@ -528,16 +550,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Hide the minutes somewhere safe. You are not ready to hand them over or destroy them.",
+          text: "Hide the papers somewhere safe. You're not ready to hand them over or destroy them.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You wrap the box in a blanket and hide it in the attic crawl space. The investigator calls again the following week, asking if you have found 'anything useful.' You say no. The box sits above your head every night like a ticking clock.",
+              "{shortName} wraps the box in a blanket and hides it in the attic crawl space. The investigator calls again the following week, asking if anything 'useful' has turned up. {shortName} says no. The box sits overhead every night like a ticking clock.",
             consequences: [
               "The evidence remains hidden but intact",
-              "The FBI continues to press you for information",
-              "You live with the anxiety of a secret that could surface",
+              "The FBI continues to press {shortName} for information",
+              "{shortName} lives with the anxiety of a secret that could surface at any moment",
             ],
             suspicionChange: 5,
             integrityChange: -5,
@@ -551,11 +573,11 @@ export const SCENARIOS = {
   ],
   resister: [
     {
-      headline: "The Committee Demands Your Testimony",
+      headline: "The Committee Demands {shortName}'s Testimony",
       scene:
-        "The hearing room is small and overheated. Camera bulbs flash. Behind a long table, the committee members shuffle papers with your name on them. Your lawyer sits beside you, visibly nervous.",
+        "The hearing room is small and overheated. Camera bulbs flash. Behind a long table, the committee members shuffle papers with {name}'s name on them. A lawyer sits beside {shortName}, visibly nervous.",
       situation:
-        "The committee chairman asks you directly: 'Are you now, or have you ever been, a member of the Communist Party?' Your answer will be printed in every newspaper in the country by tomorrow morning.",
+        "The committee chairman asks directly: 'Are you now, or have you ever been, a member of the Communist Party?' {shortName}'s answer will be printed in every newspaper in the country by tomorrow morning.",
       choices: [
         {
           id: "A",
@@ -564,11 +586,11 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You speak clearly into the microphone: 'I was a member. I am not ashamed of it. But I will not discuss anyone but myself.' The committee presses harder, but you hold your ground. The newspapers call you 'defiant but forthcoming.'",
+              "{shortName} speaks clearly into the microphone: 'I was a member. I am not ashamed of it. But I will not discuss anyone but myself.' The committee presses harder, but {shortName} holds firm. The newspapers call it 'defiant but forthcoming.'",
             consequences: [
-              "Your honesty is noted but does not satisfy the committee",
-              "You avoid contempt charges — barely",
-              "Your employer faces pressure to dismiss you",
+              "{shortName}'s honesty is noted but does not satisfy the committee",
+              "Contempt charges are narrowly avoided",
+              "{shortName}'s employer faces pressure to act",
             ],
             suspicionChange: 10,
             integrityChange: 3,
@@ -584,11 +606,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You lean into the microphone and say: 'The First Amendment protects my right to believe whatever I choose. This committee has no authority to investigate my thoughts.' The room erupts. The chairman bangs his gavel and threatens you with contempt of Congress.",
+              "{shortName} leans into the microphone: 'The First Amendment protects my right to believe whatever I choose. This committee has no authority to investigate my thoughts.' The room erupts. The chairman bangs his gavel and threatens contempt of Congress.",
             consequences: [
-              "You face contempt of Congress charges",
-              "Your statement is quoted in newspapers nationwide",
-              "Civil liberties organizations rally to your defense",
+              "{shortName} faces contempt of Congress charges",
+              "The statement is quoted in newspapers nationwide",
+              "Civil liberties organizations rally to {shortName}'s defense",
             ],
             suspicionChange: 25,
             integrityChange: 10,
@@ -604,11 +626,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You unfold a typed page and begin reading: 'This committee represents everything the founders of this nation warned us about.' Before you finish, the chairman orders the microphone cut. You stand, fold your statement, and walk out while cameras flash. It is the last time many doors will open for you.",
+              "{shortName} unfolds a typed page and begins reading: 'This committee represents everything the founders of this nation warned us about.' Before the statement is finished, the chairman orders the microphone cut. {shortName} stands, folds the paper, and walks out while cameras flash. It is the last time many doors will open.",
             consequences: [
-              "You are cited for contempt of Congress",
-              "Your dramatic exit becomes a symbol of resistance",
-              "Your career in your field is effectively over",
+              "{shortName} is cited for contempt of Congress",
+              "The dramatic exit becomes a symbol of resistance",
+              "{shortName}'s career in {occupation} is effectively over",
             ],
             suspicionChange: 25,
             integrityChange: 10,
@@ -620,24 +642,24 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "Your University Demands a Loyalty Oath",
+      headline: "{shortName}'s Employer Demands a Loyalty Oath",
       scene:
-        "A memo arrives in your faculty mailbox. All professors must sign a loyalty oath swearing they are not now and have never been members of the Communist Party. Those who refuse will be terminated.",
+        "A memo arrives at {workplace}. All employees must sign a loyalty oath swearing they are not now and have never been members of the Communist Party. Those who refuse will be terminated.",
       situation:
-        "You have 30 days to sign. Several colleagues have already signed, calling it a 'meaningless formality.' Others are organizing a protest. Your tenure, your research, and your students all hang in the balance.",
+        "{shortName} has 30 days to sign. Several colleagues have already signed, calling it a 'meaningless formality.' Others are organizing a protest. {shortName}'s work, reputation, and livelihood all hang in the balance.",
       choices: [
         {
           id: "A",
-          text: "Refuse to sign on principle and join the faculty protest.",
+          text: "Refuse to sign on principle and join colleagues who are protesting.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "You join thirty-one other faculty members in refusing the oath. The university fires all of you within the month. Your lab is locked. Your graduate students are reassigned. Twenty years of research sits behind a door you can no longer open.",
+              "{shortName} joins a group of colleagues in refusing the oath. The employer fires all of them within the month. {shortName}'s office is locked. Years of work sit behind a door that can no longer be opened.",
             consequences: [
-              "You are terminated from the university",
-              "Your research program is dismantled",
-              "You become part of a landmark academic freedom case",
+              "{shortName} is terminated from {workplace}",
+              "Years of professional work are disrupted",
+              "{shortName} becomes part of a landmark civil liberties case",
             ],
             suspicionChange: 20,
             integrityChange: 10,
@@ -653,17 +675,17 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You sign the oath but attach a statement calling it 'a violation of academic freedom.' The administration accepts your signature and ignores your statement. Your colleagues who refused are fired. You keep your job but feel the compromise like a splinter under your skin.",
+              "{shortName} signs the oath but attaches a statement calling it 'a violation of fundamental rights.' The administration accepts the signature and ignores the statement. Colleagues who refused are fired. {shortName} keeps the job but feels the compromise like a splinter under the skin.",
             consequences: [
-              "You keep your position",
-              "Your protest statement has no practical effect",
-              "Some colleagues view your signing as a betrayal",
+              "{shortName} keeps the position at {workplace}",
+              "The protest statement has no practical effect",
+              "Some colleagues view the signing as a betrayal",
             ],
             suspicionChange: -5,
             integrityChange: -10,
             tone: "neutral",
             historicalNote:
-              "Many faculty members signed loyalty oaths while privately disagreeing, reasoning that they could do more good by staying in their positions than by sacrificing their careers on principle.",
+              "Many employees signed loyalty oaths while privately disagreeing, reasoning that they could do more good by staying in their positions than by sacrificing their careers on principle.",
           },
         },
         {
@@ -673,27 +695,27 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You clean out your office on a Sunday when the halls are empty. You leave your key with the department secretary and a note for your students. The local paper runs a small story. A colleague at a less prominent university offers you a visiting position at half your former salary.",
+              "{shortName} cleans out the office on a Sunday when the halls are empty. A key is left with the secretary and a note for close colleagues. The local paper runs a small story. A contact at a less prominent organization offers a position at half the former salary.",
             consequences: [
-              "You leave with your integrity intact",
-              "Your career takes a significant step backward",
-              "You avoid the public spectacle of firing or hearings",
+              "{shortName} leaves with integrity intact",
+              "Career takes a significant step backward",
+              "The public spectacle of firing or hearings is avoided",
             ],
             suspicionChange: 5,
             integrityChange: 5,
             tone: "neutral",
             historicalNote:
-              "Some academics quietly relocated to smaller institutions or left the country entirely rather than face loyalty oaths. Many ended up in Mexico, England, or Canada.",
+              "Some professionals quietly relocated to smaller institutions or left the country entirely rather than face loyalty oaths. Many ended up in Mexico, England, or Canada.",
           },
         },
       ],
     },
     {
-      headline: "A Blacklisted Friend Asks for Help",
+      headline: "A Blacklisted Friend Asks {shortName} for Help",
       scene:
-        "Late one evening, there is a quiet knock on your door. It is your friend Richard, an actor who was blacklisted six months ago. He looks thin and exhausted. He asks if he can stay for a few days.",
+        "Late one evening, there is a quiet knock at the door. It is {shortName}'s friend Richard, an actor who was blacklisted six months ago. He looks thin and exhausted. He asks if he can stay for a few days.",
       situation:
-        "Harboring someone on the blacklist could draw FBI attention to your home. Richard has been sleeping in his car. He has no money and no prospects. Your neighbors have already noticed the strange car parked on your street.",
+        "Harboring someone on the blacklist could draw FBI attention to {shortName}'s home. Richard has been sleeping in his car. He has no money and no prospects. The neighbors have already noticed the strange car parked on the street.",
       choices: [
         {
           id: "A",
@@ -702,11 +724,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You make up the sofa and heat a can of soup. Richard eats in silence, then breaks down crying. He stays for two weeks. A neighbor mentions to the mailman that you have a 'visitor.' Within days, an unfamiliar car begins parking across the street.",
+              "{shortName} makes up the sofa and heats a can of soup. Richard eats in silence, then breaks down crying. He stays for two weeks. A neighbor mentions to the mailman that {shortName} has a 'visitor.' Within days, an unfamiliar car begins parking across the street.",
             consequences: [
               "Richard has shelter and food while he regroups",
-              "FBI surveillance of your home increases",
-              "Your neighbors begin to whisper",
+              "FBI surveillance of {shortName}'s home increases",
+              "The neighbors begin to whisper",
             ],
             suspicionChange: 15,
             integrityChange: 8,
@@ -717,16 +739,16 @@ export const SCENARIOS = {
         },
         {
           id: "B",
-          text: "Help Richard discreetly — give him money and the name of a safe place to stay, but he cannot stay here.",
+          text: "Help Richard discreetly — give him money and the name of a safe place, but he cannot stay here.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You press forty dollars into Richard's hand and give him the address of a boarding house run by a sympathetic widow. He thanks you with tears in his eyes and disappears into the night. You lock the door and wonder if forty dollars is enough to ease your conscience.",
+              "{shortName} presses forty dollars into Richard's hand and gives him the address of a boarding house run by a sympathetic widow. Richard thanks {shortName} with tears in his eyes and disappears into the night. The door locks. Forty dollars against a guilty conscience.",
             consequences: [
               "Richard has temporary resources",
-              "You maintain distance from direct association",
-              "You help without fully committing to the risk",
+              "{shortName} maintains distance from direct association",
+              "The help is real but limited",
             ],
             suspicionChange: 3,
             integrityChange: 0,
@@ -737,15 +759,15 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Tell Richard you are sorry but you cannot risk it. You have your own family to protect.",
+          text: "Tell Richard you're sorry but you cannot risk it. You have your own family to protect.",
           alignment: "cooperative",
           riskLevel: "low",
           outcome: {
             narrative:
-              "Richard nods slowly. He does not look surprised — just tired. 'I understand,' he says, though his voice says otherwise. He walks back to his car. You watch his taillights disappear down the street and close the door. You feel safe. You do not feel good.",
+              "Richard nods slowly. He does not look surprised — just tired. 'I understand,' he says, though his voice says otherwise. {shortName} watches the taillights disappear down the street and closes the door. Safe. But not good.",
             consequences: [
-              "Richard is turned away and remains homeless",
-              "Your household stays off the FBI radar",
+              "Richard is turned away and remains without shelter",
+              "{shortName}'s household stays off the FBI radar",
               "The friendship is effectively over",
             ],
             suspicionChange: -5,
@@ -758,23 +780,23 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "Your Lawyer Says to Cooperate",
+      headline: "{shortName}'s Lawyer Says to Cooperate",
       scene:
-        "Your attorney meets you in a dimly lit diner. He orders coffee and speaks in a low voice. He has been talking to the committee's counsel.",
+        "{shortName}'s attorney arranges a meeting in a dimly lit diner. Over coffee, the lawyer speaks in a low voice. There have been conversations with the committee's counsel.",
       situation:
-        "Your lawyer says the committee will accept a closed-door session if you provide just two or three names — people who are already known to the FBI. 'They just want it on the record,' he says. 'No one will be hurt.' You are not sure you believe that.",
+        "The lawyer says the committee will accept a closed-door session if {shortName} provides just two or three names — people already known to the FBI. 'They just want it on the record,' the lawyer says. 'No one will be hurt.' {shortName} is not sure that's true.",
       choices: [
         {
           id: "A",
-          text: "Reject your lawyer's advice. You will not name names, even in a closed session.",
+          text: "Reject the lawyer's advice. You will not name names, even in a closed session.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "Your lawyer shakes his head and says he cannot protect you from what comes next. You tell him you understand. Over the following weeks, the committee issues a public subpoena. Your name is on the front page. Your resolve is tested daily, but it holds.",
+              "The lawyer shakes his head and says he cannot protect {shortName} from what comes next. Over the following weeks, the committee issues a public subpoena. {shortName}'s name is on the front page. The resolve is tested daily, but it holds.",
             consequences: [
-              "You face a public hearing without legal cover",
-              "Your stance becomes widely known",
+              "{shortName} faces a public hearing without legal cover",
+              "The stance becomes widely known",
               "Legal fees mount with no resolution in sight",
             ],
             suspicionChange: 20,
@@ -786,16 +808,16 @@ export const SCENARIOS = {
         },
         {
           id: "B",
-          text: "Consider the offer. Ask your lawyer to confirm that the names are truly already known and that no additional harm will come to them.",
+          text: "Consider the offer. Ask the lawyer to confirm that naming these people truly won't cause additional harm.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "Your lawyer makes inquiries and reports back: the people are indeed already under investigation. But you know that an additional name on the record adds weight to a case. 'Already known' does not mean 'already safe.' You agonize over the decision for days.",
+              "The lawyer makes inquiries and reports back: the people are already under investigation. But {shortName} knows that an additional name on the record adds weight to a case. 'Already known' does not mean 'already safe.' The agonizing continues for days.",
             consequences: [
-              "You remain undecided, buying time",
+              "{shortName} remains undecided, buying time",
               "The committee grows impatient",
-              "The moral weight of the decision keeps you awake at night",
+              "The moral weight keeps {shortName} awake at night",
             ],
             suspicionChange: 5,
             integrityChange: -5,
@@ -806,16 +828,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Fire your lawyer and represent yourself. You do not want anyone negotiating away your principles.",
+          text: "Fire the lawyer and represent yourself. You don't want anyone negotiating away your principles.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "Your lawyer looks stunned when you dismiss him. You walk out of the diner alone. Representing yourself before HUAC is a bold move that the press calls either 'courageous' or 'foolish,' depending on the paper. You spend nights in the library studying constitutional law.",
+              "The lawyer looks stunned when {shortName} dismisses him. Representing yourself before HUAC is a bold move that the press calls either 'courageous' or 'foolish,' depending on the paper. {shortName} spends nights in the library studying constitutional law.",
             consequences: [
-              "You have no legal representation before the committee",
-              "Your self-representation attracts media attention",
-              "You are fully exposed to the committee's pressure tactics",
+              "{shortName} has no legal representation before the committee",
+              "Self-representation attracts media attention",
+              "{shortName} is fully exposed to the committee's pressure tactics",
             ],
             suspicionChange: 15,
             integrityChange: 8,
@@ -827,11 +849,11 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "The Newspaper Prints Your Name",
+      headline: "The Newspaper Prints {shortName}'s Name",
       scene:
-        "You open the morning paper and see your name in a list of 'suspected subversives' published alongside a HUAC press release. Your phone begins to ring. It does not stop all day.",
+        "{shortName} opens the morning paper and sees a familiar name — {name} — in a list of 'suspected subversives' published alongside a HUAC press release. The phone begins to ring. It does not stop all day.",
       situation:
-        "Reporters want a comment. Your employer wants an explanation. Your mother is crying. A sympathetic journalist offers to write a profile that would let you 'tell your side' — but any public statement could be used against you.",
+        "Reporters want a comment. {shortName}'s employer wants an explanation. Family members are calling in tears. A sympathetic journalist offers to write a profile where {shortName} can 'tell their side' — but any public statement could be used against them.",
       choices: [
         {
           id: "A",
@@ -840,11 +862,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "The profile runs on Sunday with a photograph of you at your desk. You speak eloquently about constitutional rights and the danger of political persecution. Half the letters to the editor call you a hero. The other half call you a traitor. The FBI clips the article for your file.",
+              "The profile runs on Sunday with a photograph of {shortName} at work. The interview is eloquent — constitutional rights, the danger of political persecution. Half the letters to the editor call {shortName} a hero. The other half call {shortName} a traitor. The FBI clips the article for the file.",
             consequences: [
-              "Your public stance inspires some and angers others",
-              "The FBI adds the interview to your growing file",
-              "Your employer faces increased pressure to let you go",
+              "{shortName}'s public stance inspires some and angers others",
+              "The FBI adds the interview to {shortName}'s growing file",
+              "{shortName}'s employer faces increased pressure",
             ],
             suspicionChange: 15,
             integrityChange: 8,
@@ -860,11 +882,11 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You unplug the phone and draw the curtains. For three days you live in silence. The story fades from the front page, replaced by other names, other accusations. But the damage is done — your name is in the public record now, and silence is often read as guilt.",
+              "{shortName} unplugs the phone and draws the curtains. For three days, silence. The story fades from the front page, replaced by other names, other accusations. But the damage is done — {shortName}'s name is in the public record, and silence is often read as guilt.",
             consequences: [
               "The immediate media attention fades",
-              "Your silence is interpreted differently by different people",
-              "The accusation remains on your permanent record",
+              "Silence is interpreted differently by different people",
+              "The accusation remains on {shortName}'s permanent record",
             ],
             suspicionChange: 5,
             integrityChange: 0,
@@ -875,16 +897,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Issue a brief written statement affirming your loyalty to the United States without addressing specific accusations.",
+          text: "Issue a brief written statement affirming your loyalty to the United States without addressing the accusations.",
           alignment: "neutral",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You draft a careful three-sentence statement that your lawyer approves. It says you are a loyal American who has never done anything to harm your country. It satisfies no one — not the committee, not the press, and not your own sense of justice.",
+              "{shortName} drafts a careful three-sentence statement that a lawyer approves. It says {name} is a loyal American who has never done anything to harm the country. It satisfies no one — not the committee, not the press, and not {shortName}'s own sense of justice.",
             consequences: [
-              "Your statement is seen as evasive by both sides",
+              "The statement is seen as evasive by both sides",
               "It provides no ammunition but also no vindication",
-              "The ambiguity of your position grows",
+              "The ambiguity of {shortName}'s position deepens",
             ],
             suspicionChange: 3,
             integrityChange: -5,
@@ -896,11 +918,11 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "Contempt Charges Loom Over Your Head",
+      headline: "Contempt Charges Loom Over {shortName}",
       scene:
-        "Your lawyer calls from a payphone. His voice is strained. The committee has voted to refer you for contempt of Congress. You could face a year in federal prison.",
+        "The lawyer calls from a payphone, voice strained. The committee has voted to refer {shortName} for contempt of Congress. The penalty could be a year in federal prison.",
       situation:
-        "There is still time to reverse course — if you agree to testify and provide names, the contempt referral will be withdrawn. Your family begs you to reconsider. Your children do not understand why you might go away.",
+        "There is still time to reverse course — if {shortName} agrees to testify and provide names, the contempt referral will be withdrawn. Family begs {shortName} to reconsider. The children do not understand why a parent might go away.",
       choices: [
         {
           id: "A",
@@ -909,11 +931,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You are convicted of contempt of Congress and sentenced to six months in federal prison. Your family visits on Sundays. You read books and write letters. When you emerge, you are thinner and grayer, but you have not given a single name.",
+              "{shortName} is convicted of contempt of Congress and sentenced to six months in federal prison. Family visits on Sundays. {shortName} reads books and writes letters. Upon release — thinner and grayer — not a single name has been given.",
             consequences: [
-              "You serve six months in federal prison",
-              "Your family endures financial hardship and social stigma",
-              "You become a symbol of principled resistance",
+              "{shortName} serves six months in federal prison",
+              "Family endures financial hardship and social stigma",
+              "{shortName} becomes a symbol of principled resistance",
             ],
             suspicionChange: 20,
             integrityChange: 10,
@@ -924,16 +946,16 @@ export const SCENARIOS = {
         },
         {
           id: "B",
-          text: "Waver. Ask your lawyer to negotiate — maybe you can give them something small without betraying anyone important.",
+          text: "Waver. Ask the lawyer to negotiate — maybe you can give them something small without truly betraying anyone.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "Your lawyer enters negotiations. The committee wants at least two names. You spend sleepless nights trying to think of someone — anyone — whose naming would cause the least harm. There is no such person. Every name belongs to someone's parent, someone's friend.",
+              "The lawyer enters negotiations. The committee wants at least two names. {shortName} spends sleepless nights trying to think of someone — anyone — whose naming would cause the least harm. There is no such person. Every name belongs to someone's parent, someone's friend.",
             consequences: [
-              "Negotiations stall as you cannot find a 'harmless' name to give",
+              "Negotiations stall as {shortName} cannot find a 'harmless' name to give",
               "The contempt referral remains pending",
-              "Your resolve is shaken but not broken",
+              "{shortName}'s resolve is shaken but not broken",
             ],
             suspicionChange: 8,
             integrityChange: -8,
@@ -944,22 +966,22 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Flee. A friend in Mexico has offered you a place to stay until this madness passes.",
+          text: "Flee. A friend in Mexico has offered a place to stay until this madness passes.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "You pack a single suitcase and drive south in the middle of the night. You cross the border at Tijuana and find your way to a small town where no one knows your name. America feels very far away. You wonder if you will ever go back.",
+              "{shortName} packs a single suitcase and drives south in the middle of the night. The border crossing at Tijuana leads to a small town where no one knows the name {name}. America feels very far away. Will it ever be possible to go back?",
             consequences: [
-              "You become a fugitive from Congress",
-              "You are safe from prison but exiled from your life",
-              "Your family must decide whether to follow you",
+              "{shortName} becomes a fugitive from Congress",
+              "Safe from prison but exiled from everything familiar",
+              "Family must decide whether to follow",
             ],
             suspicionChange: 25,
             integrityChange: 5,
             tone: "negative",
             historicalNote:
-              "Several blacklisted Americans fled to Mexico or Europe. Screenwriter Hugo Butler and his family lived in Mexico for years, while actor and singer Paul Robeson had his passport revoked to prevent him from traveling abroad.",
+              "Several blacklisted Americans fled to Mexico or Europe. Screenwriter Hugo Butler and his family lived in Mexico for years, while Paul Robeson had his passport revoked to prevent foreign travel.",
           },
         },
       ],
@@ -967,11 +989,11 @@ export const SCENARIOS = {
   ],
   bystander: [
     {
-      headline: "Your Coworker Is Accused in the Break Room",
+      headline: "{shortName}'s Coworker Is Accused",
       scene:
-        "The break room goes silent when your coworker Ed walks in. Yesterday, the FBI visited the office asking about him. Ed pours his coffee with shaking hands. Everyone avoids his eyes — except your supervisor, who is watching to see who talks to him.",
+        "The break room at {workplace} goes silent when Ed walks in. Yesterday, the FBI visited asking about him. Ed pours his coffee with shaking hands. Everyone avoids his eyes — except the supervisor, who is watching to see who talks to him.",
       situation:
-        "Ed has been a good colleague for five years. You have no idea if the accusations are true. Talking to him could mark you as an associate. Ignoring him makes you feel like a coward.",
+        "Ed has been a good colleague for five years. {shortName} has no idea if the accusations are true. Talking to Ed could mark {shortName} as an associate. Ignoring him feels cowardly.",
       choices: [
         {
           id: "A",
@@ -980,11 +1002,11 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You carry your tray to Ed's table. He looks up, surprised and grateful. You talk about baseball. Your supervisor watches and makes a note. By Friday, you are called in and asked about your 'relationship' with Ed. 'He's my colleague,' you say. 'We eat lunch.'",
+              "{shortName} carries a tray to Ed's table. He looks up, surprised and grateful. They talk about baseball. The supervisor watches and makes a note. By Friday, {shortName} is called in and asked about the 'relationship' with Ed. 'He's my colleague,' {shortName} says. 'We eat lunch.'",
             consequences: [
-              "Your supervisor notes your association with Ed",
+              "The supervisor notes {shortName}'s association with Ed",
               "Ed feels less alone during his ordeal",
-              "You are now on the periphery of the investigation",
+              "{shortName} is now on the periphery of the investigation",
             ],
             suspicionChange: 10,
             integrityChange: 5,
@@ -1000,11 +1022,11 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "You take your lunch to a different table and do not meet Ed's eyes. You tell yourself it is the smart thing to do. Ed eats alone for the rest of the week. On Friday, he cleans out his desk. He does not say goodbye to anyone.",
+              "{shortName} takes lunch to a different table and does not meet Ed's eyes. Ed eats alone for the rest of the week. On Friday, he cleans out his desk without saying goodbye to anyone.",
             consequences: [
               "Ed is isolated and eventually forced out",
-              "You remain safely invisible",
-              "The guilt sits in your stomach like a stone",
+              "{shortName} remains safely invisible",
+              "The guilt sits like a stone",
             ],
             suspicionChange: -5,
             integrityChange: -10,
@@ -1015,16 +1037,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Quietly check in with Ed after work, away from the office where no one is watching.",
+          text: "Quietly check in with Ed after work, away from {workplace} where no one is watching.",
           alignment: "neutral",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You wait until the parking lot is empty and catch Ed at his car. 'Are you okay?' you ask. Ed's eyes fill with tears. He tells you it is all a misunderstanding. You offer a few words of support but look over your shoulder the whole time.",
+              "{shortName} waits until the parking lot is empty and catches Ed at his car. 'Are you okay?' Ed's eyes fill with tears. He says it is all a misunderstanding. {shortName} offers a few words of support but keeps looking over one shoulder the whole time.",
             consequences: [
               "Ed appreciates the gesture, however small",
-              "You avoid being seen associating with him publicly",
-              "You feel the uncomfortable gap between caution and courage",
+              "{shortName} avoids being seen publicly with Ed",
+              "The gap between caution and courage feels uncomfortable",
             ],
             suspicionChange: 2,
             integrityChange: 0,
@@ -1036,24 +1058,24 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "A Loyalty Petition Circulates at Work",
+      headline: "A Loyalty Petition Circulates at {workplace}",
       scene:
-        "A petition appears on the bulletin board in the break room. It calls on the company to 'rid itself of subversive elements' and pledges the signers' loyalty to America. Most of your coworkers have already signed.",
+        "A petition appears on the bulletin board at {workplace}. It calls on the employer to 'rid itself of subversive elements' and pledges the signers' loyalty to America. Most of {shortName}'s coworkers have already signed.",
       situation:
-        "The petition does not name anyone specifically, but everyone knows it is aimed at the union organizers on the factory floor. Signing feels like joining a mob. Not signing feels like painting a target on your back.",
+        "The petition does not name anyone specifically, but everyone knows who it is aimed at. Signing feels like joining a mob. Not signing feels like painting a target on {shortName}'s back.",
       choices: [
         {
           id: "A",
-          text: "Sign the petition. It is just words on paper, and not signing will cause you more trouble than it is worth.",
+          text: "Sign the petition. It's just words on paper, and not signing will cause more trouble than it's worth.",
           alignment: "cooperative",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You add your name to the growing list. It takes three seconds. The rest of the day, you try not to think about what those words will be used to justify. A week later, management uses the petition as evidence of 'employee support' when they fire four union organizers.",
+              "{shortName} adds a name to the growing list. It takes three seconds. The rest of the day passes in a haze. A week later, management uses the petition as evidence of 'employee support' when they fire four people.",
             consequences: [
-              "Your signature is used to legitimize the firings",
-              "You avoid any suspicion",
-              "Four coworkers lose their jobs with your name on the justification",
+              "{shortName}'s signature is used to legitimize the firings",
+              "{shortName} avoids any suspicion",
+              "Four coworkers lose their jobs — with {shortName}'s name on the justification",
             ],
             suspicionChange: -8,
             integrityChange: -12,
@@ -1069,11 +1091,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You tell your coworkers the petition is being used to fire people for their beliefs, not their work. Some nod in agreement but sign anyway. Management hears about your vocal opposition and calls you in for a 'chat about your attitude.'",
+              "{shortName} tells coworkers the petition is being used to fire people for their beliefs, not their work. Some nod in agreement but sign anyway. Management hears about the vocal opposition and calls {shortName} in for 'a chat about attitude.'",
             consequences: [
-              "You are flagged as a potential troublemaker by management",
-              "A few coworkers privately thank you",
-              "Your job security decreases significantly",
+              "{shortName} is flagged as a potential troublemaker by management",
+              "A few coworkers privately say thank you",
+              "Job security decreases significantly",
             ],
             suspicionChange: 15,
             integrityChange: 8,
@@ -1084,15 +1106,15 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Simply avoid the bulletin board. Do not sign, but do not make a scene about it either.",
+          text: "Simply avoid the bulletin board. Don't sign, but don't make a scene about it either.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You walk past the petition every day, pretending not to notice it. A coworker asks why you have not signed yet. 'I just haven't gotten around to it,' you say. She gives you a look that says she does not believe you.",
+              "{shortName} walks past the petition every day, pretending not to notice it. Eventually a coworker asks why {shortName} hasn't signed. 'Just haven't gotten around to it,' {shortName} says. The look in return says: not believed.",
             consequences: [
-              "Your absence from the petition is eventually noticed",
-              "You avoid active participation in either direction",
+              "{shortName}'s absence from the petition is eventually noticed",
+              "Active participation in either direction is avoided",
               "Quiet suspicion builds among some colleagues",
             ],
             suspicionChange: 5,
@@ -1105,11 +1127,11 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "The FBI Wants You to Become an Informant",
+      headline: "The FBI Wants {shortName} as an Informant",
       scene:
-        "An FBI agent meets you at a coffee shop. He is polite, even friendly. He buys you a cup and slides a card across the table with his phone number on it.",
+        "An FBI agent meets {shortName} at a coffee shop. He is polite, even friendly. He buys coffee and slides a card across the table with his phone number on it.",
       situation:
-        "The agent says they are not interested in you — they want information about your neighbors and coworkers. He says many patriotic Americans help the Bureau this way. All you have to do is report anything 'unusual' you see or hear.",
+        "The agent says they are not interested in {shortName} — they want information about neighbors and coworkers. He says many patriotic Americans help the Bureau this way. All {shortName} has to do is report anything 'unusual.'",
       choices: [
         {
           id: "A",
@@ -1118,11 +1140,11 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "You take the card and agree to call if you notice anything. Over the next few months, you make a few calls — reporting a neighbor's late-night visitors, a coworker's subscription to a left-leaning magazine. Each call feels smaller than the last. You are becoming someone you do not recognize.",
+              "{shortName} takes the card and agrees to call if anything unusual comes up. Over the next few months, {shortName} makes a few calls — reporting a neighbor's late-night visitors, a coworker's magazine subscription. Each call feels smaller than the last. {shortName} is becoming someone unrecognizable.",
             consequences: [
-              "You become a confidential FBI informant",
-              "Your reports affect people who trust you",
-              "The FBI considers you an asset and leaves you alone",
+              "{shortName} becomes a confidential FBI informant",
+              "Reports affect people who trust {shortName}",
+              "The FBI considers {shortName} an asset and leaves {shortName} alone",
             ],
             suspicionChange: -15,
             integrityChange: -18,
@@ -1138,11 +1160,11 @@ export const SCENARIOS = {
           riskLevel: "medium",
           outcome: {
             narrative:
-              "The agent's friendly demeanor cools noticeably. 'That's your right,' he says, but his tone suggests this is not the last you will hear from the Bureau. You leave the coffee shop feeling exposed. The card sits in your pocket. You throw it away at home but remember the number anyway.",
+              "The agent's friendly demeanor cools noticeably. 'That's your right,' he says, but his tone suggests this is not the last {shortName} will hear from the Bureau. The card sits in {shortName}'s pocket. It gets thrown away at home — but the number stays memorized anyway.",
             consequences: [
-              "The FBI notes your refusal to cooperate",
-              "You maintain your independence",
-              "You may receive less friendly visits in the future",
+              "The FBI notes {shortName}'s refusal to cooperate",
+              "{shortName} maintains independence",
+              "Less friendly visits may follow",
             ],
             suspicionChange: 10,
             integrityChange: 8,
@@ -1153,15 +1175,15 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Take the card but do not commit. Say you will think about it.",
+          text: "Take the card but don't commit. Say you'll think about it.",
           alignment: "neutral",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You pocket the card with a noncommittal nod. The agent seems satisfied — for now. The card sits in your wallet for weeks, a quiet reminder of the choice you have not yet made. The agent calls once to check in. You let it ring.",
+              "{shortName} pockets the card with a noncommittal nod. The agent seems satisfied — for now. The card sits in a wallet for weeks, a quiet reminder of the choice not yet made. The agent calls once to check in. {shortName} lets it ring.",
             consequences: [
-              "The FBI expects a future commitment from you",
-              "You buy time but no resolution",
+              "The FBI expects a future commitment from {shortName}",
+              "Time is bought but nothing is resolved",
               "The pressure to decide grows slowly",
             ],
             suspicionChange: 0,
@@ -1174,92 +1196,92 @@ export const SCENARIOS = {
       ],
     },
     {
-      headline: "City Council Votes to Ban 'Subversive' Books",
+      headline: "Orders Arrive to Purge 'Subversive' Material",
       scene:
-        "The city council passes an ordinance requiring public institutions to remove books by authors on a 'subversive' list. Your supervisor hands you the list. It includes Mark Twain and Thomas Jefferson.",
+        "A directive lands on the desk at {workplace}. Materials by authors on a government 'subversive' list must be removed. {shortName}'s supervisor hands over the list with a shrug. 'Orders from above,' he says.",
       situation:
-        "You are told to pull dozens of books from the shelves by the end of the week. Some are classics. Some are written by people you admire. Refusing could cost you your job. Complying feels like a betrayal of everything your institution stands for.",
+        "{shortName} is told to comply by the end of the week. Some of the names on the list are respected writers. Refusing could cost {shortName} the job. Complying feels like a betrayal of basic principles.",
       choices: [
         {
           id: "A",
-          text: "Pull the books as ordered. It is not your decision — you are just following instructions.",
+          text: "Follow orders and remove the materials. It's not your decision — you're just doing what you're told.",
           alignment: "cooperative",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You wheel a cart through the stacks, pulling books one by one. A regular patron — an elderly man who comes every Tuesday — watches you with confusion. 'Why are you taking those away?' he asks. 'Orders,' you say, unable to meet his eyes.",
+              "{shortName} removes the items one by one, following the list. A regular who comes by every Tuesday watches in confusion. 'Why are you taking those away?' 'Orders,' {shortName} says, unable to meet the man's eyes.",
             consequences: [
-              "Dozens of books are removed from public access",
-              "You follow orders and keep your job",
-              "Patrons notice the gaps on the shelves",
+              "Dozens of items are removed as ordered",
+              "{shortName} follows instructions and keeps the job",
+              "People at {workplace} notice what has disappeared",
             ],
             suspicionChange: -5,
             integrityChange: -15,
             tone: "negative",
             historicalNote:
-              "Book banning was widespread during the McCarthy era. The State Department even removed books from overseas libraries, and some communities held book burnings.",
+              "Censorship was widespread during the McCarthy era. The State Department removed books from overseas libraries, and some communities held book burnings.",
           },
         },
         {
           id: "B",
-          text: "Refuse publicly. Tell your supervisor and the press that banning books is un-American.",
+          text: "Refuse publicly. Tell your supervisor and anyone who will listen that purging materials is un-American.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "You stand in front of the shelves and announce that you will not remove a single book. A reporter from the local paper is there, tipped off by a colleague. Your photograph runs on the front page under the headline: 'Librarian Defies Council.' The council fires you the next day.",
+              "{shortName} announces a refusal to remove a single item. A reporter from the local paper, tipped off by a colleague, runs the story. {shortName}'s photograph appears on the front page. The employer fires {shortName} the next day.",
             consequences: [
-              "You are fired from your position",
-              "Your story receives local and national attention",
-              "The book ban becomes a public controversy",
+              "{shortName} is fired from {workplace}",
+              "The story receives local and national attention",
+              "The purge becomes a public controversy",
             ],
             suspicionChange: 20,
             integrityChange: 10,
             tone: "neutral",
             historicalNote:
-              "Some librarians risked their careers to resist book bans. The American Library Association adopted its Freedom to Read statement in 1953, declaring opposition to censorship.",
+              "Some professionals risked their careers to resist censorship. The American Library Association adopted its Freedom to Read statement in 1953, declaring opposition to book banning.",
           },
         },
         {
           id: "C",
-          text: "Remove the books from the shelves but quietly move them to a back room instead of destroying them.",
+          text: "Remove the materials from view but quietly preserve them in a back room instead of destroying them.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You clear the shelves as ordered, but instead of disposing of the books, you stack them neatly in the basement storage room. They are technically removed from circulation but not destroyed. If anyone asks, the books are 'being catalogued.' It is a small act of preservation.",
+              "{shortName} clears the items as ordered, but instead of disposing of them, stacks them neatly in a storage room. They are technically removed but not destroyed. If anyone asks, they are 'being processed.' It is a small act of preservation.",
             consequences: [
-              "The books are preserved but hidden from the public",
-              "You comply with the letter of the order while subverting its intent",
+              "The materials are preserved but hidden",
+              "{shortName} complies with the letter of the order while subverting its intent",
               "Discovery could mean termination and worse",
             ],
             suspicionChange: 2,
             integrityChange: 3,
             tone: "neutral",
             historicalNote:
-              "Some librarians quietly preserved banned books by reclassifying them or storing them out of sight. These acts of quiet resistance saved many works from destruction.",
+              "Some workers quietly preserved banned materials by reclassifying or storing them out of sight. These acts of quiet resistance saved many works from destruction.",
           },
         },
       ],
     },
     {
-      headline: "Your Brother-in-Law's Arrest Makes the Paper",
+      headline: "A Family Member's Arrest Makes the Paper",
       scene:
-        "The morning paper has your brother-in-law Tony's mugshot on page three. He has been arrested for distributing Communist literature. Your wife is in the kitchen, crying. Your phone rings — it is your supervisor.",
+        "The morning paper has a mugshot on page three — {shortName}'s brother-in-law Tony, arrested for distributing Communist literature. {shortName}'s spouse is in the kitchen, crying. The phone rings — it's the supervisor.",
       situation:
-        "Your boss is calling to ask about your 'family connections.' As a federal employee, any association with a suspected Communist puts your security clearance at risk. Your wife wants you to stand by her brother. Your boss wants you to distance yourself publicly.",
+        "The boss is calling to ask about {shortName}'s 'family connections.' Any association with a suspected Communist puts {shortName}'s position at risk. The spouse wants loyalty to the family. The boss wants distance — publicly.",
       choices: [
         {
           id: "A",
-          text: "Tell your boss you have had nothing to do with your brother-in-law's activities and will cooperate fully with any investigation.",
+          text: "Tell the boss you've had nothing to do with your brother-in-law's activities and will cooperate fully.",
           alignment: "cooperative",
           riskLevel: "low",
           outcome: {
             narrative:
-              "You assure your boss of your complete loyalty and offer to answer any questions. You sign an affidavit distancing yourself from Tony. Your wife watches you write the statement at the kitchen table. 'He's my brother,' she says quietly. You do not look up.",
+              "{shortName} assures the boss of complete loyalty and offers to answer any questions. An affidavit distancing {shortName} from Tony is signed at the kitchen table. A spouse watches in silence. 'He's my brother,' the spouse says quietly. {shortName} does not look up.",
             consequences: [
-              "Your security clearance is preserved",
-              "Your relationship with your wife becomes strained",
+              "{shortName}'s position at {workplace} is preserved",
+              "The marriage is strained by the distance from family",
               "Tony's family feels abandoned",
             ],
             suspicionChange: -10,
@@ -1271,16 +1293,16 @@ export const SCENARIOS = {
         },
         {
           id: "B",
-          text: "Stand by Tony publicly. Tell your boss that family comes first and Tony deserves due process.",
+          text: "Stand by Tony publicly. Tell the boss that family comes first and Tony deserves due process.",
           alignment: "defiant",
           riskLevel: "high",
           outcome: {
             narrative:
-              "You tell your boss that your brother-in-law is innocent until proven guilty and that you will not disown him. There is a long silence on the phone. 'I respect that,' your boss says, 'but I can't protect you.' Your security review is scheduled for next month.",
+              "{shortName} tells the boss that Tony is innocent until proven guilty and that family is family. There is a long silence on the phone. 'I respect that,' the boss says, 'but I can't protect you.' {shortName}'s position review is moved up.",
             consequences: [
-              "Your security clearance is put under review",
-              "Your wife is grateful for your loyalty",
-              "Your federal career is now at serious risk",
+              "{shortName}'s job is put under review",
+              "The spouse is grateful for the loyalty",
+              "{shortName}'s career is now at serious risk",
             ],
             suspicionChange: 18,
             integrityChange: 8,
@@ -1291,16 +1313,16 @@ export const SCENARIOS = {
         },
         {
           id: "C",
-          text: "Say as little as possible to your boss. Do not denounce Tony, but do not defend him either.",
+          text: "Say as little as possible. Don't denounce Tony, but don't defend him either.",
           alignment: "neutral",
           riskLevel: "medium",
           outcome: {
             narrative:
-              "You tell your boss you do not have much contact with your brother-in-law and that you would rather not discuss personal family matters. Your boss accepts this for now but warns you that the matter may come up again. You hang up feeling like you are standing on a tightrope.",
+              "{shortName} tells the boss there isn't much contact with the brother-in-law and would rather not discuss personal family matters. The boss accepts this for now but warns that the matter may come up again. {shortName} hangs up feeling like a tightrope walker.",
             consequences: [
-              "Your boss is unsatisfied but does not push further immediately",
-              "Your position is neither secure nor immediately threatened",
-              "The issue will resurface at your next security review",
+              "The boss is unsatisfied but doesn't push — yet",
+              "{shortName}'s position is neither secure nor immediately threatened",
+              "The issue will resurface",
             ],
             suspicionChange: 5,
             integrityChange: -3,
@@ -1314,9 +1336,9 @@ export const SCENARIOS = {
     {
       headline: "Town Hall Meeting Turns Into an Inquisition",
       scene:
-        "A town hall meeting about school funding has been hijacked by a local McCarthy supporter named Henderson. He stands at the microphone, red-faced, waving a list of 'known Communists' who he says are teaching your children.",
+        "A town hall meeting about school funding has been hijacked by a local McCarthy supporter named Henderson. He stands at the microphone, red-faced, waving a list of 'known Communists' he says are teaching the children.",
       situation:
-        "Henderson points at the school principal, Mrs. Ortiz, and demands she be fired. The crowd is agitated. Mrs. Ortiz, who has served the school for 15 years, stands frozen near the back. Someone shouts, 'Are you going to let Communists teach our kids?' The room looks around for someone to say something.",
+        "Henderson points at the school principal, Mrs. Ortiz, and demands she be fired. The crowd is agitated. Mrs. Ortiz, who has served the school for 15 years, stands frozen near the back. Someone shouts, 'Are you going to let Communists teach our kids?' The room looks around for someone — anyone — to say something.",
       choices: [
         {
           id: "A",
@@ -1325,11 +1347,11 @@ export const SCENARIOS = {
           riskLevel: "high",
           outcome: {
             narrative:
-              "You stand and your voice cracks at first but steadies. 'Mrs. Ortiz has taught our children for fifteen years,' you say. 'This man has a list, but I have never seen him at a single school event.' The room splits — some applaud, others boo. Henderson turns his attention to you. 'And who are you? What are you hiding?'",
+              "{shortName} stands and speaks — voice cracking at first, then steadying. 'Mrs. Ortiz has taught our children for fifteen years. This man has a list, but I've never seen him at a single school event.' The room splits — some applaud, others boo. Henderson turns. 'And who are you? What are you hiding?'",
             consequences: [
-              "Henderson adds your name to his informal list",
-              "Mrs. Ortiz thanks you afterward with tears in her eyes",
-              "Some neighbors admire your courage; others avoid you",
+              "Henderson adds {shortName}'s name to his informal list",
+              "Mrs. Ortiz thanks {shortName} afterward with tears in her eyes",
+              "Some neighbors admire the courage; others begin to avoid {shortName}",
             ],
             suspicionChange: 12,
             integrityChange: 8,
@@ -1345,11 +1367,11 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "You sit in your folding chair and stare at your hands while Henderson rages. Mrs. Ortiz looks around the room for support and finds only averted eyes. The school board votes to suspend her pending an investigation. You drive home in silence.",
+              "{shortName} sits in a folding chair and stares at both hands while Henderson rages. Mrs. Ortiz looks around the room for support and finds only averted eyes. The school board votes to suspend her pending an investigation. The drive home is silent.",
             consequences: [
               "Mrs. Ortiz is suspended from her position",
-              "You remain invisible and safe",
-              "The culture of fear in your town grows stronger",
+              "{shortName} remains invisible and safe",
+              "The culture of fear in the town grows stronger",
             ],
             suspicionChange: -3,
             integrityChange: -10,
@@ -1365,86 +1387,17 @@ export const SCENARIOS = {
           riskLevel: "low",
           outcome: {
             narrative:
-              "After the meeting, you catch Mrs. Ortiz in the parking lot. She is shaking. You give her the name of an attorney who has handled these cases. 'Thank you,' she whispers. It is not enough — but it is something.",
+              "After the meeting, {shortName} catches Mrs. Ortiz in the parking lot. She is shaking. {shortName} gives her the name of an attorney who has handled these cases. 'Thank you,' she whispers. It is not enough — but it is something.",
             consequences: [
               "Mrs. Ortiz has legal support for her defense",
-              "You avoid public exposure",
-              "Your help is private but meaningful",
+              "{shortName} avoids public exposure",
+              "The help is private but meaningful",
             ],
             suspicionChange: 0,
             integrityChange: 3,
             tone: "neutral",
             historicalNote:
               "Small, private acts of support helped many accused individuals survive. While these acts did not stop McCarthyism, they preserved human dignity in its darkest moments.",
-          },
-        },
-      ],
-    },
-    {
-      headline: "Management Asks You to Report on the Union",
-      scene:
-        "Your plant manager calls you into his office. The door is closed. On his desk is a file marked 'CONFIDENTIAL — UAW Local 600.' He taps it with his finger.",
-      situation:
-        "The plant manager wants you to keep an eye on union meetings and report back on what is discussed and who attends. He says the company is 'cooperating with federal authorities.' He reminds you that your promotion to senior foreman depends on being 'a team player.'",
-      choices: [
-        {
-          id: "A",
-          text: "Agree to report on union meetings. A promotion would change your family's life.",
-          alignment: "cooperative",
-          riskLevel: "low",
-          outcome: {
-            narrative:
-              "You attend the next union meeting with a small notebook in your jacket pocket. You write down names and topics. You hand the notes to your plant manager the next morning. He reads them with satisfaction. 'Good work,' he says. The promotion comes through three months later. The notes lead to six workers being questioned by the FBI.",
-            consequences: [
-              "Six union members are called in for FBI questioning",
-              "You receive your promotion and a raise",
-              "You attend every meeting knowing you are the reason people are afraid",
-            ],
-            suspicionChange: -12,
-            integrityChange: -20,
-            tone: "negative",
-            historicalNote:
-              "Companies frequently used management-level employees to infiltrate and report on union activities. The UAW in particular was targeted by both corporate and federal investigations in the early 1950s.",
-          },
-        },
-        {
-          id: "B",
-          text: "Refuse outright. Tell the plant manager that spying on your own workers is wrong.",
-          alignment: "defiant",
-          riskLevel: "high",
-          outcome: {
-            narrative:
-              "The plant manager's expression hardens. 'I thought you were management material,' he says. You are passed over for the promotion. Worse, your assignments shift to the least desirable shifts. The message is clear: there is a cost for saying no.",
-            consequences: [
-              "Your promotion is denied",
-              "You are moved to undesirable shifts",
-              "The union workers never know what you did for them",
-            ],
-            suspicionChange: 10,
-            integrityChange: 8,
-            tone: "neutral",
-            historicalNote:
-              "Workers who refused to cooperate with management surveillance often faced retaliation. The protections for whistleblowers that exist today did not exist in the 1950s.",
-          },
-        },
-        {
-          id: "C",
-          text: "Agree, but attend meetings and report only vague, useless information.",
-          alignment: "neutral",
-          riskLevel: "medium",
-          outcome: {
-            narrative:
-              "You attend the union meetings and submit reports filled with meaningless details — who brought the coffee, how long the meeting lasted, what the weather was like. Your plant manager grows frustrated. 'I need names and topics,' he says. You are running out of ways to be unhelpful without being caught.",
-            consequences: [
-              "Your reports protect the union members — for now",
-              "Management grows suspicious of your usefulness",
-              "The charade cannot last forever",
-            ],
-            suspicionChange: 3,
-            integrityChange: 0,
-            tone: "neutral",
-            historicalNote:
-              "Some informants deliberately provided useless intelligence to protect their colleagues while appearing to cooperate. This double game was stressful and dangerous if discovered.",
           },
         },
       ],

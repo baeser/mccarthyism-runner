@@ -10,6 +10,39 @@ import {
 
 const ARCHETYPES = ["informer", "resister", "bystander"];
 
+// ─── PERSONALIZATION ─────────────────────────────────────────────────────────
+// Replace template variables in scenario text with actual character details.
+
+function personalizeText(text, character) {
+  if (!text || !character) return text;
+  return text
+    .replace(/\{name\}/g, character.name)
+    .replace(/\{shortName\}/g, character.shortName)
+    .replace(/\{occupation\}/g, character.occupation.toLowerCase())
+    .replace(/\{workplace\}/g, character.workplace)
+    .replace(/\{location\}/g, character.location);
+}
+
+function personalizeScenario(scenario, character) {
+  return {
+    ...scenario,
+    headline: personalizeText(scenario.headline, character),
+    scene: personalizeText(scenario.scene, character),
+    situation: personalizeText(scenario.situation, character),
+    choices: scenario.choices.map((choice) => ({
+      ...choice,
+      text: personalizeText(choice.text, character),
+      outcome: {
+        ...choice.outcome,
+        narrative: personalizeText(choice.outcome.narrative, character),
+        consequences: choice.outcome.consequences.map((c) =>
+          personalizeText(c, character)
+        ),
+      },
+    })),
+  };
+}
+
 const HISTORICAL_FACTS = [
   "Senator Joseph McCarthy claimed in 1950 that he had a list of 205 known Communists working in the State Department.",
   "The Hollywood Ten were blacklisted after refusing to testify before HUAC in 1947.",
@@ -305,17 +338,38 @@ body { background: #1a1410; }
   line-height: 1.3;
 }
 
+/* STAT CHANGE INDICATORS */
+.stat-change {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  padding: 2px 8px; border-radius: 2px; margin-left: 8px;
+}
+.stat-change.up { color: #8b1a1a; background: rgba(139,26,26,0.1); }
+.stat-change.down { color: #1a5c2a; background: rgba(26,92,42,0.1); }
+.stat-change.up.integrity { color: #1a5c2a; background: rgba(26,92,42,0.1); }
+.stat-change.down.integrity { color: #8b1a1a; background: rgba(139,26,26,0.1); }
+
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 0.4s ease forwards; }
 `;
 
 // ─── COMPONENTS ──────────────────────────────────────────────────────────────
 
-function Meter({ label, value, type, max = 100 }) {
+function Meter({ label, value, type, max = 100, change }) {
+  const changeLabel = change != null && change !== 0
+    ? (change > 0 ? `+${change}` : `${change}`)
+    : null;
+  const changeDir = change > 0 ? "up" : "down";
   return (
     <div className="meter-wrap">
       <div className="meter-label">
-        <span>{label}</span>
+        <span>
+          {label}
+          {changeLabel && (
+            <span className={`stat-change ${changeDir} ${type}`}>
+              {changeLabel}
+            </span>
+          )}
+        </span>
         <span>{Math.round(value)}/{max}</span>
       </div>
       <div className="meter-bar">
@@ -437,7 +491,7 @@ function OutcomeScreen({ character, outcome, turn, suspicion, integrity, onConti
   return (
     <div className="fade-in">
       <div className="paper-card">
-        <div className="section-label">The Aftermath</div>
+        <div className="section-label">The Aftermath — {character.shortName}'s Story Continues</div>
         <div className={`outcome-box ${outcome.tone}`}>
           <p>{outcome.narrative}</p>
         </div>
@@ -445,8 +499,8 @@ function OutcomeScreen({ character, outcome, turn, suspicion, integrity, onConti
           {outcome.consequences.map((c, i) => <li key={i}>{c}</li>)}
         </ul>
         <hr className="divider" />
-        <Meter label="Suspicion Level" value={suspicion} type="suspicion" />
-        <Meter label="Integrity" value={integrity} type="integrity" />
+        <Meter label="Suspicion Level" value={suspicion} type="suspicion" change={outcome.suspicionChange} />
+        <Meter label="Integrity" value={integrity} type="integrity" change={outcome.integrityChange} />
       </div>
       <div className="fact-box">
         <div className="fact-box-label">Historical Connection</div>
@@ -540,7 +594,7 @@ export default function McCarthyismGame() {
   }
 
   function beginScenarios() {
-    setCurrentScenario(scenarios[0]);
+    setCurrentScenario(personalizeScenario(scenarios[0], character));
     setPhase("scenario");
   }
 
@@ -564,7 +618,7 @@ export default function McCarthyismGame() {
       setPhase("final");
     } else {
       setTurn(nextTurn);
-      setCurrentScenario(scenarios[nextTurn - 1]);
+      setCurrentScenario(personalizeScenario(scenarios[nextTurn - 1], character));
       setPhase("scenario");
     }
   }
