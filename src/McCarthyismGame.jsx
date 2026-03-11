@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
+import { jsPDF } from "jspdf";
 import {
   CHARACTERS,
   VERDICT_TEMPLATES,
@@ -298,6 +299,30 @@ body { background: #1a1410; }
   transition: background 0.2s;
 }
 .btn-primary:hover { background: #a07828; }
+.export-section {
+  background: #2a2418; border: 1px solid #4a3c28;
+  padding: 20px; margin-top: 16px; margin-bottom: 4px;
+  border-radius: 2px;
+}
+.student-name-input {
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px; color: #f5ead6;
+  background: #1a1610; border: 1px solid #4a3c28;
+  padding: 10px 14px; width: 100%; box-sizing: border-box;
+  margin-bottom: 10px; outline: none;
+}
+.student-name-input::placeholder { color: #6b5e4a; }
+.student-name-input:focus { border-color: #8b6914; }
+.btn-export {
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  background: #1a3a6b; color: #f5ead6;
+  border: none; padding: 14px 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+.btn-export:hover { background: #244d8a; }
 .btn-secondary {
   font-family: 'Courier Prime', monospace;
   font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
@@ -533,7 +558,8 @@ function OutcomeScreen({ character, outcome, turn, suspicion, integrity, onConti
   );
 }
 
-function FinalScreen({ character, summary, onPlayAgain }) {
+function FinalScreen({ character, summary, suspicion, integrity, history, onPlayAgain }) {
+  const [studentName, setStudentName] = useState("");
   const verdictColors = {
     destroyed: "#8b1a1a",
     survived: "#1a5c2a",
@@ -542,6 +568,179 @@ function FinalScreen({ character, summary, onPlayAgain }) {
   };
   const color = verdictColors[summary.verdictType] || "#2a1f0e";
   const discovery = getDiscoveryStats();
+
+  function exportPDF() {
+    const doc = new jsPDF({ unit: "pt", format: "letter" });
+    const W = doc.internal.pageSize.getWidth();
+    const margin = 50;
+    const usable = W - margin * 2;
+    let y = 50;
+
+    function checkPage(needed) {
+      if (y + needed > doc.internal.pageSize.getHeight() - 50) {
+        doc.addPage();
+        y = 50;
+      }
+    }
+
+    // ─── HEADER ────────────────────────────────────
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("The Red Scare -- Simulation Results", margin, y);
+    y += 14;
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(120);
+    doc.text("A McCarthyism Experience -- 1950-1956", margin, y);
+    y += 8;
+    const dateLine = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    doc.text(dateLine, margin, y);
+    if (studentName.trim()) {
+      doc.text(`Student: ${studentName.trim()}`, W - margin, y, { align: "right" });
+    }
+    y += 20;
+    doc.setDrawColor(180);
+    doc.line(margin, y, W - margin, y);
+    y += 20;
+
+    // ─── CHARACTER INFO ────────────────────────────
+    doc.setTextColor(0);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13);
+    doc.text("Your Character", margin, y);
+    y += 18;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    const charLines = [
+      `Name: ${character.name}`,
+      `Occupation: ${character.occupation}`,
+      `Location: ${character.location}`,
+      `Archetype: ${character.archetype.charAt(0).toUpperCase() + character.archetype.slice(1)}`,
+    ];
+    for (const line of charLines) {
+      doc.text(line, margin, y);
+      y += 14;
+    }
+    y += 6;
+
+    // ─── FINAL STATS ──────────────────────────────
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13);
+    doc.text("Final Statistics", margin, y);
+    y += 18;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text(`Suspicion Level: ${Math.round(suspicion)} / 100`, margin, y);
+    y += 14;
+    doc.text(`Integrity: ${Math.round(integrity)} / 100`, margin, y);
+    y += 14;
+    doc.setFont("helvetica", "bold");
+    doc.text(`Verdict: ${summary.verdictType.toUpperCase()}`, margin, y);
+    y += 8;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    const verdictLines = doc.splitTextToSize(summary.verdict, usable);
+    doc.text(verdictLines, margin, y + 10);
+    y += 10 + verdictLines.length * 11;
+    y += 12;
+
+    // ─── TURN-BY-TURN CHOICES ─────────────────────
+    doc.setDrawColor(180);
+    doc.line(margin, y, W - margin, y);
+    y += 16;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13);
+    doc.text("Turn-by-Turn Decisions", margin, y);
+    y += 20;
+
+    for (const entry of history) {
+      checkPage(120);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.setTextColor(100, 60, 0);
+      doc.text(`Turn ${entry.turn}: ${entry.headline}`, margin, y);
+      y += 14;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.setTextColor(0);
+      doc.text("Your choice:", margin, y);
+      y += 11;
+      const choiceLines = doc.splitTextToSize(entry.choice, usable - 10);
+      doc.text(choiceLines, margin + 10, y);
+      y += choiceLines.length * 11 + 4;
+
+      doc.text("What happened:", margin, y);
+      y += 11;
+      const narrativeLines = doc.splitTextToSize(entry.narrative, usable - 10);
+      doc.text(narrativeLines, margin + 10, y);
+      y += narrativeLines.length * 11 + 4;
+
+      doc.setTextColor(120);
+      const susSign = entry.suspicionChange >= 0 ? "+" : "";
+      const intSign = entry.integrityChange >= 0 ? "+" : "";
+      doc.text(
+        `Suspicion ${susSign}${entry.suspicionChange} >> ${entry.suspicionAfter}   |   Integrity ${intSign}${entry.integrityChange} >> ${entry.integrityAfter}`,
+        margin, y
+      );
+      doc.setTextColor(0);
+      y += 20;
+    }
+
+    // ─── EPILOGUE ─────────────────────────────────
+    checkPage(80);
+    doc.setDrawColor(180);
+    doc.line(margin, y, W - margin, y);
+    y += 16;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13);
+    doc.text("Epilogue", margin, y);
+    y += 16;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    const epiLines = doc.splitTextToSize(summary.epilogue, usable);
+    doc.text(epiLines, margin, y);
+    y += epiLines.length * 11 + 12;
+
+    // ─── REFLECTION ───────────────────────────────
+    checkPage(60);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("For Reflection", margin, y);
+    y += 14;
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(9);
+    const refLines = doc.splitTextToSize(summary.reflection, usable);
+    doc.text(refLines, margin, y);
+    y += refLines.length * 11 + 12;
+
+    // ─── HISTORICAL PARALLEL ──────────────────────
+    checkPage(60);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("Historical Parallel", margin, y);
+    y += 14;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    const histLines = doc.splitTextToSize(summary.historicalParallel, usable);
+    doc.text(histLines, margin, y);
+    y += histLines.length * 11 + 20;
+
+    // ─── FOOTER ───────────────────────────────────
+    checkPage(30);
+    doc.setDrawColor(180);
+    doc.line(margin, y, W - margin, y);
+    y += 12;
+    doc.setFontSize(8);
+    doc.setTextColor(150);
+    doc.text("The Red Scare: A McCarthyism Experience -- Educational Simulation", margin, y);
+
+    // Save
+    const studentPart = studentName.trim()
+      ? studentName.trim().replace(/\s+/g, "_")
+      : character.shortName.replace(/\s+/g, "_");
+    doc.save(`RedScare_${studentPart}_Results.pdf`);
+  }
 
   return (
     <div className="fade-in">
@@ -576,6 +775,19 @@ function FinalScreen({ character, summary, onPlayAgain }) {
         <p className="fact-box-text">
           The McCarthyism era destroyed thousands of careers and lives based on little more than accusation and suspicion. Research the Hollywood Ten, Lillian Hellman, Paul Robeson, or Arthur Miller to learn more about real people who faced these choices.
         </p>
+      </div>
+      <div className="export-section">
+        <div className="section-label" style={{ marginBottom: 8 }}>Export for Canvas</div>
+        <input
+          type="text"
+          className="student-name-input"
+          placeholder="Enter your name (for the PDF header)"
+          value={studentName}
+          onChange={(e) => setStudentName(e.target.value)}
+        />
+        <button className="btn-export" onClick={exportPDF}>
+          Download Results (PDF)
+        </button>
       </div>
       <div className="discovery-tracker">
         <div className="discovery-bar-bg">
@@ -638,7 +850,19 @@ export default function McCarthyismGame() {
     const newIntegrity = Math.min(100, Math.max(0, integrity + out.integrityChange));
     setSuspicion(newSuspicion);
     setIntegrity(newIntegrity);
-    setHistory([...history, `Turn ${turn}: ${choice.text.substring(0, 60)}...`]);
+    setHistory([
+      ...history,
+      {
+        turn,
+        headline: currentScenario.headline,
+        choice: choice.text,
+        narrative: out.narrative,
+        suspicionChange: out.suspicionChange,
+        integrityChange: out.integrityChange,
+        suspicionAfter: newSuspicion,
+        integrityAfter: newIntegrity,
+      },
+    ]);
     setOutcome(out);
     setPhase("outcome");
   }
@@ -718,7 +942,14 @@ export default function McCarthyismGame() {
           )}
 
           {phase === "final" && summary && (
-            <FinalScreen character={character} summary={summary} onPlayAgain={resetGame} />
+            <FinalScreen
+              character={character}
+              summary={summary}
+              suspicion={suspicion}
+              integrity={integrity}
+              history={history}
+              onPlayAgain={resetGame}
+            />
           )}
         </div>
       </div>
