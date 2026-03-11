@@ -1512,3 +1512,110 @@ export function shuffleAndTake(arr, count) {
   const shuffled = [...arr].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
 }
+
+// ─── PLAY-HISTORY MEMORY (localStorage) ────────────────────────────────────
+// Tracks which scenarios and archetypes a student has already played so
+// repeat sessions feel fresh. Falls back gracefully if localStorage is blocked.
+
+const STORAGE_KEY = "redscare_play_history";
+
+function loadHistory() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {
+    /* private browsing or storage blocked — play without memory */
+  }
+  return { seenScenarios: [], playedArchetypes: [], totalRuns: 0 };
+}
+
+function saveHistory(history) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+  } catch {
+    /* silently ignore */
+  }
+}
+
+/**
+ * Pick an archetype the student hasn't played yet. Once all three have been
+ * played, reset the cycle so they can replay in a new random order.
+ */
+export function pickFreshArchetype(archetypes) {
+  const history = loadHistory();
+  const unplayed = archetypes.filter(
+    (a) => !history.playedArchetypes.includes(a)
+  );
+  if (unplayed.length > 0) {
+    return pickRandom(unplayed);
+  }
+  // All archetypes played — reset cycle, pick randomly
+  history.playedArchetypes = [];
+  saveHistory(history);
+  return pickRandom(archetypes);
+}
+
+/**
+ * Pick `count` scenarios from the archetype pool, prioritising ones the
+ * student hasn't seen before. If there aren't enough unseen scenarios,
+ * fill in with the least-recently-seen ones.
+ */
+export function pickFreshScenarios(archetype, count) {
+  const history = loadHistory();
+  const pool = SCENARIOS[archetype];
+  const seen = new Set(history.seenScenarios);
+
+  const unseen = pool.filter((s) => !seen.has(s.headline));
+  const alreadySeen = pool.filter((s) => seen.has(s.headline));
+
+  // Shuffle both groups
+  const shuffledUnseen = [...unseen].sort(() => Math.random() - 0.5);
+  const shuffledSeen = [...alreadySeen].sort(() => Math.random() - 0.5);
+
+  // Prefer unseen, backfill with seen
+  const picked = [...shuffledUnseen, ...shuffledSeen].slice(0, count);
+  return picked;
+}
+
+/**
+ * After a game ends, record which scenarios and archetype were played.
+ */
+export function recordPlaythrough(archetype, scenarioHeadlines) {
+  const history = loadHistory();
+  history.playedArchetypes.push(archetype);
+  for (const h of scenarioHeadlines) {
+    if (!history.seenScenarios.includes(h)) {
+      history.seenScenarios.push(h);
+    }
+  }
+  history.totalRuns += 1;
+  saveHistory(history);
+}
+
+/**
+ * Return stats for the "discovery" indicator: how many unique scenarios
+ * the student has seen out of the total available.
+ */
+export function getDiscoveryStats() {
+  const history = loadHistory();
+  const totalScenarios = Object.values(SCENARIOS).reduce(
+    (sum, arr) => sum + arr.length,
+    0
+  );
+  return {
+    seen: history.seenScenarios.length,
+    total: totalScenarios,
+    runs: history.totalRuns,
+  };
+}
+
+/**
+ * Clear all play history (useful for teacher reset).
+ */
+export function clearPlayHistory() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    /* ignore */
+  }
+}

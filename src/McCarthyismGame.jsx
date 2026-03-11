@@ -1,11 +1,13 @@
 import { useState, useRef } from "react";
 import {
   CHARACTERS,
-  SCENARIOS,
   VERDICT_TEMPLATES,
   computeVerdictType,
   pickRandom,
-  shuffleAndTake,
+  pickFreshArchetype,
+  pickFreshScenarios,
+  recordPlaythrough,
+  getDiscoveryStats,
 } from "./gameData.js";
 
 const ARCHETYPES = ["informer", "resister", "bystander"];
@@ -247,6 +249,24 @@ body { background: #1a1410; }
   color: #8b6914; margin-bottom: 6px;
 }
 .fact-box-text { font-size: 13px; line-height: 1.7; font-style: italic; }
+
+/* DISCOVERY TRACKER */
+.discovery-tracker {
+  text-align: center; margin: 24px 0 4px;
+}
+.discovery-bar-bg {
+  height: 6px; background: #3a3020; border-radius: 3px;
+  overflow: hidden; margin-bottom: 8px;
+}
+.discovery-bar-fill {
+  height: 100%; background: linear-gradient(90deg, #8b6914, #c8a96e);
+  border-radius: 3px; transition: width 0.6s ease;
+}
+.discovery-text {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px; letter-spacing: 1px;
+  color: #8b7d5e; margin: 0;
+}
 
 /* SCORE / LOYALTY METER */
 .meter-wrap { margin-bottom: 18px; }
@@ -521,6 +541,7 @@ function FinalScreen({ character, summary, onPlayAgain }) {
     heroic: "#1a3a6b",
   };
   const color = verdictColors[summary.verdictType] || "#2a1f0e";
+  const discovery = getDiscoveryStats();
 
   return (
     <div className="fade-in">
@@ -556,6 +577,19 @@ function FinalScreen({ character, summary, onPlayAgain }) {
           The McCarthyism era destroyed thousands of careers and lives based on little more than accusation and suspicion. Research the Hollywood Ten, Lillian Hellman, Paul Robeson, or Arthur Miller to learn more about real people who faced these choices.
         </p>
       </div>
+      <div className="discovery-tracker">
+        <div className="discovery-bar-bg">
+          <div
+            className="discovery-bar-fill"
+            style={{ width: `${(discovery.seen / discovery.total) * 100}%` }}
+          />
+        </div>
+        <p className="discovery-text">
+          {discovery.seen === discovery.total
+            ? `✦ You've discovered all ${discovery.total} scenarios across ${discovery.runs} playthroughs!`
+            : `${discovery.seen} of ${discovery.total} scenarios discovered · Play again to uncover new stories`}
+        </p>
+      </div>
       <button className="btn-primary" onClick={onPlayAgain}>Play Again — New Character</button>
     </div>
   );
@@ -578,9 +612,9 @@ export default function McCarthyismGame() {
   const MAX_TURNS = 4;
 
   function startGame() {
-    const archetype = ARCHETYPES[Math.floor(Math.random() * ARCHETYPES.length)];
+    const archetype = pickFreshArchetype(ARCHETYPES);
     const char = pickRandom(CHARACTERS[archetype]);
-    const gameScenarios = shuffleAndTake(SCENARIOS[archetype], MAX_TURNS);
+    const gameScenarios = pickFreshScenarios(archetype, MAX_TURNS);
 
     setCharacter(char);
     setScenarios(gameScenarios);
@@ -612,6 +646,11 @@ export default function McCarthyismGame() {
   function continueGame() {
     const nextTurn = turn + 1;
     if (nextTurn > MAX_TURNS) {
+      // Record this playthrough so future games prioritise unseen content
+      recordPlaythrough(
+        character.archetype,
+        scenarios.map((s) => s.headline)
+      );
       const verdictType = computeVerdictType(suspicion, integrity);
       const template = pickRandom(VERDICT_TEMPLATES[verdictType]);
       setSummary({ ...template, verdictType });
