@@ -271,6 +271,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Director Elia Kazan named eight former colleagues before HUAC in 1952, a decision that divided Hollywood and haunted him for the rest of his life.",
+            storyTag: "named_names",
           },
         },
         {
@@ -291,6 +292,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Invoking the Fifth Amendment was legal, but the public often treated it as an admission of guilt. Senator McCarthy coined the term 'Fifth Amendment Communist' to smear those who used this constitutional right.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -311,6 +313,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Playwright Lillian Hellman wrote to HUAC: 'I cannot and will not cut my conscience to fit this year's fashions.' She testified about herself but refused to name others.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -340,6 +343,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Thousands of Americans lost their jobs during the Red Scare not because of any illegal activity, but because a coworker or acquaintance identified them as having 'sympathies.'",
+            storyTag: "named_names",
           },
         },
         {
@@ -360,6 +364,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Many companies maintained their own internal blacklists during the 1950s, firing or demoting employees who refused to participate in loyalty screenings.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -380,6 +385,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Playing ignorant was a common survival strategy during the Red Scare, but it often only postponed the moment of reckoning rather than preventing it.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -409,6 +415,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "FBI Director J. Edgar Hoover relied heavily on personal testimonies to build cases. Many friendships were destroyed when people learned that old acquaintances had informed on them.",
+            storyTag: "named_names",
           },
         },
         {
@@ -429,6 +436,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The FBI under Hoover routinely surveilled, wiretapped, and opened the mail of citizens who refused to cooperate with investigations — often without warrants.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -449,6 +457,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some witnesses gave deliberately unhelpful testimony as a middle ground — technically cooperating without providing actionable information. This strategy carried its own risks.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -478,6 +487,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Screenwriter Budd Schulberg named fifteen former associates in his HUAC testimony. He continued working while those he named could not find employment for years.",
+            storyTag: "named_names",
           },
         },
         {
@@ -498,6 +508,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Screenwriter Dalton Trumbo, one of the Hollywood Ten, was blacklisted and imprisoned. He survived by writing under pseudonyms for a fraction of his former pay.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -518,6 +529,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some actors and writers tried to find middle ground by denouncing communism in general while refusing to name individuals. This strategy rarely satisfied the committees.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -547,6 +559,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Teachers were particularly vulnerable during the Red Scare. In New York City alone, over 300 public school teachers were fired or forced to resign between 1950 and 1953.",
+            storyTag: "named_names",
           },
         },
         {
@@ -567,6 +580,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Neighborhood informants were a key part of the surveillance culture of the 1950s. The FBI actively encouraged citizens to report 'suspicious' behavior by their neighbors.",
+            storyTag: "resisted_pressure",
           },
         },
         {
@@ -587,6 +601,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The culture of suspicion extended into every neighborhood. Ordinary Americans faced daily choices about whether to report, ignore, or protect their neighbors.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -616,6 +631,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Membership lists and meeting records were prized by investigators. The Taft-Hartley Act of 1947 required union leaders to sign affidavits swearing they were not Communists.",
+            storyTag: "named_names",
           },
         },
         {
@@ -636,6 +652,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some Americans quietly destroyed documents, letters, and membership cards to protect themselves and others from investigation. This act of defiance carried serious legal risks.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -656,6 +673,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Living with hidden secrets was psychologically devastating for many during the McCarthy era. The constant fear of discovery took a lasting toll on mental health.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -685,6 +703,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Many friendships were destroyed during the Red Scare. Some people informed on childhood friends, college roommates, and even family members to protect themselves.",
+            storyTag: "named_names",
           },
         },
         {
@@ -705,6 +724,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The FBI's mail surveillance program, known as 'mail covers,' monitored correspondence of suspected Communists and their associates throughout the 1950s.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -725,6 +745,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Underground networks helped some blacklisted Americans escape to Mexico, Canada, and Europe. These networks relied on ordinary people willing to take extraordinary risks.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -754,6 +775,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "HUAC often used 'executive sessions' to pressure reluctant witnesses into naming names, promising confidentiality that was rarely maintained.",
+            storyTag: "named_names",
           },
         },
         {
@@ -774,6 +796,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Director Elia Kazan's decision to name names in a closed session in 1952 haunted him for the rest of his life, provoking a famous controversy when he received an honorary Oscar in 1999.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -794,6 +817,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Playwright Arthur Miller took this approach in 1956, testifying about himself but refusing to name others. He was convicted of contempt, though the conviction was later overturned.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -823,6 +847,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Many who cooperated with HUAC described the pressure from family members as the deciding factor. The personal toll of the investigations extended far beyond the individuals targeted.",
+            storyTag: "named_names",
           },
         },
         {
@@ -843,6 +868,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The Red Scare destroyed countless marriages and families. Some spouses supported the resistance; others couldn't bear the consequences. Both choices carried lifelong costs.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -863,6 +889,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The psychological toll of prolonged investigation was immense. Many targets reported anxiety, insomnia, and depression as the uncertainty dragged on for months or years.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -892,6 +919,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The entertainment industry blacklist was enforced not by law but by informal agreement among studio executives, network heads, and sponsors. 'Fixers' who claimed to clear names operated in a gray market of fear.",
+            storyTag: "named_names",
           },
         },
         {
@@ -912,6 +940,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Many blacklisted professionals took menial jobs to survive. Some writers worked under pseudonyms. Dalton Trumbo, one of the Hollywood Ten, wrote screenplays under fake names for a fraction of his former pay.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -932,6 +961,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The blacklist operated on a spectrum. Some were 'graylisted' — not fully blacklisted but limited to smaller jobs. Climbing back often required increasingly larger acts of cooperation.",
+            storyTag: "hedged_bets",
           },
         },
       ],
@@ -963,6 +993,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Playwright Arthur Miller testified before HUAC in 1956, discussing his own past but refusing to name others. He was convicted of contempt of Congress, though the conviction was later overturned.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -983,6 +1014,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The Hollywood Ten invoked the First Amendment rather than the Fifth. All ten were found guilty of contempt of Congress and sentenced to prison terms of six months to one year.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1003,6 +1035,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Writer Ring Lardner Jr. told HUAC: 'I could answer the way you want, but I would hate myself in the morning.' He was blacklisted and imprisoned for contempt.",
+            storyTag: "defied_committee",
           },
         },
       ],
@@ -1032,6 +1065,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "In 1950, the University of California fired 31 faculty members who refused to sign a loyalty oath. The California Supreme Court later ruled the oath unconstitutional, but many of the fired professors never returned.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1052,6 +1086,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Many employees signed loyalty oaths while privately disagreeing, reasoning that they could do more good by staying in their positions than by sacrificing their careers on principle.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1072,6 +1107,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some professionals quietly relocated to smaller institutions or left the country entirely rather than face loyalty oaths. Many ended up in Mexico, England, or Canada.",
+            storyTag: "stood_ground",
           },
         },
       ],
@@ -1101,6 +1137,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Many blacklisted artists survived only through the secret generosity of friends who risked their own reputations to provide food, money, and shelter.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1121,6 +1158,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Underground networks of sympathizers quietly funneled money and resources to blacklisted individuals. These acts of solidarity were small but meaningful.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1141,6 +1179,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The blacklist was designed to isolate its targets socially as well as professionally. Many blacklisted individuals found that former friends were too afraid to help them.",
+            storyTag: "capitulated",
           },
         },
       ],
@@ -1170,6 +1209,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Many witnesses who refused to cooperate found that their lawyers could do little to protect them. Some attorneys were themselves investigated for representing 'subversives.'",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1190,6 +1230,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The argument that naming 'already known' individuals caused no harm was common but misleading. Each additional witness who named someone strengthened the case against them.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1210,6 +1251,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Paul Robeson represented himself before HUAC in 1956, delivering one of the most famous confrontations in the committee's history. His passport was revoked, effectively ending his international career.",
+            storyTag: "defied_committee",
           },
         },
       ],
@@ -1239,6 +1281,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Journalist Edward R. Murrow risked his career to challenge McCarthy on television in 1954. His broadcasts helped turn public opinion, but he faced intense professional pressure.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1259,6 +1302,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "For many accused individuals, the publication of their name was itself the punishment. Employment, social standing, and personal relationships were damaged regardless of whether formal charges were ever filed.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1279,6 +1323,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Carefully worded public statements were a common but often ineffective strategy. The committee and the press preferred clear cooperation or dramatic defiance to ambiguity.",
+            storyTag: "sought_middle_ground",
           },
         },
       ],
@@ -1308,6 +1353,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "All ten members of the Hollywood Ten served prison sentences for contempt of Congress. Director Edward Dmytryk later cooperated with the committee after his release; the other nine did not.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1328,6 +1374,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The psychological pressure of facing prison led many witnesses to break. Director Edward Dmytryk, initially one of the Hollywood Ten, eventually cooperated and named twenty-six people.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1348,6 +1395,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Several blacklisted Americans fled to Mexico or Europe. Screenwriter Hugo Butler and his family lived in Mexico for years, while Paul Robeson had his passport revoked to prevent foreign travel.",
+            storyTag: "defied_committee",
           },
         },
       ],
@@ -1377,6 +1425,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Paul Robeson's passport was revoked in 1950 and not returned until 1958 after the Supreme Court ruled in Kent v. Dulles that the right to travel is protected by the Fifth Amendment.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1397,6 +1446,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The State Department revoked or denied passports to hundreds of Americans during the McCarthy era, including scientists, artists, and activists deemed security risks.",
+            storyTag: "capitulated",
           },
         },
         {
@@ -1417,6 +1467,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Many Americans quietly accepted passport restrictions rather than risk the exposure of an appeal. The chilling effect extended far beyond those formally denied travel.",
+            storyTag: "sought_middle_ground",
           },
         },
       ],
@@ -1446,6 +1497,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Appearing before HUAC to deny accusations often backfired. The committee frequently used denial testimony as leverage to demand names of 'actual' Communists.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1466,6 +1518,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Lillian Hellman's famous letter to HUAC declared: 'I cannot and will not cut my conscience to fit this year's fashions.' She avoided naming names but was blacklisted for years.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1486,6 +1539,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The chain of informing was self-perpetuating. Those who named names often did so because they were named first. The committee weaponized personal relationships to generate an ever-expanding web of accusations.",
+            storyTag: "sought_middle_ground",
           },
         },
       ],
@@ -1515,6 +1569,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Children of accused Americans suffered enormously. Many were bullied, ostracized, and forced to change schools. Some didn't learn the full truth about their parents' ordeal until decades later.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1535,6 +1590,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some blacklisted families moved to new cities and assumed new identities to protect their children. The secrecy created lasting psychological scars across generations.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1555,6 +1611,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Actor Sterling Hayden later said his decision to cooperate with HUAC was driven by fear for his family. He called it 'the most shameful thing I ever did' and regretted it for the rest of his life.",
+            storyTag: "capitulated",
           },
         },
       ],
@@ -1584,6 +1641,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Underground newspapers like 'I.F. Stone's Weekly' and various mimeographed newsletters provided alternative viewpoints during the McCarthy era, often at great personal risk to their publishers.",
+            storyTag: "defied_committee",
           },
         },
         {
@@ -1604,6 +1662,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Self-censorship was perhaps McCarthyism's most effective weapon. Many who were never investigated still chose silence over the risk of attention.",
+            storyTag: "sought_middle_ground",
           },
         },
         {
@@ -1624,6 +1683,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Some resisters chose to be public about their defiance. Pete Seeger continued performing openly, and Arthur Miller wrote 'The Crucible' as a thinly veiled allegory of McCarthyism while under investigation.",
+            storyTag: "defied_committee",
           },
         },
       ],
@@ -1655,6 +1715,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Guilt by association was a cornerstone of McCarthyism. Simply being friends with an accused person could trigger an investigation into your own background.",
+            storyTag: "showed_solidarity",
           },
         },
         {
@@ -1675,6 +1736,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Social isolation was one of the most devastating effects of accusation. Many accused individuals reported that the abandonment by friends and colleagues was worse than the formal consequences.",
+            storyTag: "went_along",
           },
         },
         {
@@ -1695,6 +1757,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Private acts of kindness sustained many accused individuals when public support was too dangerous. These quiet gestures were rarely recorded by history.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -1724,6 +1787,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Loyalty petitions and pledges were commonly used by employers to create a paper trail of 'voluntary' employee cooperation, which was then used to justify purges.",
+            storyTag: "went_along",
           },
         },
         {
@@ -1744,6 +1808,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Workers who vocally opposed loyalty measures were often the next targets. The line between defending others and becoming a target yourself was razor-thin.",
+            storyTag: "spoke_up",
           },
         },
         {
@@ -1764,6 +1829,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Inaction was rarely neutral during the Red Scare. Not signing a loyalty pledge was often interpreted as a political statement in itself.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -1793,6 +1859,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The FBI maintained a vast network of civilian informants during the 1950s. Many ordinary Americans reported on their neighbors, coworkers, and even family members.",
+            storyTag: "went_along",
           },
         },
         {
@@ -1813,6 +1880,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Refusing the FBI's request for cooperation was a risky choice. Agents sometimes retaliated by opening investigations into those who declined to help.",
+            storyTag: "showed_solidarity",
           },
         },
         {
@@ -1833,6 +1901,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Many Americans kept FBI agents' cards 'just in case,' living in a gray zone between cooperation and refusal that defined much of ordinary life during the Red Scare.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -1862,6 +1931,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Censorship was widespread during the McCarthy era. The State Department removed books from overseas libraries, and some communities held book burnings.",
+            storyTag: "went_along",
           },
         },
         {
@@ -1882,6 +1952,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some professionals risked their careers to resist censorship. The American Library Association adopted its Freedom to Read statement in 1953, declaring opposition to book banning.",
+            storyTag: "spoke_up",
           },
         },
         {
@@ -1902,6 +1973,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Some workers quietly preserved banned materials by reclassifying or storing them out of sight. These acts of quiet resistance saved many works from destruction.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -1931,6 +2003,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The Red Scare often forced families apart. Relatives of accused individuals were pressured to publicly denounce their own family members to protect their careers.",
+            storyTag: "went_along",
           },
         },
         {
@@ -1951,6 +2024,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Federal employees were particularly vulnerable to guilt by association. Executive Order 9835, signed by Truman in 1947, established loyalty reviews for all federal workers.",
+            storyTag: "spoke_up",
           },
         },
         {
@@ -1971,6 +2045,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Trying to stay neutral about a family member's arrest was nearly impossible during the Red Scare. The FBI expected clear denunciation, and anything less was treated with suspicion.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -2000,6 +2075,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Local McCarthy supporters wielded enormous power in small communities. Standing up to them in public was one of the most dangerous things an ordinary American could do.",
+            storyTag: "spoke_up",
           },
         },
         {
@@ -2020,6 +2096,7 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "The silence of ordinary citizens was what allowed McCarthyism to thrive. Many later said their greatest regret was not speaking up when they had the chance.",
+            storyTag: "went_along",
           },
         },
         {
@@ -2040,213 +2117,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Small, private acts of support helped many accused individuals survive. While these acts did not stop McCarthyism, they preserved human dignity in its darkest moments.",
-          },
-        },
-      ],
-    },
-    {
-      headline: "{shortName}'s Child Comes Home With Questions",
-      scene:
-        "At dinner, {shortName}'s ten-year-old asks: 'What's a Communist? Tommy's dad says they live on our street.' The child looks confused and a little scared. On the kitchen counter sits the evening paper with a headline about local investigations.",
-      situation:
-        "The Red Scare has entered {shortName}'s home through the most innocent door possible. How {shortName} answers will shape a child's understanding of fear, conformity, and justice — and could be repeated to teachers, neighbors, or Tommy's father.",
-      choices: [
-        {
-          id: "A",
-          text: "Tell the child that Communists are bad people and that your family has nothing to do with them.",
-          alignment: "cooperative",
-          riskLevel: "low",
-          outcome: {
-            narrative:
-              "The child nods, satisfied. The next day at school, the child repeats the answer. Tommy's father is reassured. The neighborhood relaxes. But {shortName} lies awake that night, wondering what lesson was actually taught — that fear is the right response to a question you don't understand.",
-            consequences: [
-              "The child absorbs the prevailing fear without context",
-              "The family appears safely patriotic",
-              "{shortName} sacrifices a teaching moment for safety",
-            ],
-            suspicionChange: -5,
-            integrityChange: -8,
-            tone: "negative",
-            historicalNote:
-              "Cold War propaganda reached deep into American family life. School drills, comic books, and television programs reinforced anti-Communist messaging to children, shaping a generation's worldview.",
-          },
-        },
-        {
-          id: "B",
-          text: "Explain honestly that some people have different political ideas and that accusing neighbors is wrong, no matter what.",
-          alignment: "defiant",
-          riskLevel: "medium",
-          outcome: {
-            narrative:
-              "{shortName} sits down and talks about fairness — about how it's wrong to call people names or accuse them without proof. The child listens carefully. Two days later, the teacher calls: 'Your child told the class that calling people Communists is like being a bully.' The principal wants a meeting.",
-            consequences: [
-              "The child repeats the lesson at school, drawing attention",
-              "The school administration takes notice of {shortName}'s views",
-              "{shortName} has taught a moral lesson at a real cost",
-            ],
-            suspicionChange: 10,
-            integrityChange: 8,
-            tone: "neutral",
-            historicalNote:
-              "Teaching children to think critically during the McCarthy era was itself seen as suspicious. Some parents were investigated based on statements their children made at school.",
-          },
-        },
-        {
-          id: "C",
-          text: "Change the subject. Say it's grown-up stuff and not to worry about it.",
-          alignment: "neutral",
-          riskLevel: "low",
-          outcome: {
-            narrative:
-              "The child looks unsatisfied but finishes dinner. That night, {shortName} hears the child whispering to a sibling: 'I think Communists are monsters.' The fear has filled the vacuum that an honest answer might have occupied. {shortName} stares at the ceiling, wondering if there will be a better time to have this conversation.",
-            consequences: [
-              "The child draws a picture at school the next day: a house with a red monster hiding behind it",
-              "Tommy's father tells the playground mothers that {shortName}'s kid 'seemed confused about Communism'",
-              "Three weeks later the child asks again, this time at a family dinner — in front of the grandparents",
-            ],
-            suspicionChange: 0,
-            integrityChange: -3,
-            tone: "neutral",
-            historicalNote:
-              "Many parents chose silence, hoping to shield their children from the era's anxieties. Children often absorbed the fear anyway, through school, media, and overheard conversations.",
-          },
-        },
-      ],
-    },
-    {
-      headline: "A Customer Boycott Threatens {workplace}",
-      scene:
-        "Business at {workplace} has dropped sharply. Someone has posted flyers around the neighborhood: '{workplace} employs Communist sympathizers.' {shortName}'s boss is frantic. Two employees have already been let go. The remaining staff eyes each other nervously.",
-      situation:
-        "{shortName} knows who the 'sympathizer' is — a quiet coworker named Ruth who once collected signatures for a peace petition. The boss wants someone to blame. Staying silent might cost {shortName}'s job. Pointing to Ruth would end hers.",
-      choices: [
-        {
-          id: "A",
-          text: "Tell the boss about Ruth's petition. It's public information anyway, and your family needs the paycheck.",
-          alignment: "cooperative",
-          riskLevel: "low",
-          outcome: {
-            narrative:
-              "{shortName} knocks on the boss's door. The words come out quickly — the petition, the signatures, Ruth's name. By Friday, Ruth's locker is cleaned out. The flyers stop. Business recovers. {shortName} keeps the job but can't look at Ruth's empty chair without feeling sick.",
-            consequences: [
-              "Ruth is fired and likely blacklisted",
-              "Business at {workplace} recovers",
-              "{shortName} carries the guilt of betraying a colleague",
-            ],
-            suspicionChange: -10,
-            integrityChange: -15,
-            tone: "negative",
-            historicalNote:
-              "Economic pressure was a powerful enforcement tool. Boycott threats against businesses forced employers to fire suspected 'subversives,' even without any evidence of wrongdoing.",
-          },
-        },
-        {
-          id: "B",
-          text: "Organize the staff to stand together. If they can't fire everyone, they can't fire anyone.",
-          alignment: "defiant",
-          riskLevel: "high",
-          outcome: {
-            narrative:
-              "{shortName} gathers the remaining workers in the break room. 'If we let them pick us off one by one, we're all next.' Some nod. Others look at the floor. The boss hears about the meeting. By Monday, {shortName} is called in for a 'performance review.' The solidarity holds — barely.",
-            consequences: [
-              "Workers form a fragile united front",
-              "{shortName} is marked as an agitator by management",
-              "Ruth keeps her job, for now",
-            ],
-            suspicionChange: 15,
-            integrityChange: 10,
-            tone: "neutral",
-            historicalNote:
-              "Workplace solidarity was rare during the Red Scare. Those who organized resistance often became targets themselves, creating a cycle of fear that discouraged collective action.",
-          },
-        },
-        {
-          id: "C",
-          text: "Keep your head down and hope the boss doesn't ask you directly. Don't volunteer anything.",
-          alignment: "neutral",
-          riskLevel: "medium",
-          outcome: {
-            narrative:
-              "Days pass. The boss interviews each employee. When {shortName}'s turn comes, the questions are pointed: 'Do you know who it might be? Have you noticed anything unusual?' {shortName} shrugs, says nothing useful. The boss looks disappointed. The job is safe today, but the investigation continues.",
-            consequences: [
-              "The boss writes 'uncooperative' in {shortName}'s personnel file but takes no further action — for now",
-              "Ruth eats lunch alone every day, eyes red, waiting for the axe to fall",
-              "Someone scratches the word 'RED' into the paint on Ruth's locker — and no one reports it",
-            ],
-            suspicionChange: 3,
-            integrityChange: -2,
-            tone: "neutral",
-            historicalNote:
-              "Staying silent was the most common response during the McCarthy era. It preserved individual safety but allowed the system of accusation to continue unchallenged.",
-          },
-        },
-      ],
-    },
-    {
-      headline: "An Anonymous Tip Arrives About {shortName}'s Neighbor",
-      scene:
-        "A typed note appears in {shortName}'s mailbox: 'Your neighbor at 412 Elm Street holds secret meetings on Thursday nights. As a patriotic American, you should report this to the authorities.' {shortName} knows the neighbor — old Mr. Petrov, a retired watchmaker who hosts a chess club.",
-      situation:
-        "Mr. Petrov is a Russian immigrant who came to America in 1921. His Thursday chess club is exactly what it looks like — old men playing chess and drinking tea. But his Russian name and the anonymous note could be enough to ruin him in this climate.",
-      choices: [
-        {
-          id: "A",
-          text: "Throw the note away and warn Mr. Petrov that someone is watching him.",
-          alignment: "defiant",
-          riskLevel: "medium",
-          outcome: {
-            narrative:
-              "{shortName} knocks on Mr. Petrov's door that evening. The old man listens, nods slowly, and says nothing for a long time. 'In Russia, neighbors informed on neighbors. I came to America to escape this.' He thanks {shortName} quietly and cancels the chess club. Something small and good in the neighborhood dies.",
-            consequences: [
-              "Mr. Petrov is warned and stops the chess club",
-              "{shortName} has protected a neighbor but drawn no attention",
-              "The anonymous informer may try again with authorities directly",
-            ],
-            suspicionChange: 5,
-            integrityChange: 8,
-            tone: "neutral",
-            historicalNote:
-              "Russian and Eastern European immigrants were frequent targets of suspicion during the Red Scare, regardless of their actual political beliefs. Their accents and foreign names made them easy marks.",
-          },
-        },
-        {
-          id: "B",
-          text: "Report the note to the FBI. It's probably nothing, but better safe than sorry.",
-          alignment: "cooperative",
-          riskLevel: "low",
-          outcome: {
-            narrative:
-              "The FBI agent takes the note, asks a few questions about Mr. Petrov, and leaves. A week later, two agents visit Mr. Petrov's home. The chess club is searched. Mr. Petrov's naturalization papers are reviewed. He is cleared eventually, but his hands shake now when he sets up the chessboard. He never invites {shortName} for tea again.",
-            consequences: [
-              "Mr. Petrov is investigated and eventually cleared",
-              "The trauma of investigation leaves permanent scars",
-              "A neighbor's trust is broken irreparably",
-            ],
-            suspicionChange: -8,
-            integrityChange: -12,
-            tone: "negative",
-            historicalNote:
-              "The FBI received thousands of anonymous tips during the Red Scare. Most led nowhere, but the investigations they triggered devastated the lives of innocent people, particularly immigrants.",
-          },
-        },
-        {
-          id: "C",
-          text: "Ignore the note entirely. It's none of your business and probably written by a crank.",
-          alignment: "neutral",
-          riskLevel: "low",
-          outcome: {
-            narrative:
-              "{shortName} crumples the note and tosses it in the trash. Life goes on. Mr. Petrov's chess club continues. But a nagging thought remains: whoever wrote that note sent copies to others too. If someone else reports it, Mr. Petrov faces an investigation — and {shortName} could have warned him.",
-            consequences: [
-              "Mr. Petrov sets up the chess pieces the following Thursday, unaware that someone is building a case against him",
-              "The same typed note appears in three other mailboxes on the block — someone will eventually act on it",
-              "{shortName} passes Mr. Petrov's house every morning and wonders if today is the day the FBI car shows up",
-            ],
-            suspicionChange: 0,
-            integrityChange: -3,
-            tone: "neutral",
-            historicalNote:
-              "Anonymous denunciations were a hallmark of the McCarthy era. The system relied on ordinary citizens choosing to act on suspicion rather than evidence.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -2276,6 +2147,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Local loyalty committees sprang up across America in the early 1950s. Some participants joined hoping to moderate the process from within, but most found the committees took on a life of their own.",
+            storyTag: "kept_head_down",
           },
         },
         {
@@ -2296,6 +2168,7 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Refusing to participate in loyalty programs was itself treated as suspicious. The logic of McCarthyism demanded that loyal Americans prove their loyalty through active participation.",
+            storyTag: "spoke_up",
           },
         },
         {
@@ -2316,6 +2189,295 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "The 'silent majority' of Americans neither actively supported nor opposed McCarthyism. Historians debate whether their passivity enabled the worst excesses or simply reflected the impossible pressures of the era.",
+            storyTag: "kept_head_down",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName}'s Child Comes Home With Questions",
+      scene:
+        "{shortName}'s ten-year-old comes home from school upset. The teacher showed a filmstrip about 'enemies within America' and asked students to report any 'suspicious talk' they hear at home. The child looks up and asks: 'Are we suspicious, Daddy?'",
+      situation:
+        "The loyalty education program is reaching into schools across {location}. Children are being taught to fear — and to inform. {shortName} must decide what to tell a frightened child about a world that is teaching them to distrust their own neighbors.",
+      choices: [
+        {
+          id: "A",
+          text: "Sit your child down and explain, carefully, that the filmstrip was wrong — that good Americans don't spy on each other.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} holds the child close and speaks quietly about what America is supposed to mean — fairness, decency, not judging people without evidence. The child seems reassured. But the next day at school, during sharing time, the child says: 'My parent told me the filmstrip was wrong.' The teacher writes a note. The principal calls.",
+            consequences: [
+              "The child repeats {shortName}'s words at school",
+              "The principal schedules a meeting about 'concerning attitudes'",
+              "{shortName}'s parenting is now under scrutiny",
+            ],
+            suspicionChange: 12,
+            integrityChange: 8,
+            tone: "neutral",
+            historicalNote:
+              "Cold War education programs like 'Duck and Cover' and loyalty filmstrips were common in American schools during the 1950s. Children were taught that Communists could be hiding anywhere — even next door.",
+            storyTag: "spoke_up",
+          },
+        },
+        {
+          id: "B",
+          text: "Tell your child the teacher is right and that everyone must be watchful. It's safer if the child believes what the school teaches.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "'Your teacher knows best,' {shortName} says, and the child nods solemnly. That night, {shortName} overhears the child questioning a sibling: 'Have you ever heard Mom say anything about Communists?' The culture of suspicion has entered the living room. {shortName} created it.",
+            consequences: [
+              "The child begins monitoring family conversations",
+              "{shortName} reinforces the climate of fear in the home",
+              "A small piece of childhood innocence is sacrificed",
+            ],
+            suspicionChange: -5,
+            integrityChange: -12,
+            tone: "negative",
+            historicalNote:
+              "The FBI distributed materials encouraging children to report 'subversive' conversations. Some families were investigated based on statements made by their own children at school.",
+            storyTag: "went_along",
+          },
+        },
+        {
+          id: "C",
+          text: "Change the subject. Make dinner, help with homework — pretend the question was never asked.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} says 'Don't worry about all that' and puts on a pot of soup. The child goes quiet. But the question hangs in the air for days. At {workplace}, {shortName} hears that other parents got the same questions. Nobody knows what to say either.",
+            consequences: [
+              "The child learns that some questions shouldn't be asked",
+              "{shortName} avoids the issue but doesn't resolve it",
+              "The silence teaches its own lesson about fear",
+            ],
+            suspicionChange: 0,
+            integrityChange: -5,
+            tone: "neutral",
+            historicalNote:
+              "Many parents struggled with how to discuss McCarthyism with their children. The silence itself became a form of education — teaching children that certain topics were dangerous.",
+            storyTag: "kept_head_down",
+          },
+        },
+      ],
+    },
+    {
+      headline: "A Customer Boycott Threatens {workplace}",
+      scene:
+        "A group calling itself the 'Patriotic Citizens Council' has posted flyers outside {workplace} accusing the business of employing 'known subversives.' Customers are crossing the street to avoid the entrance. The owner is panicking.",
+      situation:
+        "The 'subversive' in question is {shortName}'s coworker Ruth, whose husband was called before HUAC last month. Ruth herself has done nothing wrong. The owner says someone has to go — Ruth, or the business. {shortName} is asked to deliver the message.",
+      choices: [
+        {
+          id: "A",
+          text: "Refuse to deliver the message. Tell the owner that firing Ruth for her husband's politics is wrong.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "The owner's face hardens. 'Then you can join her,' he says. {shortName} walks out of the office, finds Ruth at her desk, and tells her what happened. They leave {workplace} together. The flyers stay up. Two people are now out of work instead of one.",
+            consequences: [
+              "{shortName} loses the job at {workplace}",
+              "Ruth is fired regardless",
+              "The Patriotic Citizens Council claims another victory",
+            ],
+            suspicionChange: 15,
+            integrityChange: 10,
+            tone: "negative",
+            historicalNote:
+              "Organized boycotts and pressure campaigns were common tools of anti-Communist groups. Organizations like the American Legion maintained lists of 'un-American' businesses and demanded firings.",
+            storyTag: "spoke_up",
+          },
+        },
+        {
+          id: "B",
+          text: "Deliver the message. It's the owner's decision, not yours. You're just the messenger.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} walks to Ruth's desk and can barely get the words out. Ruth nods slowly, as if she expected it. She packs her things in a grocery bag. At the door, she turns: 'They'll come for someone else next, you know.' The flyers come down. Business returns to normal. The empty desk stays empty.",
+            consequences: [
+              "Ruth is fired and leaves quietly",
+              "{shortName}'s job is secure",
+              "The precedent is set: fear works",
+            ],
+            suspicionChange: -8,
+            integrityChange: -15,
+            tone: "negative",
+            historicalNote:
+              "Guilt by association extended to spouses, family members, and anyone connected to accused individuals. Thousands of people lost jobs not for anything they did, but for who they were married to or related to.",
+            storyTag: "went_along",
+          },
+        },
+        {
+          id: "C",
+          text: "Suggest the owner give Ruth a leave of absence until things calm down — not a firing, just time away.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "The owner considers it, then agrees — it's easier than an outright firing. Ruth is told to stay home 'until further notice.' She accepts it with hollow eyes. The flyers come down. Months pass. The leave of absence becomes permanent. No one says the word 'fired,' but Ruth never comes back.",
+            consequences: [
+              "Ruth is removed without being formally fired",
+              "The euphemism of 'leave' hides the reality",
+              "{shortName} finds the compromise satisfying no one",
+            ],
+            suspicionChange: 2,
+            integrityChange: -5,
+            tone: "neutral",
+            historicalNote:
+              "Many employers found euphemisms for politically motivated firings — 'reorganizations,' 'leaves of absence,' 'budget cuts' — to avoid the appearance of blacklisting while achieving the same result.",
+            storyTag: "kept_head_down",
+          },
+        },
+      ],
+    },
+    {
+      headline: "An Anonymous Tip Arrives About {shortName}'s Neighbor",
+      scene:
+        "A typed, unsigned letter appears in {shortName}'s mailbox. It accuses the neighbor down the street — Mr. Kovic, a quiet retired schoolteacher — of being a former Communist. The letter urges {shortName} to 'do the patriotic thing' and report him.",
+      situation:
+        "Mr. Kovic is 68 years old and spends his days gardening and reading. {shortName} has no idea if the accusation is true. The letter could be from a genuine concerned citizen, a neighborhood grudge, or even a test from the FBI. Doing nothing might be noted. Reporting might destroy an innocent man.",
+      choices: [
+        {
+          id: "A",
+          text: "Throw the letter away. You won't participate in anonymous accusations against a harmless old man.",
+          alignment: "defiant",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "{shortName} tears the letter in half and drops it in the trash. Mr. Kovic waves from his garden the next morning, unaware of how close the world came to crashing down on him. But two other neighbors received the same letter. The question is whether they threw theirs away too.",
+            consequences: [
+              "Mr. Kovic remains safe — from {shortName}'s direction, at least",
+              "Other neighbors may have received and acted on the same letter",
+              "{shortName} worries about being seen as uncooperative if others reported",
+            ],
+            suspicionChange: 5,
+            integrityChange: 5,
+            tone: "neutral",
+            historicalNote:
+              "Anonymous tips were a major source of FBI investigations during the McCarthy era. Many were motivated by personal grudges, neighborhood disputes, or racial and ethnic prejudice rather than genuine security concerns.",
+            storyTag: "showed_solidarity",
+          },
+        },
+        {
+          id: "B",
+          text: "Bring the letter to the local FBI office. You don't know if it's true, but it's not your place to decide — let the professionals handle it.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The FBI agent thanks {shortName} and files the letter. Three days later, two men in suits knock on Mr. Kovic's door. He answers in his gardening gloves. The investigation that follows takes six months. Mr. Kovic is eventually cleared, but his health deteriorates from the stress. He stops gardening.",
+            consequences: [
+              "Mr. Kovic endures a six-month investigation",
+              "He is cleared but never fully recovers",
+              "{shortName} is recorded as a cooperative citizen",
+            ],
+            suspicionChange: -10,
+            integrityChange: -10,
+            tone: "negative",
+            historicalNote:
+              "The FBI received thousands of anonymous tips per week during the peak of McCarthyism. Most led to investigations of innocent people, but the investigations themselves caused lasting damage regardless of outcome.",
+            storyTag: "went_along",
+          },
+        },
+        {
+          id: "C",
+          text: "Go talk to Mr. Kovic directly. Show him the letter and warn him that someone in the neighborhood is targeting him.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "Mr. Kovic reads the letter with trembling hands. He sits down heavily. 'I was a member,' he says quietly. 'Forty years ago. I was twenty-two.' He thanks {shortName} and spends the rest of the week burning old papers. Two months later, his house goes up for sale. He moves to live with his daughter in another state.",
+            consequences: [
+              "Mr. Kovic learns he is targeted and decides to flee",
+              "{shortName} now knows a dangerous secret",
+              "A neighbor is displaced from his home by fear",
+            ],
+            suspicionChange: 3,
+            integrityChange: 2,
+            tone: "neutral",
+            historicalNote:
+              "Many Americans with distant connections to left-wing politics lived in constant fear of exposure. Some relocated, changed names, or cut ties with anyone who might draw attention.",
+            storyTag: "showed_solidarity",
+          },
+        },
+      ],
+    },
+    {
+      headline: "The Union Vote at {workplace} Turns Political",
+      scene:
+        "The workers at {workplace} are voting on whether to keep their union affiliation. Management has warned that the union's 'Communist ties' could bring federal investigators to {location}. The vote is tomorrow. {shortName} hasn't decided which way to go.",
+      situation:
+        "The union has been good to the workers — fair pay, safety standards, holiday time. But HUAC has been targeting unions nationwide. A 'yes' vote to keep the union could put everyone on a list. A 'no' vote means losing protections that took years to win.",
+      choices: [
+        {
+          id: "A",
+          text: "Vote to keep the union. The workers need it, and you won't let fear take away what you fought for.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} marks the ballot and drops it in the box with a steady hand. The vote passes — barely. The next week, a man from the regional HUAC office visits {workplace} and asks for the membership rolls. Management cooperates. Every worker who voted 'yes' is now potentially on a list. {shortName} included.",
+            consequences: [
+              "The union survives the vote",
+              "HUAC requests the membership rolls",
+              "Every union member at {workplace} is now under potential scrutiny",
+            ],
+            suspicionChange: 15,
+            integrityChange: 8,
+            tone: "neutral",
+            historicalNote:
+              "The Taft-Hartley Act of 1947 required union leaders to sign affidavits swearing they were not Communists. Unions that refused were stripped of legal protections, leaving their members vulnerable.",
+            storyTag: "spoke_up",
+          },
+        },
+        {
+          id: "B",
+          text: "Vote to dissolve the union. It's not worth the risk to you or your coworkers.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The dissolution passes by twelve votes. The next morning, management announces a new schedule — longer hours, no overtime premium. The safety committee is disbanded. {shortName} realizes the union wasn't just about politics. It was the only leverage the workers had. Now it's gone.",
+            consequences: [
+              "The union is dissolved",
+              "Worker protections are immediately rolled back",
+              "Management uses the anti-Communist climate to consolidate power",
+            ],
+            suspicionChange: -5,
+            integrityChange: -12,
+            tone: "negative",
+            historicalNote:
+              "McCarthyism was used by some employers as a tool to break unions and roll back labor protections. The conflation of union organizing with Communism undermined decades of workers' rights gains.",
+            storyTag: "went_along",
+          },
+        },
+        {
+          id: "C",
+          text: "Don't vote at all. Skip the meeting and let others decide.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} stays home, watching the clock. The vote is close — it could have gone either way. The union survives by three votes. {shortName} is relieved, then ashamed. The result was decided by people willing to show up. {shortName} was not one of them.",
+            consequences: [
+              "The union narrowly survives without {shortName}'s vote",
+              "{shortName} avoids being on any list",
+              "The abdication of responsibility settles in quietly",
+            ],
+            suspicionChange: 0,
+            integrityChange: -8,
+            tone: "neutral",
+            historicalNote:
+              "Voter abstention during critical union and civic votes surged during the McCarthy era as Americans feared that any form of participation could draw scrutiny.",
+            storyTag: "kept_head_down",
           },
         },
       ],
@@ -2407,6 +2569,110 @@ export const VERDICT_TEMPLATES = {
         "Like Pete Seeger, who was blacklisted for years after refusing to cooperate with HUAC but continued to perform and eventually saw his reputation fully restored, principled resistance sometimes wins in the end.",
     },
   ],
+};
+
+// ─── BRIDGE TEXTS ─────────────────────────────────────────────────────────
+// Shown as "Previously…" at the start of each scenario after the first.
+// Selected by the most recent storyTag. Per-archetype for narrative fit.
+// Text uses the same {shortName}, {workplace}, {location} templates.
+
+export const BRIDGE_TEXTS = {
+  informer: {
+    named_names: [
+      "In the weeks since giving names, {shortName} avoids the old haunts near {workplace}. One of the people named has already lost a job. Another won't answer the phone. The guilt sits like a stone in {shortName}'s chest — but the investigators have stopped calling, and that silence is its own kind of relief.",
+      "The names {shortName} provided have done their work. Two subpoenas were issued last week. A former colleague's wife called the house in tears before hanging up. {shortName} unplugged the phone for three days.",
+      "{shortName} passes one of the named colleagues on the street in {location}. They make eye contact. Neither speaks. The colleague crosses to the other side. {shortName} keeps walking, faster now, as if outrunning the choice is still possible.",
+    ],
+    defied_committee: [
+      "Since refusing to cooperate, {shortName}'s world has contracted. The phone at {workplace} doesn't ring anymore. Old friends are polite but distant. A letter from the committee sits unopened on the kitchen table — {shortName} already knows what it says.",
+      "The decision to resist has not gone unnoticed. {shortName}'s name appeared in a column listing 'uncooperative witnesses.' At {workplace}, assignments have dried up. The landlord mentioned that 'someone from the government' came asking questions.",
+      "{shortName} reads about another witness who cooperated and kept their job. The temptation to reconsider flickers — then dies. The cost of defiance is steep, but {shortName} can still look in the mirror.",
+    ],
+    resisted_pressure: [
+      "{shortName} has been walking a tightrope — not fully cooperating, not fully resisting. The FBI agents haven't returned, but they haven't closed the file either. Every knock on the door sends {shortName}'s heart racing.",
+      "The middle ground is getting narrower. {shortName}'s boss at {workplace} has started asking pointed questions again. The investigators want more than what {shortName} gave them. Silence is starting to look like defiance.",
+    ],
+    hedged_bets: [
+      "{shortName} has managed to avoid committing fully to either side. But the strategy of delay and deflection is wearing thin. At {workplace}, people are choosing sides, and the neutral ground {shortName} occupies is shrinking by the day.",
+      "The fence-sitting can't last forever. {shortName} overhears two colleagues at {workplace} debating who can be trusted. Both of them glance at {shortName} with the same uncertain expression. In this climate, ambiguity is its own kind of suspicion.",
+      "Another week of half-answers and evasions. {shortName} told the investigator nothing useful, but the man left his card again. 'When you're ready to talk,' he said. The card sits on the nightstand, impossible to ignore.",
+    ],
+  },
+  resister: {
+    defied_committee: [
+      "The contempt citation hangs over {shortName} like a guillotine blade. The lawyer says the case could take years. Meanwhile, {workplace} has 'regretfully' suspended {shortName} without pay. A solidarity fund from colleagues covers rent — barely.",
+      "Since the confrontation with the committee, {shortName}'s name has become a symbol. Letters arrive from strangers — some full of admiration, others full of threats. {shortName} reads them all at the kitchen table in {location}, trying to separate courage from recklessness.",
+      "{shortName}'s defiance made the papers. At {workplace}, some whisper support in the hallways. Others won't make eye contact. The committee has scheduled another round of hearings, and {shortName}'s lawyer warns that this time, they won't be as patient.",
+    ],
+    stood_ground: [
+      "{shortName} held firm but at a cost. The professional world that once embraced {shortName} has grown cold. Invitations stop arriving. Projects are reassigned. The quiet erosion of a career is almost worse than a dramatic firing — it's death by a thousand small cuts.",
+      "Standing ground has earned {shortName} respect from a small circle and suspicion from everyone else. A colleague at {workplace} passes a note: 'Be careful. They're building a file.' {shortName} crumples it and throws it away, then retrieves it. Better to know.",
+    ],
+    sought_middle_ground: [
+      "{shortName}'s attempt at compromise has satisfied no one. The committee sees evasion; supporters see weakness. {shortName} sits in the apartment in {location}, caught between two fires, wondering if there was ever a middle path at all.",
+      "The negotiated testimony bought time but not safety. The committee's counsel called again — 'just a few follow-up questions.' {shortName}'s lawyer advises caution. The follow-up questions are never just questions.",
+      "Neither side trusts {shortName} now. The committee thinks the testimony was evasive. Fellow resisters think it was a sellout. At {workplace}, {shortName} eats lunch alone, which is its own kind of answer.",
+    ],
+    capitulated: [
+      "The decision to cooperate has brought a hollow peace. The investigation is closed, the job is safe, but {shortName} catches sideways glances from colleagues at {workplace} who know what cooperation cost. A former friend left a single word on {shortName}'s answering machine: 'Judas.'",
+      "{shortName}'s cooperation bought survival but not peace. The people who were named have scattered — fired, blacklisted, one reportedly fled to Mexico. {shortName} reads about them in the paper and feels the walls of the apartment in {location} closing in.",
+    ],
+  },
+  bystander: {
+    went_along: [
+      "Going along with the loyalty measures felt pragmatic at the time. But {shortName} has noticed the atmosphere at {workplace} changing — people speak in whispers now, watch what they say, avoid certain topics. The world got a little smaller, and {shortName} helped make it that way.",
+      "{shortName} signed what needed signing and stayed quiet when silence was expected. Life continues, but there's a new heaviness at {workplace}. The colleague who was fired hasn't been replaced. The empty desk is a daily reminder.",
+      "The path of least resistance led here: a job, a paycheck, a growing unease. {shortName} went along, and things are fine — except for the look on Ed's face when security escorted him out. That look visits {shortName} at 3 a.m.",
+    ],
+    spoke_up: [
+      "Speaking up has painted a target on {shortName}'s back. At {workplace}, the supervisor has started scheduling extra 'performance reviews.' A neighbor mentioned that someone was asking questions about {shortName}'s 'affiliations.' In {location}, word travels fast.",
+      "{shortName}'s act of courage at {workplace} has not been forgotten — by anyone. Supporters slip notes of thanks. But the regional manager visited last week, and the conversation was less about performance and more about 'loyalty.' The message was clear.",
+      "Since standing up, {shortName} has become the person others come to in whispers. 'Were you really the one who...?' Yes. {shortName} was. And the cost is becoming clearer every day — fewer shifts, colder greetings, a sense of being watched.",
+    ],
+    showed_solidarity: [
+      "{shortName}'s quiet act of solidarity hasn't gone unnoticed. At {workplace}, someone left an anonymous note in {shortName}'s locker: 'We see what you did.' Whether it was a thank-you or a warning is impossible to tell.",
+      "Helping from the shadows has its own weight. {shortName} checks over both shoulders now before doing anything that might be considered 'sympathetic.' At {workplace} in {location}, the line between decency and danger has never felt thinner.",
+    ],
+    kept_head_down: [
+      "Keeping a low profile has kept {shortName} safe — so far. But the investigations at {workplace} are spreading. More names, more interviews, more empty desks. {shortName} walks past them every morning, eyes forward, stomach tight.",
+      "{shortName} has perfected the art of being invisible. Don't volunteer. Don't comment. Don't linger near the wrong people at {workplace}. It's exhausting, this constant calibration of normalcy. But the alternative — being noticed — is worse.",
+      "Another week of keeping quiet. {shortName} watched a coworker get called into the office and not come back. No one asked where they went. That silence, {shortName} realizes, is the sound of everyone keeping their head down at once.",
+    ],
+  },
+};
+
+// ─── STORY CODAS ──────────────────────────────────────────────────────────
+// Appended to the verdict epilogue based on accumulated storyTags.
+// These tie the specific choices back into the ending.
+
+export const STORY_CODAS = {
+  // Informer tags
+  named_names:
+    "The names {shortName} gave to investigators followed both parties for years. Some of the people named never worked in their profession again. One sent a letter, years later — not of forgiveness, but of explanation. {shortName} read it once and never opened it again.",
+  hedged_bets:
+    "{shortName}'s attempts to stay in the middle satisfied no one and protected nothing. The investigators saw evasion; the accused saw cowardice. In the end, the fence was not a safe place to sit — it was just a slower way of falling.",
+  resisted_pressure:
+    "{shortName}'s small acts of resistance — the vague answers, the convenient forgetfulness — may have shielded someone. There's no way to know for certain. But the risk was real, and the willingness to take it mattered.",
+
+  // Resister tags
+  defied_committee:
+    "The defiance cost {shortName} dearly — years of blacklisting, lost income, fractured relationships. But when the McCarthy era finally ended and America began to reckon with what it had done, {shortName}'s refusal to cooperate stood as a testament to what conscience looks like under fire.",
+  stood_ground:
+    "{shortName}'s quiet resistance — firm but not theatrical — earned a different kind of legacy. Not headlines, but the steady respect of people who remembered what it cost to simply say no.",
+  sought_middle_ground:
+    "The middle path {shortName} tried to walk left no monument and earned no headlines. History rarely remembers the compromisers. But in the moment, with a family to feed and a career to save, the choices felt less like philosophy and more like survival.",
+  capitulated:
+    "The decision to cooperate never stopped haunting {shortName}. Years later, at a dinner party in {location}, someone mentioned the McCarthy era in passing. {shortName} set down a fork and left the room. Some wounds stay open.",
+
+  // Bystander tags
+  went_along:
+    "Looking back, {shortName} could never pinpoint the exact moment when going along became complicity. It happened gradually — a signature here, a silence there — until the ordinary acts of compliance had built something {shortName} no longer recognized.",
+  spoke_up:
+    "The moment {shortName} spoke up changed everything. It cost a promotion, a few friendships, and several months of looking over one shoulder. But it also proved something: that ordinary people, in ordinary jobs, could choose not to be bystanders. And some of them did.",
+  showed_solidarity:
+    "{shortName}'s quiet acts of solidarity — a meal shared, a warning whispered, a hand extended when no one was watching — never made the history books. But they made the difference between despair and survival for the people who received them.",
+  kept_head_down:
+    "{shortName} survived by becoming invisible. It worked. But years later, when the grandchildren asked what it was like during the Red Scare, {shortName} found it difficult to answer. The truth — 'I kept my head down' — felt like both a confession and an excuse.",
 };
 
 // ─── HELPER: COMPUTE VERDICT TYPE ──────────────────────────────────────────

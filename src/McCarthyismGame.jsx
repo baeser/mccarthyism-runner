@@ -3,6 +3,8 @@ import { jsPDF } from "jspdf";
 import {
   CHARACTERS,
   VERDICT_TEMPLATES,
+  BRIDGE_TEXTS,
+  STORY_CODAS,
   computeVerdictType,
   pickRandom,
   pickFreshArchetype,
@@ -499,7 +501,7 @@ function CharacterScreen({ character, onBegin }) {
   );
 }
 
-function ScenarioScreen({ character, scenario, turn, suspicion, integrity, onChoice }) {
+function ScenarioScreen({ character, scenario, turn, suspicion, integrity, onChoice, bridge }) {
   return (
     <div className="fade-in">
       <div className="turn-header">
@@ -511,6 +513,13 @@ function ScenarioScreen({ character, scenario, turn, suspicion, integrity, onCho
         <Meter label="Suspicion Level" value={suspicion} type="suspicion" />
         <Meter label="Integrity" value={integrity} type="integrity" />
         <hr className="divider" />
+        {bridge && (
+          <>
+            <div className="section-label">Previously…</div>
+            <p className="scenario-text" style={{ fontStyle: "italic", borderLeft: "3px solid #8b7355", paddingLeft: 14, marginBottom: 18, opacity: 0.9 }}>{bridge}</p>
+            <hr className="divider" />
+          </>
+        )}
         <div className="section-label">The Scene</div>
         <p className="scenario-text">{scenario.scene}</p>
         <div className="section-label">Your Situation</div>
@@ -762,7 +771,9 @@ function FinalScreen({ character, summary, suspicion, integrity, history, onPlay
         <p className="final-verdict">{summary.verdict}</p>
         <hr className="divider" />
         <div className="section-label">Epilogue</div>
-        <p className="scenario-text">{summary.epilogue}</p>
+        {summary.epilogue.split("\n\n").map((para, i) => (
+          <p key={i} className="scenario-text">{para}</p>
+        ))}
         <hr className="divider" />
         <div className="section-label">For Reflection</div>
         <p className="scenario-text" style={{ fontStyle: "italic" }}>{summary.reflection}</p>
@@ -820,6 +831,8 @@ export default function McCarthyismGame() {
   const [suspicion, setSuspicion] = useState(0);
   const [integrity, setIntegrity] = useState(80);
   const [history, setHistory] = useState([]);
+  const [storyTags, setStoryTags] = useState([]);
+  const [lastBridge, setLastBridge] = useState(null);
 
   const MAX_TURNS = 4;
 
@@ -834,6 +847,8 @@ export default function McCarthyismGame() {
     setIntegrity(char.integrity);
     setTurn(1);
     setHistory([]);
+    setStoryTags([]);
+    setLastBridge(null);
     setOutcome(null);
     setSummary(null);
     setPhase("character");
@@ -846,6 +861,7 @@ export default function McCarthyismGame() {
 
   function handleChoice(choice) {
     const out = choice.outcome;
+    const tag = out.storyTag || null;
     const newSuspicion = Math.min(100, Math.max(0, suspicion + out.suspicionChange));
     const newIntegrity = Math.min(100, Math.max(0, integrity + out.integrityChange));
     setSuspicion(newSuspicion);
@@ -861,8 +877,22 @@ export default function McCarthyismGame() {
         integrityChange: out.integrityChange,
         suspicionAfter: newSuspicion,
         integrityAfter: newIntegrity,
+        storyTag: tag,
       },
     ]);
+    // Track story tags and generate bridge text for next scenario
+    if (tag) {
+      setStoryTags((prev) => [...prev, tag]);
+      const archBridges = BRIDGE_TEXTS[character.archetype]?.[tag];
+      if (archBridges) {
+        const bridgeText = personalizeText(pickRandom(archBridges), character);
+        setLastBridge(bridgeText);
+      } else {
+        setLastBridge(null);
+      }
+    } else {
+      setLastBridge(null);
+    }
     setOutcome(out);
     setPhase("outcome");
   }
@@ -877,7 +907,23 @@ export default function McCarthyismGame() {
       );
       const verdictType = computeVerdictType(suspicion, integrity);
       const template = pickRandom(VERDICT_TEMPLATES[verdictType]);
-      setSummary({ ...template, verdictType });
+      // Personalize verdict text with character details
+      const personalizedVerdict = {
+        verdict: personalizeText(template.verdict, character),
+        epilogue: personalizeText(template.epilogue, character),
+        reflection: personalizeText(template.reflection, character),
+        historicalParallel: personalizeText(template.historicalParallel, character),
+      };
+      // Append story codas based on accumulated tags for narrative continuity
+      const uniqueTags = [...new Set(storyTags)];
+      const codas = uniqueTags
+        .map((tag) => STORY_CODAS[tag])
+        .filter(Boolean)
+        .map((coda) => personalizeText(coda, character));
+      if (codas.length > 0) {
+        personalizedVerdict.epilogue += "\n\n" + codas.join("\n\n");
+      }
+      setSummary({ ...personalizedVerdict, verdictType });
       setPhase("final");
     } else {
       setTurn(nextTurn);
@@ -926,6 +972,7 @@ export default function McCarthyismGame() {
               suspicion={suspicion}
               integrity={integrity}
               onChoice={handleChoice}
+              bridge={turn > 1 ? lastBridge : null}
             />
           )}
 
