@@ -52,6 +52,36 @@ export const CHARACTERS = {
       archetypeHint:
         "The FBI has made it clear: cooperate and name the 'subversives' you hired, or watch your career disappear.",
     },
+    {
+      name: "Vivian Lazar",
+      shortName: "Vivian",
+      age: 31,
+      occupation: "Jazz Singer",
+      workplace: "the club",
+      location: "New York, New York",
+      backstory:
+        "Vivian sang at benefit concerts for labor unions and civil rights organizations throughout the late 1940s. She never joined any political party, but her name appeared on the program for a fundraiser later identified as a Communist front. Now the nightclub owners who once fought to book her won't return her calls.",
+      loyaltySuspicion: 30,
+      integrity: 72,
+      archetype: "informer",
+      archetypeHint:
+        "You performed alongside people whose names are now on the blacklist. Telling investigators who organized those concerts could clear your name.",
+    },
+    {
+      name: "Harold Rosen",
+      shortName: "Harold",
+      age: 52,
+      occupation: "Government Clerk",
+      workplace: "the agency",
+      location: "Washington, D.C.",
+      backstory:
+        "Harold has worked for the State Department for twenty-three years, processing visa applications with quiet efficiency. In 1938, he donated ten dollars to the Abraham Lincoln Brigade, a group that fought fascism in Spain — a cause that now marks him as a security risk under President Truman's loyalty program.",
+      loyaltySuspicion: 35,
+      integrity: 68,
+      archetype: "informer",
+      archetypeHint:
+        "Your loyalty board hearing is in three weeks. Naming other State Department employees with 'questionable' associations could save your pension.",
+    },
   ],
   resister: [
     {
@@ -98,6 +128,36 @@ export const CHARACTERS = {
       archetype: "resister",
       archetypeHint:
         "You believe that signing a loyalty oath under coercion betrays the academic freedom that makes science possible.",
+    },
+    {
+      name: "Rev. Thomas Carter",
+      shortName: "Thomas",
+      age: 48,
+      occupation: "Methodist Minister",
+      workplace: "the church",
+      location: "Baltimore, Maryland",
+      backstory:
+        "Thomas has preached against racial segregation and economic injustice for two decades. His sermons quoting the Gospel's call to serve the poor have drawn the attention of HUAC investigators, who see his social justice work as evidence of Communist influence within the clergy.",
+      loyaltySuspicion: 30,
+      integrity: 92,
+      archetype: "resister",
+      archetypeHint:
+        "You answer to God, not to a congressional committee. But your congregation is frightened, and the bishop is urging caution.",
+    },
+    {
+      name: "Rosa Gutierrez",
+      shortName: "Rosa",
+      age: 37,
+      occupation: "Union Organizer",
+      workplace: "the union hall",
+      location: "San Antonio, Texas",
+      backstory:
+        "Rosa organized garment workers in the Rio Grande Valley, fighting for fair wages and safe conditions. The union's success drew national attention — and HUAC's scrutiny. As a Mexican-American woman, she faces both political persecution and racial prejudice. The committee wants her membership rolls.",
+      loyaltySuspicion: 35,
+      integrity: 88,
+      archetype: "resister",
+      archetypeHint:
+        "Your union members trusted you with their names. The committee demands those names. Handing them over would betray everyone who fought beside you.",
     },
   ],
   bystander: [
@@ -146,11 +206,41 @@ export const CHARACTERS = {
       archetypeHint:
         "Management wants you to identify 'troublemakers.' You just want to build cars and go home to your family.",
     },
+    {
+      name: "Nurse Betty Halverson",
+      shortName: "Betty",
+      age: 27,
+      occupation: "Hospital Nurse",
+      workplace: "the hospital",
+      location: "Minneapolis, Minnesota",
+      backstory:
+        "Betty graduated from nursing school in 1950 and works the night shift at Hennepin County General. She has never been political — her life is bedpans, charts, and double shifts. But her roommate from nursing school just appeared on the front page, accused of passing information to Soviet agents. The FBI wants to talk.",
+      loyaltySuspicion: 10,
+      integrity: 82,
+      archetype: "bystander",
+      archetypeHint:
+        "You barely knew your roommate's politics. But guilt by association doesn't require guilt — just association.",
+    },
+    {
+      name: "George Nakamura",
+      shortName: "George",
+      age: 44,
+      occupation: "Hardware Store Owner",
+      workplace: "the store",
+      location: "Sacramento, California",
+      backstory:
+        "George spent three years in a Japanese internment camp during the war, then rebuilt his life from nothing. He now owns a small hardware store and coaches Little League. When a local veterans' group begins compiling a list of 'un-American' business owners, George recognizes the pattern all too well.",
+      loyaltySuspicion: 12,
+      integrity: 78,
+      archetype: "bystander",
+      archetypeHint:
+        "You survived the internment camps. You know what happens when a government decides certain people are the enemy. But speaking up could cost you everything — again.",
+    },
   ],
 };
 
 // ─── SCENARIOS ──────────────────────────────────────────────────────────────
-// 6 per archetype. Each playthrough randomly picks 4.
+// 10 per archetype. Each playthrough randomly picks 4.
 // Outcomes are embedded in each choice so no API is needed.
 // Text uses {name}, {shortName}, {occupation}, {workplace}, {location} templates.
 
@@ -281,9 +371,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} plays ignorant, claiming to never discuss politics at work. The boss seems skeptical but accepts the answer — for now. {shortName} leaves the meeting knowing this has only delayed the inevitable. The list is still in that desk.",
             consequences: [
-              "The boss remains suspicious of {shortName}'s loyalty",
-              "{shortName} avoids directly harming anyone — this time",
-              "The pressure to cooperate will return",
+              "The boss pencils a question mark next to {shortName}'s name on the list",
+              "No coworkers are fired — this week",
+              "A second meeting is scheduled for next Tuesday, and the boss won't accept ignorance twice",
             ],
             suspicionChange: 5,
             integrityChange: -3,
@@ -350,9 +440,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} offers the agents nothing useful — vague dates, uncertain recollections, hazy memories. They press harder, but {shortName} maintains the story. The agents leave frustrated. They will almost certainly come back.",
             consequences: [
-              "The agents are dissatisfied but have nothing to act on",
-              "{shortName} avoids directly harming David",
-              "The FBI may return with more pointed questions",
+              "The agents leave with a notebook full of nothing — but they note {shortName}'s evasiveness",
+              "David remains free, unaware of how close the FBI came to his door",
+              "Two weeks later the agents return, this time with David's photograph and more specific questions",
             ],
             suspicionChange: 5,
             integrityChange: -2,
@@ -419,9 +509,9 @@ export const SCENARIOS = {
             narrative:
               "The colleague considers {shortName}'s proposal and makes some calls. He comes back with a compromise: a general denunciation is acceptable, but {shortName} must also meet privately with an investigator and answer questions 'off the record.' Nothing said to investigators is truly off the record.",
             consequences: [
-              "{shortName} publishes a watered-down denunciation",
-              "A private meeting with investigators is scheduled",
-              "The return to work is delayed and uncertain",
+              "The denunciation runs in the Sunday paper — tepid enough to satisfy no one",
+              "An investigator named Collins calls to schedule a Tuesday meeting at the federal building",
+              "The colleague says the general statement 'isn't enough' and stops returning calls",
             ],
             suspicionChange: 0,
             integrityChange: -8,
@@ -488,9 +578,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} shrugs and steers the conversation toward the potato salad. Bill seems unsatisfied but lets it drop. Mrs. Alvarez is safe for now, but Bill will keep asking around until he finds someone willing to talk.",
             consequences: [
-              "Mrs. Alvarez remains safe for the moment",
-              "Bill continues his informal investigation",
-              "{shortName} avoids involvement but feels the moral tension",
+              "Mrs. Alvarez continues teaching her Monday poetry class — for now",
+              "Bill walks away unsatisfied and is seen the next morning talking to the school board chairman",
+              "{shortName} catches Mrs. Alvarez's eye at the grocery store and can't hold the gaze",
             ],
             suspicionChange: 2,
             integrityChange: -2,
@@ -570,6 +660,282 @@ export const SCENARIOS = {
         },
       ],
     },
+    {
+      headline: "A Childhood Friend Writes {shortName} a Letter",
+      scene:
+        "A letter arrives with no return address. Inside, {shortName}'s childhood friend Danny — now living under a false name in Canada — begs for help. He needs money wired to a Western Union in Montreal. The FBI may be monitoring {shortName}'s mail.",
+      situation:
+        "Danny and {shortName} grew up on the same block. Danny was always the idealist — attending rallies, handing out flyers. Now he's a fugitive. Helping him is a federal offense. But he was {shortName}'s closest friend for twenty years.",
+      choices: [
+        {
+          id: "A",
+          text: "Turn the letter over to the FBI. It proves you have nothing to hide and are willing to cooperate.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} places the letter in an envelope and drives it to the FBI field office. The agent reads it carefully, nods, and asks if Danny ever mentioned any other names. {shortName} watches them photocopy the letter, knowing Danny will soon have nowhere left to run.",
+            consequences: [
+              "Danny's location is compromised",
+              "{shortName} demonstrates loyalty to investigators",
+              "The FBI considers {shortName} a cooperative witness",
+            ],
+            suspicionChange: -15,
+            integrityChange: -18,
+            tone: "negative",
+            historicalNote:
+              "Many friendships were destroyed during the Red Scare. Some people informed on childhood friends, college roommates, and even family members to protect themselves.",
+          },
+        },
+        {
+          id: "B",
+          text: "Burn the letter immediately. You never received it.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} holds the letter over the kitchen sink, strikes a match, and watches Danny's handwriting curl into ash. If the FBI was monitoring the mail, they already know. But they can't prove what a pile of ash once said.",
+            consequences: [
+              "The letter is gone, but the postmark from Montreal is already logged in an FBI mail cover report",
+              "Danny is safe — he'll send another letter in three months, from a different city",
+              "{shortName} flinches every time the mailman comes to the door",
+            ],
+            suspicionChange: 12,
+            integrityChange: 8,
+            tone: "neutral",
+            historicalNote:
+              "The FBI's mail surveillance program, known as 'mail covers,' monitored correspondence of suspected Communists and their associates throughout the 1950s.",
+          },
+        },
+        {
+          id: "C",
+          text: "Send the money anonymously through a third party. Help Danny without creating a direct connection.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "{shortName} gives cash to a trusted acquaintance who asks no questions. The money reaches Montreal three days later. Danny is safe for now. But {shortName} has entered a conspiracy, however small, and the acquaintance now knows something dangerous.",
+            consequences: [
+              "Danny wires a one-word reply through the acquaintance: 'Safe'",
+              "The acquaintance — a bartender named Sal — now knows enough to destroy {shortName} if he ever talks",
+              "{shortName} has committed a federal offense: aiding a fugitive across international lines",
+            ],
+            suspicionChange: 5,
+            integrityChange: -3,
+            tone: "neutral",
+            historicalNote:
+              "Underground networks helped some blacklisted Americans escape to Mexico, Canada, and Europe. These networks relied on ordinary people willing to take extraordinary risks.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName} Is Offered a Deal at the Hearing",
+      scene:
+        "During a recess in the hearing, the committee's chief counsel pulls {shortName}'s lawyer aside. When the lawyer returns, his face is pale. 'They're offering a deal,' he says. 'Executive session. Closed doors. Just confirm five names they already have.'",
+      situation:
+        "The names are people the committee has already identified. Confirming them would add little new information — but it would make {shortName} a cooperative witness, eligible for clearance. Refusing means a public hearing with cameras and reporters.",
+      choices: [
+        {
+          id: "A",
+          text: "Accept the deal. If they already have the names, confirming them is a formality — and it saves your career.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} nods. In the closed session, the five names come easily. The committee counsel shakes {shortName}'s hand afterward. 'You did the right thing.' But walking to the car, {shortName} realizes that 'confirming' and 'informing' are the same act dressed in different clothes.",
+            consequences: [
+              "Five people are formally confirmed as suspects",
+              "{shortName}'s name is quietly cleared",
+              "The moral distinction between confirming and informing dissolves",
+            ],
+            suspicionChange: -18,
+            integrityChange: -15,
+            tone: "negative",
+            historicalNote:
+              "HUAC often used 'executive sessions' to pressure reluctant witnesses into naming names, promising confidentiality that was rarely maintained.",
+          },
+        },
+        {
+          id: "B",
+          text: "Reject the deal. If naming names is wrong in public, it's wrong behind closed doors too.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "'No deal,' {shortName} tells the lawyer. The public hearing begins the next morning. The cameras flash. The questions are hostile. {shortName}'s name makes the evening news. But the five names stay safe — at least from {shortName}'s lips.",
+            consequences: [
+              "{shortName} faces a hostile public hearing",
+              "The five people are not confirmed by {shortName}",
+              "Media coverage damages {shortName}'s reputation",
+            ],
+            suspicionChange: 20,
+            integrityChange: 10,
+            tone: "negative",
+            historicalNote:
+              "Director Elia Kazan's decision to name names in a closed session in 1952 haunted him for the rest of his life, provoking a famous controversy when he received an honorary Oscar in 1999.",
+          },
+        },
+        {
+          id: "C",
+          text: "Ask the lawyer to negotiate — you'll testify about yourself, but not about anyone else, in exchange for no contempt charges.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "The negotiation takes two hours. {shortName} testifies about personal involvement — meetings attended, pamphlets read, donations made. It's humiliating but contained. The committee accepts it, for now. But the counsel warns the lawyer: 'We may call your client back.'",
+            consequences: [
+              "{shortName} admits to personal involvement publicly",
+              "No names are given, but the door isn't fully closed",
+              "The committee reserves the right to recall {shortName}",
+            ],
+            suspicionChange: 8,
+            integrityChange: -5,
+            tone: "neutral",
+            historicalNote:
+              "Playwright Arthur Miller took this approach in 1956, testifying about himself but refusing to name others. He was convicted of contempt, though the conviction was later overturned.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName}'s Spouse Threatens to Leave",
+      scene:
+        "The investigation has consumed everything. {shortName} comes home to find a suitcase by the door. 'I can't live like this anymore,' the words hang in the air. 'Either you cooperate and end this, or I'm taking the children to my mother's.'",
+      situation:
+        "The strain of surveillance, lost income, and social isolation has broken the family apart. Cooperating with the committee would likely end the investigation and save the marriage. But it would mean betraying former friends and colleagues.",
+      choices: [
+        {
+          id: "A",
+          text: "Promise to cooperate. Your family comes first — you'll call the committee's lawyer tomorrow.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} makes the call. Within a week, a meeting is arranged. The names come out over coffee in a government office. The investigation ends. The family stays together. But at dinner, {shortName} finds it difficult to meet anyone's eyes, knowing the cost of this peace.",
+            consequences: [
+              "The family remains intact",
+              "Former colleagues are named to investigators",
+              "{shortName} carries a private shame that never fully lifts",
+            ],
+            suspicionChange: -12,
+            integrityChange: -20,
+            tone: "negative",
+            historicalNote:
+              "Many who cooperated with HUAC described the pressure from family members as the deciding factor. The personal toll of the investigations extended far beyond the individuals targeted.",
+          },
+        },
+        {
+          id: "B",
+          text: "Let them go. You won't buy your family's safety with someone else's freedom.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "The car pulls away. The house is quiet. {shortName} sits at the kitchen table for a long time. The decision feels both terrible and necessary. In the weeks that follow, the loneliness is crushing — but so would have been the alternative.",
+            consequences: [
+              "The family separates",
+              "{shortName}'s principles remain intact",
+              "The personal cost of resistance becomes devastatingly real",
+            ],
+            suspicionChange: 10,
+            integrityChange: 12,
+            tone: "negative",
+            historicalNote:
+              "The Red Scare destroyed countless marriages and families. Some spouses supported the resistance; others couldn't bear the consequences. Both choices carried lifelong costs.",
+          },
+        },
+        {
+          id: "C",
+          text: "Ask for more time. Beg for patience. Say you're trying to find another way out.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "The suitcase goes back in the closet, but the tension doesn't leave. {shortName} has bought a few more weeks, perhaps. The committee's deadline hasn't changed. Now there are two clocks ticking — one in Washington, one at home.",
+            consequences: [
+              "The suitcase goes back in the closet — but it stays packed",
+              "The children sense the tension and start having nightmares",
+              "The committee's next hearing date is circled on the kitchen calendar in red",
+            ],
+            suspicionChange: 3,
+            integrityChange: -2,
+            tone: "neutral",
+            historicalNote:
+              "The psychological toll of prolonged investigation was immense. Many targets reported anxiety, insomnia, and depression as the uncertainty dragged on for months or years.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "The Blacklist Comes for {shortName}'s Livelihood",
+      scene:
+        "A phone call from {shortName}'s employer is brief and apologetic. 'It's out of my hands.' {shortName} has been placed on the industry blacklist. No one at {workplace} will hire a suspected Communist sympathizer. The savings will last two months, maybe three.",
+      situation:
+        "A well-connected friend offers a lifeline: a meeting with a fixer who can get {shortName}'s name removed from the blacklist — for a price. Not money. Names. Three former colleagues who were at those meetings in the 1940s.",
+      choices: [
+        {
+          id: "A",
+          text: "Meet the fixer. Three names to save your livelihood seems like a grim but practical trade.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The meeting happens in a hotel lobby. The fixer writes the names on a napkin and slides it into his pocket. Two weeks later, {shortName}'s phone rings — a job offer. The relief is overwhelming. The guilt arrives later, slowly, and stays.",
+            consequences: [
+              "{shortName} is removed from the blacklist",
+              "Three former colleagues face new investigations",
+              "Employment resumes, but trust in the industry is shattered",
+            ],
+            suspicionChange: -15,
+            integrityChange: -18,
+            tone: "negative",
+            historicalNote:
+              "The entertainment industry blacklist was enforced not by law but by informal agreement among studio executives, network heads, and sponsors. 'Fixers' who claimed to clear names operated in a gray market of fear.",
+          },
+        },
+        {
+          id: "B",
+          text: "Refuse the meeting. Find work outside your field — drive a cab, wait tables, anything. You won't sell anyone out.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} hangs up the phone and stares at the classifieds. A dishwashing job downtown. Night watchman at a warehouse. It's humiliating after years of professional work. But no one else gets hurt. The first shift starts at midnight.",
+            consequences: [
+              "{shortName} loses a professional career",
+              "No former colleagues are endangered",
+              "A new, diminished life begins from scratch",
+            ],
+            suspicionChange: 8,
+            integrityChange: 10,
+            tone: "neutral",
+            historicalNote:
+              "Many blacklisted professionals took menial jobs to survive. Some writers worked under pseudonyms. Dalton Trumbo, one of the Hollywood Ten, wrote screenplays under fake names for a fraction of his former pay.",
+          },
+        },
+        {
+          id: "C",
+          text: "Take the meeting but give only names of people who have already been publicly identified. Don't add anyone new to the list.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "The fixer listens, nods, and says he'll 'see what he can do.' A month passes. Then a partial reprieve — some freelance work, nothing steady. {shortName} is off the worst of the blacklist but not fully cleared. The fixer calls again: 'I need fresh names for the full clearance.'",
+            consequences: [
+              "A few freelance assignments trickle in — enough to cover rent, not enough to feel safe",
+              "The fixer calls on a Wednesday: 'I need three fresh names for the full clearance. You know how this works.'",
+              "{shortName} realizes that half-measures only buy half-freedom",
+            ],
+            suspicionChange: 0,
+            integrityChange: -8,
+            tone: "neutral",
+            historicalNote:
+              "The blacklist operated on a spectrum. Some were 'graylisted' — not fully blacklisted but limited to smaller jobs. Climbing back often required increasingly larger acts of cooperation.",
+          },
+        },
+      ],
+    },
   ],
   resister: [
     {
@@ -588,9 +954,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} speaks clearly into the microphone: 'I was a member. I am not ashamed of it. But I will not discuss anyone but myself.' The committee presses harder, but {shortName} holds firm. The newspapers call it 'defiant but forthcoming.'",
             consequences: [
-              "{shortName}'s honesty is noted but does not satisfy the committee",
-              "Contempt charges are narrowly avoided",
-              "{shortName}'s employer faces pressure to act",
+              "The committee chairman tells the press that {shortName} was 'forthcoming but incomplete'",
+              "A contempt vote fails by a single margin — but the file stays open",
+              "{shortName}'s employer receives a hand-delivered letter from the committee the next morning",
             ],
             suspicionChange: 10,
             integrityChange: 3,
@@ -677,9 +1043,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} signs the oath but attaches a statement calling it 'a violation of fundamental rights.' The administration accepts the signature and ignores the statement. Colleagues who refused are fired. {shortName} keeps the job but feels the compromise like a splinter under the skin.",
             consequences: [
-              "{shortName} keeps the position at {workplace}",
-              "The protest statement has no practical effect",
-              "Some colleagues view the signing as a betrayal",
+              "{shortName}'s desk remains, but two empty offices down the hall belong to colleagues who refused",
+              "The written protest is filed in a cabinet no one opens — it changes nothing",
+              "A colleague who was fired leaves a note in {shortName}'s mailbox: 'I thought you were one of us'",
             ],
             suspicionChange: -5,
             integrityChange: -10,
@@ -697,9 +1063,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} cleans out the office on a Sunday when the halls are empty. A key is left with the secretary and a note for close colleagues. The local paper runs a small story. A contact at a less prominent organization offers a position at half the former salary.",
             consequences: [
-              "{shortName} leaves with integrity intact",
-              "Career takes a significant step backward",
-              "The public spectacle of firing or hearings is avoided",
+              "{shortName} walks out of {workplace} for the last time carrying twenty-two years of work in a cardboard box",
+              "A smaller organization in a neighboring state offers a position at half the salary — it feels like exile",
+              "The resignation makes page six of the local paper; colleagues clip it and say nothing",
             ],
             suspicionChange: 5,
             integrityChange: 5,
@@ -746,9 +1112,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} presses forty dollars into Richard's hand and gives him the address of a boarding house run by a sympathetic widow. Richard thanks {shortName} with tears in his eyes and disappears into the night. The door locks. Forty dollars against a guilty conscience.",
             consequences: [
-              "Richard has temporary resources",
-              "{shortName} maintains distance from direct association",
-              "The help is real but limited",
+              "Richard checks into Mrs. Garza's boarding house on Maple Street under a false name",
+              "{shortName}'s forty dollars buys three weeks of survival — then Richard will need more",
+              "The envelope with the money has {shortName}'s fingerprints on it, sitting in Richard's coat pocket",
             ],
             suspicionChange: 3,
             integrityChange: 0,
@@ -815,9 +1181,9 @@ export const SCENARIOS = {
             narrative:
               "The lawyer makes inquiries and reports back: the people are already under investigation. But {shortName} knows that an additional name on the record adds weight to a case. 'Already known' does not mean 'already safe.' The agonizing continues for days.",
             consequences: [
-              "{shortName} remains undecided, buying time",
-              "The committee grows impatient",
-              "The moral weight keeps {shortName} awake at night",
+              "The lawyer calls every morning at eight asking for a decision — each call shorter and more impatient than the last",
+              "The committee's chief counsel sends a letter: {shortName} has fourteen days to respond or face a public subpoena",
+              "At 3 a.m., {shortName} writes two lists on a napkin — reasons to cooperate and reasons not to — and throws both away",
             ],
             suspicionChange: 5,
             integrityChange: -5,
@@ -884,9 +1250,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} unplugs the phone and draws the curtains. For three days, silence. The story fades from the front page, replaced by other names, other accusations. But the damage is done — {shortName}'s name is in the public record, and silence is often read as guilt.",
             consequences: [
-              "The immediate media attention fades",
-              "Silence is interpreted differently by different people",
-              "The accusation remains on {shortName}'s permanent record",
+              "By Thursday, a new scandal pushes {shortName}'s name off the front page",
+              "The landlord leaves a note under the door asking to 'discuss the lease' — silence didn't make {shortName} invisible",
+              "The accusation is now clipped and filed in an FBI folder that will follow {shortName} for decades",
             ],
             suspicionChange: 5,
             integrityChange: 0,
@@ -904,9 +1270,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} drafts a careful three-sentence statement that a lawyer approves. It says {name} is a loyal American who has never done anything to harm the country. It satisfies no one — not the committee, not the press, and not {shortName}'s own sense of justice.",
             consequences: [
-              "The statement is seen as evasive by both sides",
-              "It provides no ammunition but also no vindication",
-              "The ambiguity of {shortName}'s position deepens",
+              "The committee's press office calls the statement 'carefully worded' — which everyone understands as an accusation",
+              "Supporters wish {shortName} had said more; critics say the statement proves there's something to hide",
+              "{shortName}'s lawyer says it was the right move, but his voice lacks conviction",
             ],
             suspicionChange: 3,
             integrityChange: -5,
@@ -953,9 +1319,9 @@ export const SCENARIOS = {
             narrative:
               "The lawyer enters negotiations. The committee wants at least two names. {shortName} spends sleepless nights trying to think of someone — anyone — whose naming would cause the least harm. There is no such person. Every name belongs to someone's parent, someone's friend.",
             consequences: [
-              "Negotiations stall as {shortName} cannot find a 'harmless' name to give",
-              "The contempt referral remains pending",
-              "{shortName}'s resolve is shaken but not broken",
+              "The lawyer brings back a list of names — {shortName} recognizes every face and cannot circle a single one",
+              "The contempt vote is postponed one week while the committee waits for {shortName}'s answer",
+              "{shortName} drives past the federal courthouse every day on the way to work, imagining what the inside of a cell looks like",
             ],
             suspicionChange: 8,
             integrityChange: -8,
@@ -982,6 +1348,282 @@ export const SCENARIOS = {
             tone: "negative",
             historicalNote:
               "Several blacklisted Americans fled to Mexico or Europe. Screenwriter Hugo Butler and his family lived in Mexico for years, while Paul Robeson had his passport revoked to prevent foreign travel.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName}'s Passport Is Revoked",
+      scene:
+        "A letter from the State Department arrives: {shortName}'s passport application has been denied on national security grounds. A speaking engagement in London, a possible teaching position in Paris — all closed off. The borders of {shortName}'s world have suddenly shrunk.",
+      situation:
+        "The State Department offers an appeal process, but it requires signing a sworn affidavit of loyalty and submitting to an interview about past associations. {shortName}'s lawyer says the appeal is unlikely to succeed without 'demonstrating cooperation.'",
+      choices: [
+        {
+          id: "A",
+          text: "Challenge the revocation in court. Make it a public case about the right to travel.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName}'s lawyers file suit in federal court. The case draws attention — newspaper editorials, letters from abroad. The State Department digs in. The legal battle will take years and cost thousands. But {shortName}'s name becomes a symbol of the fight for civil liberties.",
+            consequences: [
+              "A landmark legal challenge begins",
+              "Years of litigation ahead with uncertain outcome",
+              "{shortName} becomes a public figure in the civil liberties movement",
+            ],
+            suspicionChange: 18,
+            integrityChange: 10,
+            tone: "neutral",
+            historicalNote:
+              "Paul Robeson's passport was revoked in 1950 and not returned until 1958 after the Supreme Court ruled in Kent v. Dulles that the right to travel is protected by the Fifth Amendment.",
+          },
+        },
+        {
+          id: "B",
+          text: "Submit the affidavit and attend the interview. You need to travel for work, and this is the only way.",
+          alignment: "cooperative",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "The interview room is small and windowless. The questions are pointed: 'Were you ever a member? Do you know anyone who is?' {shortName} answers carefully, affirming loyalty, denying current associations. The passport arrives three months later. The cost is invisible but real.",
+            consequences: [
+              "{shortName}'s travel rights are restored",
+              "A sworn loyalty affidavit is now on file",
+              "The precedent of government control over travel is accepted",
+            ],
+            suspicionChange: -10,
+            integrityChange: -12,
+            tone: "negative",
+            historicalNote:
+              "The State Department revoked or denied passports to hundreds of Americans during the McCarthy era, including scientists, artists, and activists deemed security risks.",
+          },
+        },
+        {
+          id: "C",
+          text: "Accept it quietly. Focus on work you can do at home and wait for the political climate to change.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} puts the letter in a drawer and tries to move forward. The London engagement is cancelled. The Paris opportunity goes to someone else. Life contracts, becomes smaller. Friends abroad write asking why {shortName} never visits. The replies grow shorter.",
+            consequences: [
+              "The London lecture goes to a younger colleague who signed the loyalty oath without hesitation",
+              "A letter from a professor in Paris — 'We were so looking forward to your visit' — sits unanswered on the desk",
+              "{shortName} starts taking long drives to the coast, staring at the ocean that now marks the edge of a shrinking world",
+            ],
+            suspicionChange: 5,
+            integrityChange: -3,
+            tone: "neutral",
+            historicalNote:
+              "Many Americans quietly accepted passport restrictions rather than risk the exposure of an appeal. The chilling effect extended far beyond those formally denied travel.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "A Former Ally Testifies Against {shortName}",
+      scene:
+        "The morning paper carries a headline that turns {shortName}'s stomach. A former colleague — someone {shortName} trusted — has testified before the committee and named {shortName} as a Communist Party member. The phone begins ringing. Reporters want a comment.",
+      situation:
+        "{shortName} is now publicly named. The accusation is false — or at best a distortion. But denying it means attacking a former friend. The committee has offered {shortName} a chance to 'respond' by testifying. {shortName}'s lawyer warns this is a trap.",
+      choices: [
+        {
+          id: "A",
+          text: "Testify and directly contradict the accusation. Set the record straight under oath.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "{shortName} sits before the committee and speaks firmly: the testimony was false, the characterization distorted. But the committee isn't interested in corrections — they pivot immediately to new questions. 'If you weren't a member, who was?' The trap springs shut.",
+            consequences: [
+              "{shortName} publicly denies the accusation",
+              "The committee uses the testimony to press for new names",
+              "Public perception is divided — some believe the denial, others don't",
+            ],
+            suspicionChange: 10,
+            integrityChange: 3,
+            tone: "neutral",
+            historicalNote:
+              "Appearing before HUAC to deny accusations often backfired. The committee frequently used denial testimony as leverage to demand names of 'actual' Communists.",
+          },
+        },
+        {
+          id: "B",
+          text: "Refuse to testify. Issue a public statement calling the accusation a lie and the committee unconstitutional.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName}'s statement is reprinted in sympathetic newspapers: 'I will not dignify a kangaroo court with my presence.' The committee votes to cite {shortName} for contempt. Supporters rally, but so do enemies. The battle lines harden.",
+            consequences: [
+              "A contempt citation becomes likely",
+              "{shortName}'s public statement rallies supporters",
+              "The former ally's betrayal goes unanswered in the official record",
+            ],
+            suspicionChange: 22,
+            integrityChange: 10,
+            tone: "negative",
+            historicalNote:
+              "Lillian Hellman's famous letter to HUAC declared: 'I cannot and will not cut my conscience to fit this year's fashions.' She avoided naming names but was blacklisted for years.",
+          },
+        },
+        {
+          id: "C",
+          text: "Reach out to the former ally privately. Try to understand why they named you and ask them to recant.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "The meeting happens in a park, both wearing sunglasses. The former ally is ashamed but firm: 'They had my name. I had to give them something.' The plea to recant is met with fear: 'They'll come after me again.' {shortName} leaves understanding the machine better — and hating it more.",
+            consequences: [
+              "The former ally slides the sunglasses back on and walks away without looking back — that friendship is a ghost now",
+              "{shortName} sees clearly how the machine works: the committee breaks one person, who breaks the next, who breaks the next",
+              "The accusation remains in the Congressional Record, uncorrected, where historians will read it for decades",
+            ],
+            suspicionChange: 8,
+            integrityChange: 0,
+            tone: "neutral",
+            historicalNote:
+              "The chain of informing was self-perpetuating. Those who named names often did so because they were named first. The committee weaponized personal relationships to generate an ever-expanding web of accusations.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName}'s Children Face Consequences at School",
+      scene:
+        "The children come home in tears. A classmate told them their parent is a 'Red.' The teacher separated them at lunch. Other parents have asked that the children be moved to a different classroom. The school principal wants a meeting.",
+      situation:
+        "The investigation has reached {shortName}'s family. Protecting the children means either fighting the school publicly — which will draw more attention — or pulling them out and finding an alternative. Or giving the committee what they want to make it all stop.",
+      choices: [
+        {
+          id: "A",
+          text: "March into the school and demand the principal protect your children from harassment.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} stands in the principal's office, voice shaking with anger: 'These are children.' The principal is sympathetic but powerless. 'Parents are calling. The school board is involved.' The meeting achieves nothing except another item in the growing file.",
+            consequences: [
+              "The confrontation is noted by school administrators",
+              "The children's situation does not improve",
+              "{shortName}'s reputation as 'difficult' grows",
+            ],
+            suspicionChange: 12,
+            integrityChange: 8,
+            tone: "negative",
+            historicalNote:
+              "Children of accused Americans suffered enormously. Many were bullied, ostracized, and forced to change schools. Some didn't learn the full truth about their parents' ordeal until decades later.",
+          },
+        },
+        {
+          id: "B",
+          text: "Quietly transfer the children to a new school where no one knows the family name.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "New uniforms, new backpacks, a twenty-minute bus ride across town. The children ask why they have to leave their friends. {shortName} has no good answer. At the new school, they are told to use their mother's maiden name. It works, for now. But the lie weighs on everyone.",
+            consequences: [
+              "The children are shielded temporarily",
+              "The family lives under a partial false identity",
+              "The dislocation adds to the family's emotional burden",
+            ],
+            suspicionChange: 0,
+            integrityChange: -5,
+            tone: "neutral",
+            historicalNote:
+              "Some blacklisted families moved to new cities and assumed new identities to protect their children. The secrecy created lasting psychological scars across generations.",
+          },
+        },
+        {
+          id: "C",
+          text: "This is the breaking point. Call the committee's lawyer and agree to cooperate — anything to protect your children.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The words come out faster than expected. {shortName} is tired — tired of the fight, tired of the fear. The children don't deserve this. Within days, the meeting is arranged. The names are given. The investigation closes. The children return to a normal school life. {shortName} does not.",
+            consequences: [
+              "The children are protected from further harassment",
+              "Former colleagues are named to the committee",
+              "{shortName}'s resistance ends in capitulation",
+            ],
+            suspicionChange: -15,
+            integrityChange: -20,
+            tone: "negative",
+            historicalNote:
+              "Actor Sterling Hayden later said his decision to cooperate with HUAC was driven by fear for his family. He called it 'the most shameful thing I ever did' and regretted it for the rest of his life.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "An Underground Newspaper Asks {shortName} to Write",
+      scene:
+        "A mimeographed newsletter arrives in a plain envelope. It's an underground publication — uncensored voices challenging McCarthyism. An unsigned note asks {shortName} to contribute an essay. The newsletter circulates secretly among sympathizers nationwide.",
+      situation:
+        "Writing for the underground press would give {shortName} a voice when every other outlet has gone silent. But if the FBI traces it back, the consequences would be severe. The essay could inspire others — or it could become evidence in a prosecution.",
+      choices: [
+        {
+          id: "A",
+          text: "Write the essay under a pseudonym. Your words matter, and someone needs to speak the truth.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} writes through the night. The essay is angry and eloquent — a defense of conscience, a condemnation of fear. It appears in the next issue under the name 'Prometheus.' Copies circulate in union halls, church basements, and college dormitories. The FBI opens a new file: 'Identify Prometheus.'",
+            consequences: [
+              "The essay inspires readers across the country",
+              "The FBI launches an investigation to identify the author",
+              "{shortName} has a secret second life as a dissident voice",
+            ],
+            suspicionChange: 8,
+            integrityChange: 12,
+            tone: "neutral",
+            historicalNote:
+              "Underground newspapers like 'I.F. Stone's Weekly' and various mimeographed newsletters provided alternative viewpoints during the McCarthy era, often at great personal risk to their publishers.",
+          },
+        },
+        {
+          id: "B",
+          text: "Decline. The risk is too great, and you can't help anyone from prison.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} burns the newsletter and the note. It's the prudent choice. But that night, lying in bed, the words that could have been written loop endlessly. Someone else will write the essay, or no one will. {shortName} wonders which is worse.",
+            consequences: [
+              "The next issue of the newsletter runs with a blank space where {shortName}'s essay would have been",
+              "A note at the bottom reads: 'A contributor was unable to participate. We understand.'",
+              "Months later, {shortName} finds the burned note's ashes still in the sink — a small monument to the words unwritten",
+            ],
+            suspicionChange: 0,
+            integrityChange: -5,
+            tone: "neutral",
+            historicalNote:
+              "Self-censorship was perhaps McCarthyism's most effective weapon. Many who were never investigated still chose silence over the risk of attention.",
+          },
+        },
+        {
+          id: "C",
+          text: "Write the essay under your real name. If you believe these words, stand behind them openly.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "The essay runs with {shortName}'s full name — a declaration of defiance. The reaction is immediate. Supporters send letters of admiration. The committee announces it will investigate the newsletter's distribution. {shortName} becomes a target, but also a symbol.",
+            consequences: [
+              "{shortName} becomes a public voice against McCarthyism",
+              "The committee escalates its investigation",
+              "The essay becomes a rallying point for civil liberties defenders",
+            ],
+            suspicionChange: 25,
+            integrityChange: 12,
+            tone: "negative",
+            historicalNote:
+              "Some resisters chose to be public about their defiance. Pete Seeger continued performing openly, and Arthur Miller wrote 'The Crucible' as a thinly veiled allegory of McCarthyism while under investigation.",
           },
         },
       ],
@@ -1044,9 +1686,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} waits until the parking lot is empty and catches Ed at his car. 'Are you okay?' Ed's eyes fill with tears. He says it is all a misunderstanding. {shortName} offers a few words of support but keeps looking over one shoulder the whole time.",
             consequences: [
-              "Ed appreciates the gesture, however small",
-              "{shortName} avoids being seen publicly with Ed",
-              "The gap between caution and courage feels uncomfortable",
+              "Ed grips {shortName}'s hand in the dark parking lot and whispers, 'You're the only one who asked'",
+              "No one from {workplace} sees the conversation — but {shortName} checks the rearview mirror three times on the drive home",
+              "Ed cleans out his desk by Friday anyway; the kindness didn't save his job, but he remembers who showed up",
             ],
             suspicionChange: 2,
             integrityChange: 0,
@@ -1113,9 +1755,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} walks past the petition every day, pretending not to notice it. Eventually a coworker asks why {shortName} hasn't signed. 'Just haven't gotten around to it,' {shortName} says. The look in return says: not believed.",
             consequences: [
-              "{shortName}'s absence from the petition is eventually noticed",
-              "Active participation in either direction is avoided",
-              "Quiet suspicion builds among some colleagues",
+              "A coworker draws a circle around the blank space where {shortName}'s name should be and tapes it to the break room wall",
+              "The boss mentions 'full participation' in the next staff meeting, eyes lingering on {shortName}",
+              "Two weeks later a second petition circulates — this one asks for signatures supporting the firings that the first petition caused",
             ],
             suspicionChange: 5,
             integrityChange: -2,
@@ -1182,9 +1824,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} pockets the card with a noncommittal nod. The agent seems satisfied — for now. The card sits in a wallet for weeks, a quiet reminder of the choice not yet made. The agent calls once to check in. {shortName} lets it ring.",
             consequences: [
-              "The FBI expects a future commitment from {shortName}",
-              "Time is bought but nothing is resolved",
-              "The pressure to decide grows slowly",
+              "The agent's card — 'Special Agent R. Hendricks, Federal Bureau of Investigation' — sits in {shortName}'s wallet like a splinter",
+              "Hendricks calls the following Thursday at dinnertime: 'Just checking in. Have you noticed anything worth sharing?'",
+              "{shortName} lets the phone ring six times before picking up, says 'nothing yet,' and hangs up with shaking hands",
             ],
             suspicionChange: 0,
             integrityChange: -3,
@@ -1320,9 +1962,9 @@ export const SCENARIOS = {
             narrative:
               "{shortName} tells the boss there isn't much contact with the brother-in-law and would rather not discuss personal family matters. The boss accepts this for now but warns that the matter may come up again. {shortName} hangs up feeling like a tightrope walker.",
             consequences: [
-              "The boss is unsatisfied but doesn't push — yet",
-              "{shortName}'s position is neither secure nor immediately threatened",
-              "The issue will resurface",
+              "The boss hangs up but calls back two days later: 'The front office is asking about your family situation'",
+              "Tony's wife sends a letter asking why {shortName} hasn't visited the jail — the silence cuts both ways",
+              "A coworker clips Tony's mugshot from the paper and leaves it on {shortName}'s desk without a note",
             ],
             suspicionChange: 5,
             integrityChange: -3,
@@ -1398,6 +2040,282 @@ export const SCENARIOS = {
             tone: "neutral",
             historicalNote:
               "Small, private acts of support helped many accused individuals survive. While these acts did not stop McCarthyism, they preserved human dignity in its darkest moments.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName}'s Child Comes Home With Questions",
+      scene:
+        "At dinner, {shortName}'s ten-year-old asks: 'What's a Communist? Tommy's dad says they live on our street.' The child looks confused and a little scared. On the kitchen counter sits the evening paper with a headline about local investigations.",
+      situation:
+        "The Red Scare has entered {shortName}'s home through the most innocent door possible. How {shortName} answers will shape a child's understanding of fear, conformity, and justice — and could be repeated to teachers, neighbors, or Tommy's father.",
+      choices: [
+        {
+          id: "A",
+          text: "Tell the child that Communists are bad people and that your family has nothing to do with them.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The child nods, satisfied. The next day at school, the child repeats the answer. Tommy's father is reassured. The neighborhood relaxes. But {shortName} lies awake that night, wondering what lesson was actually taught — that fear is the right response to a question you don't understand.",
+            consequences: [
+              "The child absorbs the prevailing fear without context",
+              "The family appears safely patriotic",
+              "{shortName} sacrifices a teaching moment for safety",
+            ],
+            suspicionChange: -5,
+            integrityChange: -8,
+            tone: "negative",
+            historicalNote:
+              "Cold War propaganda reached deep into American family life. School drills, comic books, and television programs reinforced anti-Communist messaging to children, shaping a generation's worldview.",
+          },
+        },
+        {
+          id: "B",
+          text: "Explain honestly that some people have different political ideas and that accusing neighbors is wrong, no matter what.",
+          alignment: "defiant",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "{shortName} sits down and talks about fairness — about how it's wrong to call people names or accuse them without proof. The child listens carefully. Two days later, the teacher calls: 'Your child told the class that calling people Communists is like being a bully.' The principal wants a meeting.",
+            consequences: [
+              "The child repeats the lesson at school, drawing attention",
+              "The school administration takes notice of {shortName}'s views",
+              "{shortName} has taught a moral lesson at a real cost",
+            ],
+            suspicionChange: 10,
+            integrityChange: 8,
+            tone: "neutral",
+            historicalNote:
+              "Teaching children to think critically during the McCarthy era was itself seen as suspicious. Some parents were investigated based on statements their children made at school.",
+          },
+        },
+        {
+          id: "C",
+          text: "Change the subject. Say it's grown-up stuff and not to worry about it.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The child looks unsatisfied but finishes dinner. That night, {shortName} hears the child whispering to a sibling: 'I think Communists are monsters.' The fear has filled the vacuum that an honest answer might have occupied. {shortName} stares at the ceiling, wondering if there will be a better time to have this conversation.",
+            consequences: [
+              "The child draws a picture at school the next day: a house with a red monster hiding behind it",
+              "Tommy's father tells the playground mothers that {shortName}'s kid 'seemed confused about Communism'",
+              "Three weeks later the child asks again, this time at a family dinner — in front of the grandparents",
+            ],
+            suspicionChange: 0,
+            integrityChange: -3,
+            tone: "neutral",
+            historicalNote:
+              "Many parents chose silence, hoping to shield their children from the era's anxieties. Children often absorbed the fear anyway, through school, media, and overheard conversations.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "A Customer Boycott Threatens {workplace}",
+      scene:
+        "Business at {workplace} has dropped sharply. Someone has posted flyers around the neighborhood: '{workplace} employs Communist sympathizers.' {shortName}'s boss is frantic. Two employees have already been let go. The remaining staff eyes each other nervously.",
+      situation:
+        "{shortName} knows who the 'sympathizer' is — a quiet coworker named Ruth who once collected signatures for a peace petition. The boss wants someone to blame. Staying silent might cost {shortName}'s job. Pointing to Ruth would end hers.",
+      choices: [
+        {
+          id: "A",
+          text: "Tell the boss about Ruth's petition. It's public information anyway, and your family needs the paycheck.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} knocks on the boss's door. The words come out quickly — the petition, the signatures, Ruth's name. By Friday, Ruth's locker is cleaned out. The flyers stop. Business recovers. {shortName} keeps the job but can't look at Ruth's empty chair without feeling sick.",
+            consequences: [
+              "Ruth is fired and likely blacklisted",
+              "Business at {workplace} recovers",
+              "{shortName} carries the guilt of betraying a colleague",
+            ],
+            suspicionChange: -10,
+            integrityChange: -15,
+            tone: "negative",
+            historicalNote:
+              "Economic pressure was a powerful enforcement tool. Boycott threats against businesses forced employers to fire suspected 'subversives,' even without any evidence of wrongdoing.",
+          },
+        },
+        {
+          id: "B",
+          text: "Organize the staff to stand together. If they can't fire everyone, they can't fire anyone.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "{shortName} gathers the remaining workers in the break room. 'If we let them pick us off one by one, we're all next.' Some nod. Others look at the floor. The boss hears about the meeting. By Monday, {shortName} is called in for a 'performance review.' The solidarity holds — barely.",
+            consequences: [
+              "Workers form a fragile united front",
+              "{shortName} is marked as an agitator by management",
+              "Ruth keeps her job, for now",
+            ],
+            suspicionChange: 15,
+            integrityChange: 10,
+            tone: "neutral",
+            historicalNote:
+              "Workplace solidarity was rare during the Red Scare. Those who organized resistance often became targets themselves, creating a cycle of fear that discouraged collective action.",
+          },
+        },
+        {
+          id: "C",
+          text: "Keep your head down and hope the boss doesn't ask you directly. Don't volunteer anything.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "Days pass. The boss interviews each employee. When {shortName}'s turn comes, the questions are pointed: 'Do you know who it might be? Have you noticed anything unusual?' {shortName} shrugs, says nothing useful. The boss looks disappointed. The job is safe today, but the investigation continues.",
+            consequences: [
+              "The boss writes 'uncooperative' in {shortName}'s personnel file but takes no further action — for now",
+              "Ruth eats lunch alone every day, eyes red, waiting for the axe to fall",
+              "Someone scratches the word 'RED' into the paint on Ruth's locker — and no one reports it",
+            ],
+            suspicionChange: 3,
+            integrityChange: -2,
+            tone: "neutral",
+            historicalNote:
+              "Staying silent was the most common response during the McCarthy era. It preserved individual safety but allowed the system of accusation to continue unchallenged.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "An Anonymous Tip Arrives About {shortName}'s Neighbor",
+      scene:
+        "A typed note appears in {shortName}'s mailbox: 'Your neighbor at 412 Elm Street holds secret meetings on Thursday nights. As a patriotic American, you should report this to the authorities.' {shortName} knows the neighbor — old Mr. Petrov, a retired watchmaker who hosts a chess club.",
+      situation:
+        "Mr. Petrov is a Russian immigrant who came to America in 1921. His Thursday chess club is exactly what it looks like — old men playing chess and drinking tea. But his Russian name and the anonymous note could be enough to ruin him in this climate.",
+      choices: [
+        {
+          id: "A",
+          text: "Throw the note away and warn Mr. Petrov that someone is watching him.",
+          alignment: "defiant",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "{shortName} knocks on Mr. Petrov's door that evening. The old man listens, nods slowly, and says nothing for a long time. 'In Russia, neighbors informed on neighbors. I came to America to escape this.' He thanks {shortName} quietly and cancels the chess club. Something small and good in the neighborhood dies.",
+            consequences: [
+              "Mr. Petrov is warned and stops the chess club",
+              "{shortName} has protected a neighbor but drawn no attention",
+              "The anonymous informer may try again with authorities directly",
+            ],
+            suspicionChange: 5,
+            integrityChange: 8,
+            tone: "neutral",
+            historicalNote:
+              "Russian and Eastern European immigrants were frequent targets of suspicion during the Red Scare, regardless of their actual political beliefs. Their accents and foreign names made them easy marks.",
+          },
+        },
+        {
+          id: "B",
+          text: "Report the note to the FBI. It's probably nothing, but better safe than sorry.",
+          alignment: "cooperative",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The FBI agent takes the note, asks a few questions about Mr. Petrov, and leaves. A week later, two agents visit Mr. Petrov's home. The chess club is searched. Mr. Petrov's naturalization papers are reviewed. He is cleared eventually, but his hands shake now when he sets up the chessboard. He never invites {shortName} for tea again.",
+            consequences: [
+              "Mr. Petrov is investigated and eventually cleared",
+              "The trauma of investigation leaves permanent scars",
+              "A neighbor's trust is broken irreparably",
+            ],
+            suspicionChange: -8,
+            integrityChange: -12,
+            tone: "negative",
+            historicalNote:
+              "The FBI received thousands of anonymous tips during the Red Scare. Most led nowhere, but the investigations they triggered devastated the lives of innocent people, particularly immigrants.",
+          },
+        },
+        {
+          id: "C",
+          text: "Ignore the note entirely. It's none of your business and probably written by a crank.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "{shortName} crumples the note and tosses it in the trash. Life goes on. Mr. Petrov's chess club continues. But a nagging thought remains: whoever wrote that note sent copies to others too. If someone else reports it, Mr. Petrov faces an investigation — and {shortName} could have warned him.",
+            consequences: [
+              "Mr. Petrov sets up the chess pieces the following Thursday, unaware that someone is building a case against him",
+              "The same typed note appears in three other mailboxes on the block — someone will eventually act on it",
+              "{shortName} passes Mr. Petrov's house every morning and wonders if today is the day the FBI car shows up",
+            ],
+            suspicionChange: 0,
+            integrityChange: -3,
+            tone: "neutral",
+            historicalNote:
+              "Anonymous denunciations were a hallmark of the McCarthy era. The system relied on ordinary citizens choosing to act on suspicion rather than evidence.",
+          },
+        },
+      ],
+    },
+    {
+      headline: "{shortName} Is Asked to Join the Loyalty Committee",
+      scene:
+        "The community's newly formed Americanism Committee wants {shortName} as a member. 'We need good, trustworthy people,' the chairman says over coffee. The committee reviews local residents for 'un-American' activities and reports findings to the city council.",
+      situation:
+        "Joining gives {shortName} power — the power to protect friends and neighbors from false accusations. But it also means participating in a system that investigates people for their beliefs. The chairman is waiting for an answer.",
+      choices: [
+        {
+          id: "A",
+          text: "Join the committee. From the inside, you can steer it away from witch hunts and protect people.",
+          alignment: "neutral",
+          riskLevel: "medium",
+          outcome: {
+            narrative:
+              "{shortName} attends the first meeting. The other members are earnest, frightened people who see Communists behind every curtain. {shortName} manages to table a motion to investigate the public library. But the next meeting brings a new target: the Unitarian church. The committee has a momentum of its own, and {shortName} is now part of it.",
+            consequences: [
+              "{shortName} has limited influence inside the committee",
+              "Some investigations are slowed but not stopped",
+              "{shortName} is now publicly associated with the loyalty system",
+            ],
+            suspicionChange: -10,
+            integrityChange: -8,
+            tone: "neutral",
+            historicalNote:
+              "Local loyalty committees sprang up across America in the early 1950s. Some participants joined hoping to moderate the process from within, but most found the committees took on a life of their own.",
+          },
+        },
+        {
+          id: "B",
+          text: "Decline firmly. You won't sit in judgment of your neighbors.",
+          alignment: "defiant",
+          riskLevel: "high",
+          outcome: {
+            narrative:
+              "'I appreciate the offer, but I'm not comfortable deciding who's a good American and who isn't.' The chairman's smile fades. 'That's a surprising answer, {shortName}. Most people are eager to show their patriotism.' The implication hangs in the air: refusing to hunt makes you look like prey.",
+            consequences: [
+              "{shortName} is viewed with suspicion for declining",
+              "The committee operates without {shortName}'s moderating voice",
+              "{shortName}'s refusal becomes a topic of neighborhood gossip",
+            ],
+            suspicionChange: 12,
+            integrityChange: 10,
+            tone: "neutral",
+            historicalNote:
+              "Refusing to participate in loyalty programs was itself treated as suspicious. The logic of McCarthyism demanded that loyal Americans prove their loyalty through active participation.",
+          },
+        },
+        {
+          id: "C",
+          text: "Say you're too busy with work and family. Don't commit one way or the other.",
+          alignment: "neutral",
+          riskLevel: "low",
+          outcome: {
+            narrative:
+              "The chairman nods understandingly. 'Of course, family comes first. But the offer stands.' {shortName} walks home relieved but uneasy. The committee will make decisions that affect real people — and {shortName} chose comfort over conscience. The question of whether that was wisdom or cowardice has no easy answer.",
+            consequences: [
+              "The chairman nods politely, but his secretary stops saying hello at the grocery store",
+              "The committee's first official act is to investigate the Unitarian church — a place {shortName}'s neighbor attends with her children",
+              "{shortName} reads about it in the paper over breakfast and pushes the eggs around the plate, appetite gone",
+            ],
+            suspicionChange: 2,
+            integrityChange: -2,
+            tone: "neutral",
+            historicalNote:
+              "The 'silent majority' of Americans neither actively supported nor opposed McCarthyism. Historians debate whether their passivity enabled the worst excesses or simply reflected the impossible pressures of the era.",
           },
         },
       ],
